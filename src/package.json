@@ -1,0 +1,28 @@
+{
+  "name": "ng-adf",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AngularDashboardFramework/AngularDashboardFramework"
+  },
+  "author": {
+    "name": "Michael Rice",
+    "email": "mike.adf@eferi.com"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AngularDashboardFramework/AngularDashboardFramework/issues"
+  },
+  "main": "ng-adf.umd.js",
+  "module": "ng-adf.js",
+  "jsnext:main": "ng-adf.js",
+  "typings": "ng-adf.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.3.1",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}
