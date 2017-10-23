@@ -7,7 +7,9 @@ import { GadgetConfigModel } from '../gadgets/_common/gadget-config-model';
     moduleId: module.id,
     selector: 'adf-grid-component',
     templateUrl: './grid.html',
-    styleUrls: ['./styles-grid.css']
+    styleUrls: [
+        './styles-grid.scss'
+    ]
 })
 export class GridComponent {
     @Output() boardUpdateEvent: EventEmitter<any> = new EventEmitter();
