@@ -45,8 +45,8 @@ import { ServiceListGadgetComponent } from './service-list/service-list-gadget.c
     ],
     imports: [
         CommonModule,
-        GadgetSharedModule,
         DndModule.forRoot(),
+        GadgetSharedModule,
         DynamicFormModule,
         ErrorHandlerModule,
         NgxChartsModule
