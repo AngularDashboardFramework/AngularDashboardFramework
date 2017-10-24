@@ -7,25 +7,7 @@ import {Component, ElementRef} from '@angular/core';
 @Component({
     moduleId: module.id,
     selector: 'adf-search',
-    template: `
-
-        <h3>Search Results For</h3>
-        <hr>
-        <br />
-        <div class='ui category search'>
-            <div class='ui icon input'>
-                <input class='prompt' type='text' placeholder='Search...' [(ngModel)]=query (keyup)=filter()>
-                <i class='search icon'></i>
-            </div>
-        </div>
-        <div class='suggestions' *ngIf='filteredList.length > 0'>
-            <ul style='list-style-type:none' *ngFor='let item of filteredList'>
-                <li>
-                    <a (click)='select(item)'>{{item}}</a>
-                </li>
-            </ul>
-        </div>
-    `,
+    templateUrl: 'search.component.html',
     styleUrls: ['../styles.css']
 })
 export class SearchComponent {

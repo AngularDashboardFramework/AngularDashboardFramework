@@ -7,12 +7,7 @@ import {Facet, Tag} from './facet-search-model';
 @Component({
     moduleId: module.id,
     selector: 'adf-filter-list',
-    template: `
-        <br />
-        <div *ngFor='let facet of facet_tags ;let i = index'>
-            <adf-facet [facet]='facet' (tagSelectEvent)='tagSelect($event)' [openFacet]='i < 2'> </adf-facet>
-        </div>
-    `,
+    templateUrl: 'filter-list.component.html',
     styleUrls: ['../styles.css']
 })
 export class FilterListComponent {

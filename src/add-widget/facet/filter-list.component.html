@@ -1,0 +1,4 @@
+<br />
+<div *ngFor='let facet of facet_tags ;let i = index'>
+    <adf-facet [facet]='facet' (tagSelectEvent)='tagSelect($event)' [openFacet]='i < 2'> </adf-facet>
+</div>

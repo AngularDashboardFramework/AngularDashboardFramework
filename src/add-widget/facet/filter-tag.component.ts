@@ -9,15 +9,7 @@ import {
 @Component({
     moduleId: module.id,
     selector: 'adf-filter-tag',
-    template: `
-        <div class='ui basic segment' style='background-color:white; min-height: 4.5em; border-radius:5px'>
-            <div class='ui tag labels'>
-                <a class='ui label' [@showHideAnimation] *ngFor='let tag of filterList'>
-                    {{tag}}
-                </a>
-            </div>
-        </div>
-    `,
+    templateUrl: 'filter-tag.component.html',
     styleUrls: ['../../widgets/_common/styles-widget.css'],
     animations: [
         trigger(
