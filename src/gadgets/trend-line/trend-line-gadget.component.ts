@@ -1,4 +1,6 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
+import * as d3 from 'd3-shape';
+
 import {GadgetInstanceService} from '../../grid/grid.service';
 import {RuntimeService} from '../../services/runtime.service';
 import {GadgetPropertyService} from '../_common/gadget-property.service';
@@ -7,7 +9,7 @@ import {GadgetBase} from '../_common/gadget-base';
 import {TrendLineService} from './service';
 import {Observable} from 'rxjs/Observable';
 
-declare var d3: any;
+export type D3 = typeof d3;
 
 @Component({
     selector: 'adf-dynamic-component',
@@ -36,7 +38,8 @@ export class TrendLineGadgetComponent extends GadgetBase {
         domain: ['#2185D0', '#0AFF16']
     };
 
-    d3 = d3;
+    d3:D3 = d3;
+
     multi: any[] = [];
 
     collectors: Array<string> = [];

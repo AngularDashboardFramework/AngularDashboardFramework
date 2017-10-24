@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { DndModule } from 'ng2-dnd';
 
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import { DynamicFormModule } from '../dynamic-form/dynamic-form-module';
 import { GadgetSharedModule } from './_common/gadget-shared.module';
 import { ErrorHandlerModule } from '../error/error.module';
@@ -24,7 +26,6 @@ import { DiskService } from './disk/service';
 import { TrendService } from './trend/service';
 import { PropertyListGadgetComponent } from './property-list/property-list-gadget.component';
 import { ServiceListGadgetComponent } from './service-list/service-list-gadget.component';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
     declarations: [

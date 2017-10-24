@@ -29,6 +29,11 @@
   "bugs": {
     "url": "https://github.com/AngularDashboardFramework/AngularDashboardFramework/issues"
   },
+  "dependencies": {
+    "@swimlane/ngx-charts": "^6.1.0",
+    "d3": "^4.11.0",
+    "ng2-dnd": "^4.2.0"
+  },
   "devDependencies": {
     "@angular/animations": "^4.3.1",
     "@angular/cdk": "^2.0.0-beta.8",
@@ -43,14 +48,13 @@
     "@angular/platform-browser-dynamic": "^4.3.1",
     "@angular/router": "^4.3.1",
     "@compodoc/compodoc": "^1.0.1",
-    "@swimlane/ngx-charts": "6.0.1",
+    "@types/d3": "^4.11.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "angular-in-memory-web-api": "^0.3.2",
     "codelyzer": "~2.0.0",
     "concurrently": "^3.4.0",
     "core-js": "^2.4.1",
-    "d3": "^4.4.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
@@ -66,7 +70,6 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "lite-server": "^2.3.0",
     "ng2-cookies": "1.0.3",
-    "ng2-dnd": "^2.1.1",
     "node-sass": "^4.5.2",
     "node-sass-tilde-importer": "^1.0.0",
     "node-watch": "^0.5.2",
@@ -100,6 +103,5 @@
   },
   "engines": {
     "node": ">=6.0.0"
-  },
-  "dependencies": {}
+  }
 }

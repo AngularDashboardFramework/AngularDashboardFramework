@@ -1,4 +1,6 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
+import * as d3 from 'd3-shape';
+
 import {GadgetInstanceService} from '../../grid/grid.service';
 import {RuntimeService} from '../../services/runtime.service';
 import {GadgetPropertyService} from '../_common/gadget-property.service';
@@ -8,7 +10,7 @@ import {JobAnalysisService} from './service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {MatIconRegistry} from '@angular/material';
 
-declare var d3: any;
+export type D3 = typeof d3;
 
 @Component({
     selector: 'adf-dynamic-component',

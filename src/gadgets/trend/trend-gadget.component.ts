@@ -1,4 +1,6 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
+import * as d3 from 'd3-shape'; //"../node_modules/d3-shape/build/d3-shape.min.js"
+
 import {GadgetInstanceService} from '../../grid/grid.service';
 import {RuntimeService} from '../../services/runtime.service';
 import {GadgetPropertyService} from '../_common/gadget-property.service';
@@ -6,7 +8,7 @@ import {EndPointService} from '../../configuration/tab-endpoint/endpoint.service
 import {GadgetBase} from '../_common/gadget-base';
 import {TrendService} from './service';
 
-declare var d3: any;
+export type D3 = typeof d3;
 
 @Component({
     selector: 'adf-dynamic-component',
@@ -16,7 +18,6 @@ declare var d3: any;
 })
 
 export class TrendGadgetComponent extends GadgetBase {
-
     // chart options
     showXAxis = true;
     showYAxis = true;
@@ -32,7 +33,7 @@ export class TrendGadgetComponent extends GadgetBase {
         domain: ['#7B7E81', '#0AFF16', '#FAFF16']
     };
 
-    d3 = d3;
+    d3:D3 = d3;
 
     constructor(protected _trendService: TrendService,
                 protected _runtimeService: RuntimeService,
