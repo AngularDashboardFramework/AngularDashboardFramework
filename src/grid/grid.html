@@ -9,21 +9,21 @@
             class="{{col.styleClass}} column"
             dnd-droppable
             [dropZones]="['c' + c]"
-            (onDropSuccess)="updateGadgetPositionInBoard($event, c, r, 'column')">
+            (onDropSuccess)="updateWidgetPositionInBoard($event, c, r, 'column')">
 
-            <div *ngIf="!col.gadgets || col.gadgets.length== 0"
+            <div *ngIf="!col.widgets || col.widgets.length== 0"
                 class="ui center aligned massive info message"
                 style="text-align:center"
                 [ngClass]="{'short-row': row.columns.length > 3, 'tall-row': row.columns.length <= 3 }">
 
-                <span style="font-size: .75em">Add Gadget!</span>
+                <span style="font-size: .75em">Add Widget!</span>
             </div>
 
             <adf-grid-cell
-                *ngFor="let cellGadget of col.gadgets"
-                [gadgetInstanceId]="cellGadget.instanceId"
-                [gadgetConfig]="cellGadget.config"
-                [gadgetType]="cellGadget.componentType">
+                *ngFor="let widget of col.widgets"
+                [widgetInstanceId]="widget.instanceId"
+                [widgetConfig]="widget.config"
+                [widgetType]="widget.componentType">
             </adf-grid-cell>
         </div>
     </div>

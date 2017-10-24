@@ -8,9 +8,9 @@ export const sampleBoardCollection = {
                 'columns': [
                     {
                         'styleClass': 'four wide',
-                        'gadgets': [
+                        'widgets': [
                             {
-                                'componentType': 'NewsGadgetComponent',
+                                'componentType': 'NewsWidgetComponent',
                                 'name': 'News',
                                 'description': "What's new",
                                 'icon': 'images/news.png',
@@ -64,9 +64,9 @@ export const sampleBoardCollection = {
                     },
                     {
                         'styleClass': 'twelve wide',
-                        'gadgets': [
+                        'widgets': [
                             {
-                                'componentType': 'CPUGadgetComponent',
+                                'componentType': 'CPUWidgetComponent',
                                 'name': 'CPU Chart',
                                 'description': 'Monitors CPU utilization for CDM.',
                                 'icon': 'images/cpu.png',
@@ -132,7 +132,7 @@ export const sampleBoardCollection = {
                                 }
                             },
                             {
-                                'componentType': 'TrendGadgetComponent',
+                                'componentType': 'TrendWidgetComponent',
                                 'name': 'Trend',
                                 'description': 'General trends.',
                                 'icon': 'images/trend.png',
@@ -211,9 +211,9 @@ export const sampleBoardCollection = {
                     'columns': [
                         {
                             'styleClass': 'four wide',
-                            'gadgets': [
+                            'widgets': [
                                 {
-                                    'componentType': 'StatisticGadgetComponent',
+                                    'componentType': 'StatisticWidgetComponent',
                                     'name': 'Statistic',
                                     'description': 'General statistic.',
                                     'icon': 'images/statistic.png',
@@ -289,9 +289,9 @@ export const sampleBoardCollection = {
                         },
                         {
                             'styleClass': 'four wide',
-                            'gadgets': [
+                            'widgets': [
                                 {
-                                    'componentType': 'StatisticGadgetComponent',
+                                    'componentType': 'StatisticWidgetComponent',
                                     'name': 'Statistic',
                                     'description': 'General statistic.',
                                     'icon': 'images/statistic.png',
@@ -367,9 +367,9 @@ export const sampleBoardCollection = {
                         },
                         {
                             'styleClass': 'four wide',
-                            'gadgets': [
+                            'widgets': [
                                 {
-                                    'componentType': 'StatisticGadgetComponent',
+                                    'componentType': 'StatisticWidgetComponent',
                                     'name': 'Statistic',
                                     'description': 'General statistic.',
                                     'icon': 'images/statistic.png',
@@ -445,9 +445,9 @@ export const sampleBoardCollection = {
                         },
                         {
                             'styleClass': 'four wide',
-                            'gadgets': [
+                            'widgets': [
                                 {
-                                    'componentType': 'StatisticGadgetComponent',
+                                    'componentType': 'StatisticWidgetComponent',
                                     'name': 'Statistic',
                                     'description': 'General statistic.',
                                     'icon': 'images/statistic.png',
@@ -527,9 +527,9 @@ export const sampleBoardCollection = {
                     'columns': [
                         {
                             'styleClass': 'eight wide',
-                            'gadgets': [
+                            'widgets': [
                                 {
-                                    'componentType': 'TrendLineGadgetComponent',
+                                    'componentType': 'TrendLineWidgetComponent',
                                     'name': 'Realtime Performance',
                                     'description': 'IOPs and Network Bandwidth.',
                                     'icon': 'images/trend-line.png',
@@ -595,7 +595,7 @@ export const sampleBoardCollection = {
                                     }
                                 },
                                 {
-                                    'componentType': 'ServiceListGadgetComponent',
+                                    'componentType': 'ServiceListWidgetComponent',
                                     'name': 'Service Status',
                                     'description': 'Monitors Service Status',
                                     'icon': 'images/service.png',
@@ -660,9 +660,9 @@ export const sampleBoardCollection = {
                         },
                         {
                             'styleClass': 'four wide',
-                            'gadgets': [
+                            'widgets': [
                                 {
-                                    'componentType': 'DiskGadgetComponent',
+                                    'componentType': 'DiskWidgetComponent',
                                     'name': 'Disk Utilization',
                                     'description': 'Disk consumption information for ECX.',
                                     'icon': 'images/donut.png',
@@ -792,9 +792,9 @@ export const sampleBoardCollection = {
                         },
                         {
                             'styleClass': 'four wide',
-                            'gadgets': [
+                            'widgets': [
                                 {
-                                    'componentType': 'DiskGadgetComponent',
+                                    'componentType': 'DiskWidgetComponent',
                                     'name': 'Disk Utilization',
                                     'description': 'Disk consumption information for ECX.',
                                     'icon': 'images/donut.png',
@@ -921,7 +921,7 @@ export const sampleBoardCollection = {
                                     }
                                 },
                                 {
-                                    'componentType': 'TrendGadgetComponent',
+                                    'componentType': 'TrendWidgetComponent',
                                     'name': 'Trend',
                                     'description': 'General trends.',
                                     'icon': 'images/trend.png',

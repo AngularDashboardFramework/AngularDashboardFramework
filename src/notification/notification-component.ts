@@ -26,8 +26,8 @@ export class NotificationComponent implements OnInit, AfterViewInit {
 
         this.notificationFilters.push({name: 'Unacknowledged', count: 4});
         this.notificationFilters.push({name: 'All Notifications', count: 4});
-        this.notificationFilters.push({name: 'Trend Gadget', count: 4});
-        this.notificationFilters.push({name: 'CPU Gadget', count: 0});
+        this.notificationFilters.push({name: 'Trend Widget', count: 4});
+        this.notificationFilters.push({name: 'CPU Widget', count: 0});
         this.setSelectedNotificationFilter({name: 'Unacknowledged', count: 4});
 
     }

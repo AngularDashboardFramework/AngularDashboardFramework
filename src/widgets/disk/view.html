@@ -1,0 +1,116 @@
+<div (mouseover)="showWidgetControls(true)"
+     (mouseleave)="showWidgetControls(false)" class="ui center aligned  segment widget" dnd-draggable
+     [dragEnabled]="true" [dragData]="instanceId" [dropZones]="['c0','c1','c2','c3','r0','r1']">
+
+    <adf-widget-header
+            [title]="title"
+            [inRun]="inRun"
+            [inConfig]="inConfig"
+            [actionInitiated]="actionInitiated"
+            [showOperationControls]="showOperationControls"
+            [widgetHasOperationControls]="widgetHasOperationControls"
+            [showConfigurationControl]="showConfigurationControl"
+            [showControls]="showControls"
+            (toggleConfigModeEvent)="toggleConfigMode()"
+            (removeEvent)="remove()"
+            (runEvent)="run()"
+            (stopEvent)="stop()"
+            (helpEvent)="helpModal.showHelp()">
+    </adf-widget-header>
+
+    <div class="ui grid">
+        <div class="row">
+            <!--<div>{{avail}} {{used}}</div> -->
+            <div *ngIf="!inConfig" style="max-height: 300px; max-width: 400px; min-height: 250px">
+
+                <ngx-charts-pie-chart *ngIf="!inConfig"
+                        [view]="view"
+                        [scheme]="colorScheme"
+                        [results]="data"
+                        [legend]="false"
+                        [explodeSlices]="false"
+                        [labels]="false"
+                        [doughnut]="true"
+                        [gradient]="false"
+                        [arcWidth]=".4"
+                        (select)="drillDownPopUp.showDetail($event)">
+                </ngx-charts-pie-chart>
+
+            </div>
+        </div>
+    </div>
+
+    <adf-dynamic-form *ngIf="inConfig"
+                  [propertyPages]="propertyPages"
+                  [instanceId]="instanceId"
+                  (updatePropertiesEvent)="updateProperties($event)">
+    </adf-dynamic-form>
+
+    <adf-error-handler
+            [errorObject]="errorObject"
+            [errorExists]="errorExists">
+    </adf-error-handler>
+
+    <adf-vis-drill-down-modal #drillDownPopUp></adf-vis-drill-down-modal>
+
+    <adf-help-modal #helpModal [topic]="topic"></adf-help-modal>
+
+    <br>
+    <div style="display: block !important;"  [@accordion]="detailMenuOpen">
+
+        <table class="ui two column table" [@accordion2]="detailMenuOpen">
+            <thead>
+            <tr>
+                <th>Device ID</th>
+                <th>Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>safiow4lkf8adfkadfadf</td>
+                <td>ISCSI</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="ui two column table" [@accordion2]="detailMenuOpen">
+            <thead>
+            <tr>
+                <th>Allocated</th>
+                <th>Available</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>123123 TB</td>
+                <td>323232342 TB</td>
+
+            </tr>
+            </tbody>
+        </table>
+        <table class="ui three column table" [@accordion2]="detailMenuOpen">
+            <thead>
+            <tr>
+                <th>Read</th>
+                <th>Write</th>
+                <th>Latency</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>100 ms</td>
+                <td>10 ms</td>
+                <td>10 ms</td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+    </div>
+
+    <div *ngIf="!inConfig" class="ui bottom right attached label" style="background-color: white"><i
+            class="large chevron icon" (click)="toggleAcordion()" [ngClass]="{'up':detailMenuOpen == 'in', 'down': detailMenuOpen=='out'}"
+            style="color:lightgrey"></i></div>
+
+
+</div>
+

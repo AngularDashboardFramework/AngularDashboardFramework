@@ -14,9 +14,9 @@ The primary projects leveraged:
 * angular material
 
 Features:
-* Leverages Angular's dynamic data driven forms approach for gadget property pages and properties - https://angular.io/guide/dynamic-form
-* Dynamic component strategy for creating gadget instances during runtime - https://angular.io/guide/dynamic-component-loader
-* Faceted gadget search approach leveraging tags
+* Leverages Angular's dynamic data driven forms approach for widget property pages and properties - https://angular.io/guide/dynamic-form
+* Dynamic component strategy for creating widget instances during runtime - https://angular.io/guide/dynamic-component-loader
+* Faceted widget search approach leveraging tags
 * Support multiple board creation
 * Drag and Drop support
 * Multiple Data Source/Endpoint management
@@ -29,8 +29,8 @@ Features:
 ## Sample Board 2
 ![Image of Main Screen](https://github.com/catalogicsoftware/Angular-2-Dashboard-Framework/blob/master/documentation/images/sb2.png)
 
-## Add Gadget
-![Image of Add Gadget To Screen](https://github.com/catalogicsoftware/Angular-2-Dashboard-Framework/blob/master//documentation/gifs/add.gif)
+## Add Widget
+![Image of Add Widget To Screen](https://github.com/catalogicsoftware/Angular-2-Dashboard-Framework/blob/master//documentation/gifs/add.gif)
 
 ## Add Board/Drag and Drop
 ![Image of Add Board To Screen](https://github.com/catalogicsoftware/Angular-2-Dashboard-Framework/blob/master//documentation/gifs/add-board.gif)

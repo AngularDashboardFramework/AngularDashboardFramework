@@ -7,11 +7,11 @@ export const  defaultBoard = {
             columns: [
                 {
                     styleClass: 'eight wide',
-                    gadgets: []
+                    widgets: []
                 },
                 {
                     styleClass: 'eight wide',
-                    gadgets: []
+                    widgets: []
                 }
             ]
         }

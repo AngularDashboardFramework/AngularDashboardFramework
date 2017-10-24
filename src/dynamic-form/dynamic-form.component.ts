@@ -105,7 +105,7 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
         this.updatePropertiesEvent.emit(this.payLoad);
 
         console.debug('Sending configuration to the config service!');
-        this.configService.notifyGadgetOnPropertyChange(this.payLoad, this.instanceId);
+        this.configService.notifyWidgetOnPropertyChange(this.payLoad, this.instanceId);
 
         if (this.payLoad) {
             this.showMessage = true;

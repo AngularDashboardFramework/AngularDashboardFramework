@@ -7,25 +7,25 @@ import {Subject} from 'rxjs/Subject';
 
 
 @Injectable()
-export class GadgetInstanceService {
+export class WidgetInstanceService {
 
-    private concreteGadgetInstances: any[] = [];
+    private concreteWidgetInstances: any[] = [];
     private model: any;
     private subject: Subject<string> = new Subject<string>();
 
     constructor() {
     }
 
-    addInstance(gadget: any) {
+    addInstance(widget: any) {
 
-        this.concreteGadgetInstances.push(gadget);
+        this.concreteWidgetInstances.push(widget);
 
     }
 
     enableConfigureMode() {
 
-        this.concreteGadgetInstances.forEach(function (gadget) {
-            gadget.instance.toggleConfigMode();
+        this.concreteWidgetInstances.forEach(function (widget) {
+            widget.instance.toggleConfigMode();
         });
     }
 
@@ -34,12 +34,12 @@ export class GadgetInstanceService {
         // remove instance representation from model
         this.model.rows.forEach(function (row) {
             row.columns.forEach(function (column) {
-                if (column.gadgets) {
-                    for (let i = column.gadgets.length - 1; i >= 0; i--) {
+                if (column.widgets) {
+                    for (let i = column.widgets.length - 1; i >= 0; i--) {
 
-                        if (column.gadgets[i].instanceId === id) {
+                        if (column.widgets[i].instanceId === id) {
 
-                            column.gadgets.splice(i, 1);
+                            column.widgets.splice(i, 1);
 
                             break;
                         }
@@ -49,24 +49,24 @@ export class GadgetInstanceService {
         });
 
         // removes concrete instance from service
-        for (let x = this.concreteGadgetInstances.length - 1; x >= 0; x--) {
+        for (let x = this.concreteWidgetInstances.length - 1; x >= 0; x--) {
 
-            if (this.concreteGadgetInstances[x].instance.instanceId === id) {
+            if (this.concreteWidgetInstances[x].instance.instanceId === id) {
 
-                const _gadget = this.concreteGadgetInstances.splice(x, 1);
+                const _widget = this.concreteWidgetInstances.splice(x, 1);
 
-                _gadget[0].destroy();
+                _widget[0].destroy();
 
                 break;
             }
         }
 
-        // raise an event indicating a gadget was removed
-        this.subject.next('gadget id: ' + id);
+        // raise an event indicating a widget was removed
+        this.subject.next('widget id: ' + id);
     }
 
     getInstanceCount() {
-        return this.concreteGadgetInstances.length;
+        return this.concreteWidgetInstances.length;
     }
 
     /*
@@ -78,14 +78,14 @@ export class GadgetInstanceService {
     }
 
     /*
-     raise an event that the grid.component is listening for when a gadget is removed.
+     raise an event that the grid.component is listening for when a widget is removed.
      */
-    listenForInstanceRemovedEventsFromGadgets(): Observable<string> {
+    listenForInstanceRemovedEventsFromWidgets(): Observable<string> {
         return this.subject.asObservable();
     }
 
     clearAllInstances() {
-        this.concreteGadgetInstances.length = 0;
+        this.concreteWidgetInstances.length = 0;
     }
 
 }

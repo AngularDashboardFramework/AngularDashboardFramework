@@ -1,6 +1,6 @@
 import { Component, Input, ViewContainerRef, OnInit, ComponentFactoryResolver } from '@angular/core';
-import { GadgetInstanceService } from './grid.service';
-import { GadgetFactory } from '../add-gadget/gadget-factory';
+import { WidgetInstanceService } from './grid.service';
+import { WidgetFactory } from '../add-widget/widget-factory';
 
 /*
  this class handles the dynamic creation of components
@@ -11,36 +11,36 @@ import { GadgetFactory } from '../add-gadget/gadget-factory';
     template: ''
 })
 export class CellComponent implements OnInit {
-    @Input() gadgetType: string;
-    @Input() gadgetConfig: any;
-    @Input() gadgetInstanceId: number;
+    @Input() widgetType: string;
+    @Input() widgetConfig: any;
+    @Input() widgetInstanceId: number;
 
 
     constructor(private viewContainerRef: ViewContainerRef,
-                private cfr: ComponentFactoryResolver, private gadgetInstanceService: GadgetInstanceService) {
+                private cfr: ComponentFactoryResolver, private widgetInstanceService: WidgetInstanceService) {
     }
 
     ngOnInit() {
         /*
          create component instance dynamically
          */
-        const component: any = GadgetFactory.getComponentType(this.gadgetType);
+        const component: any = WidgetFactory.getComponentType(this.widgetType);
         let compFactory: any = {};
-        let gadgetRef: any = {};
+        let widgetRef: any = {};
 
         if (component) {
             compFactory = this.cfr.resolveComponentFactory(component);
-            gadgetRef = this.viewContainerRef.createComponent(compFactory);
+            widgetRef = this.viewContainerRef.createComponent(compFactory);
 
             /*
              we need to pass the input parameters (instance id and config) back into the newly created component.
              */
-            gadgetRef.instance.configureGadget(this.gadgetInstanceId, this.gadgetConfig);
+            widgetRef.instance.configureWidget(this.widgetInstanceId, this.widgetConfig);
 
             /*
              add concrete component to service for tracking
              */
-            this.gadgetInstanceService.addInstance(gadgetRef);
+            this.widgetInstanceService.addInstance(widgetRef);
         }
 
     }

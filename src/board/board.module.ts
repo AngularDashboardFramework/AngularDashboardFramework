@@ -5,33 +5,33 @@ import { HttpModule } from '@angular/http';
 import {MatButtonModule, MatIconModule} from '@angular/material';
 
 import {GridModule} from '../grid/grid.module';
-import {GadgetModule} from '../gadgets/gadget.module';
-import {AddGadgetService} from '../add-gadget/service';
+import {WidgetModule} from '../widgets/widget.module';
+import {AddWidgetService} from '../add-widget/service';
 
 import {ConfigurationModule} from '../configuration/configuration.module';
 import {LayoutModule} from '../layout/layout.module';
-import {AddGadgetModule} from '../add-gadget/add-gadget.module';
+import {AddWidgetModule} from '../add-widget/add-widget.module';
 import {NotificationModule} from '../notification/notification.module';
 
-import {GadgetPropertyService} from '../gadgets/_common/gadget-property.service';
+import {WidgetPropertyService} from '../widgets/_common/widget-property.service';
 
 import {ConfigurationService} from '../services/configuration.service';
 import {RuntimeService} from '../services/runtime.service';
 import {EndPointService} from '../configuration/tab-endpoint/endpoint.service';
 import {BoardComponent} from './board.component';
 
-import {CPUMGadgetComponent} from '../gadgets/cpum/cpum-gadget.component';
-import {EdgeServiceListGadgetComponent} from '../gadgets/edge-service-list/edge-service-list-gadget.component';
-import {TrendLineGadgetComponent} from '../gadgets/trend-line/trend-line-gadget.component';
-import {JobAnalysisGadgetComponent} from '../gadgets/job-analysis/job-analysis-gadget.component';
-import {NewsGadgetComponent} from '../gadgets/news/news-gadget.component';
-import {TrendGadgetComponent} from '../gadgets/trend/trend-gadget.component';
-import {StatisticGadgetComponent} from '../gadgets/statistic/statistic-gadget.component';
-import {DiskGadgetComponent} from '../gadgets/disk/disk-gadget.component';
-import {PropertyListGadgetComponent} from '../gadgets/property-list/property-list-gadget.component';
-import {ServiceListGadgetComponent} from '../gadgets/service-list/service-list-gadget.component';
-import {CPUGadgetComponent} from '../gadgets/cpu/cpu-gadget.component';
-import {MemoryGadgetComponent} from '../gadgets/memory/memory-gadget.component';
+import {CPUMWidgetComponent} from '../widgets/cpum/cpum-widget.component';
+import {EdgeServiceListWidgetComponent} from '../widgets/edge-service-list/edge-service-list-widget.component';
+import {TrendLineWidgetComponent} from '../widgets/trend-line/trend-line-widget.component';
+import {JobAnalysisWidgetComponent} from '../widgets/job-analysis/job-analysis-widget.component';
+import {NewsWidgetComponent} from '../widgets/news/news-widget.component';
+import {TrendWidgetComponent} from '../widgets/trend/trend-widget.component';
+import {StatisticWidgetComponent} from '../widgets/statistic/statistic-widget.component';
+import {DiskWidgetComponent} from '../widgets/disk/disk-widget.component';
+import {PropertyListWidgetComponent} from '../widgets/property-list/property-list-widget.component';
+import {ServiceListWidgetComponent} from '../widgets/service-list/service-list-widget.component';
+import {CPUWidgetComponent} from '../widgets/cpu/cpu-widget.component';
+import {MemoryWidgetComponent} from '../widgets/memory/memory-widget.component';
 
 import {ObservableWebSocketService} from '../services/websocket-service';
 
@@ -48,24 +48,24 @@ import {ObservableWebSocketService} from '../services/websocket-service';
         HttpModule,
         MatButtonModule,
         MatIconModule,
-        GadgetModule,
+        WidgetModule,
         NotificationModule,
-        AddGadgetModule,
+        AddWidgetModule,
         LayoutModule,
         ConfigurationModule,
         GridModule.withComponents([
-            MemoryGadgetComponent,
-            CPUGadgetComponent,
-            ServiceListGadgetComponent,
-            PropertyListGadgetComponent,
-            DiskGadgetComponent,
-            StatisticGadgetComponent,
-            TrendGadgetComponent,
-            NewsGadgetComponent,
-            JobAnalysisGadgetComponent,
-            TrendLineGadgetComponent,
-            EdgeServiceListGadgetComponent,
-            CPUMGadgetComponent
+            MemoryWidgetComponent,
+            CPUWidgetComponent,
+            ServiceListWidgetComponent,
+            PropertyListWidgetComponent,
+            DiskWidgetComponent,
+            StatisticWidgetComponent,
+            TrendWidgetComponent,
+            NewsWidgetComponent,
+            JobAnalysisWidgetComponent,
+            TrendLineWidgetComponent,
+            EdgeServiceListWidgetComponent,
+            CPUMWidgetComponent
         ])
     ],
     exports: [
@@ -75,8 +75,8 @@ import {ObservableWebSocketService} from '../services/websocket-service';
         EndPointService,
         RuntimeService,
         ConfigurationService,
-        AddGadgetService,
-        GadgetPropertyService,
+        AddWidgetService,
+        WidgetPropertyService,
         ObservableWebSocketService
     ]
 })

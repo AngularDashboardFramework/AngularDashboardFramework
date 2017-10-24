@@ -9,28 +9,28 @@ import { DynamicFormModule } from '../dynamic-form/dynamic-form-module';
 
 import { GridComponent } from './grid.component';
 import { CellComponent } from './cell.component';
-import { GadgetInstanceService } from './grid.service';
+import { WidgetInstanceService } from './grid.service';
 import { ConfigurationService } from '../services/configuration.service';
 
-import { GadgetPropertyService } from '../gadgets/_common/gadget-property.service';
-import { CPUMGadgetComponent } from '../gadgets/cpum/cpum-gadget.component';
-import { EdgeServiceListGadgetComponent } from '../gadgets/edge-service-list/edge-service-list-gadget.component';
-import { EdgeService } from '../gadgets/edge-service-list/service';
-import { JobAnalysisGadgetComponent } from '../gadgets/job-analysis/job-analysis-gadget.component';
-import { JobAnalysisService } from '../gadgets/job-analysis/service';
-import { StatisticGadgetComponent } from '../gadgets/statistic/statistic-gadget.component';
-import { DiskGadgetComponent } from '../gadgets/disk/disk-gadget.component';
-import { PropertyListGadgetComponent } from '../gadgets/property-list/property-list-gadget.component';
-import { ServiceListGadgetComponent } from '../gadgets/service-list/service-list-gadget.component';
-import { CPUGadgetComponent } from '../gadgets/cpu/cpu-gadget.component';
-import { CPUService } from '../gadgets/cpu/service';
-import { MemoryGadgetComponent } from '../gadgets/memory/memory-gadget.component';
-import { NewsGadgetComponent } from '../gadgets/news/news-gadget.component';
-import { NewsService } from '../gadgets/news/service';
-import { TrendGadgetComponent } from '../gadgets/trend/trend-gadget.component';
-import { TrendService } from '../gadgets/trend/service';
-import { TrendLineGadgetComponent } from '../gadgets/trend-line/trend-line-gadget.component';
-import { TrendLineService } from '../gadgets/trend-line/service';
+import { WidgetPropertyService } from '../widgets/_common/widget-property.service';
+import { CPUMWidgetComponent } from '../widgets/cpum/cpum-widget.component';
+import { EdgeServiceListWidgetComponent } from '../widgets/edge-service-list/edge-service-list-widget.component';
+import { EdgeService } from '../widgets/edge-service-list/service';
+import { JobAnalysisWidgetComponent } from '../widgets/job-analysis/job-analysis-widget.component';
+import { JobAnalysisService } from '../widgets/job-analysis/service';
+import { StatisticWidgetComponent } from '../widgets/statistic/statistic-widget.component';
+import { DiskWidgetComponent } from '../widgets/disk/disk-widget.component';
+import { PropertyListWidgetComponent } from '../widgets/property-list/property-list-widget.component';
+import { ServiceListWidgetComponent } from '../widgets/service-list/service-list-widget.component';
+import { CPUWidgetComponent } from '../widgets/cpu/cpu-widget.component';
+import { CPUService } from '../widgets/cpu/service';
+import { MemoryWidgetComponent } from '../widgets/memory/memory-widget.component';
+import { NewsWidgetComponent } from '../widgets/news/news-widget.component';
+import { NewsService } from '../widgets/news/service';
+import { TrendWidgetComponent } from '../widgets/trend/trend-widget.component';
+import { TrendService } from '../widgets/trend/service';
+import { TrendLineWidgetComponent } from '../widgets/trend-line/trend-line-widget.component';
+import { TrendLineService } from '../widgets/trend-line/service';
 
 @NgModule({
     declarations: [
@@ -49,7 +49,7 @@ import { TrendLineService } from '../gadgets/trend-line/service';
         GridComponent
     ],
     providers: [
-        GadgetInstanceService,
+        WidgetInstanceService,
         ConfigurationService,
         NewsService,
         JobAnalysisService,

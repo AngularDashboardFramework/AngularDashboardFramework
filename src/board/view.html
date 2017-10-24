@@ -3,7 +3,7 @@
     <div class="ui secondary pointing menu">
         <a *ngFor="let board of dashboardList; let i = index" class="item"
            [ngClass]="{'active':board == selectedBoard}"
-           (click)="gadgetGrid.loadBoard(board)" (click)="selectBoard(board)">
+           (click)="widgetGrid.loadBoard(board)" (click)="selectBoard(board)">
             {{board}}
         </a>
     </div>
@@ -19,10 +19,10 @@
         &nbsp;
 
         <a mat-mini-fab routerLink="." color="primary"
-           (click)="addGadgetModal.showComponentLibraryModal('Add Gadget')">
+           (click)="addWidgetModal.showComponentLibraryModal('Add Widget')">
             <mat-icon>add_circle_outline</mat-icon>
         </a>
-        Add Gadget
+        Add Widget
         &nbsp;
 
         <a mat-mini-fab routerLink="." color="primary"
@@ -42,24 +42,24 @@
 </div>
 
 <adf-board-layout-manager-modal #boardLayoutModal
-                                (boardLayoutChangeEvent)="gadgetGrid.updateBoardLayout($event)">
+                                (boardLayoutChangeEvent)="widgetGrid.updateBoardLayout($event)">
 
 </adf-board-layout-manager-modal>
 
 <!-- the modal will emit an event and call the grid component to add the requested cell to the board -->
-<adf-add-gadget-modal #addGadgetModal
-                      (addGadgetEvent)="gadgetGrid.addGadget($event)">
-</adf-add-gadget-modal>
+<adf-add-widget-modal #addWidgetModal
+                      (addWidgetEvent)="widgetGrid.addWidget($event)">
+</adf-add-widget-modal>
 
-<!-- the grid component will create the requested gadget dynamically -->
-<adf-grid-component  #gadgetGrid
+<!-- the grid component will create the requested widget dynamically -->
+<adf-grid-component  #widgetGrid
                     (boardUpdateEvent)="updateDashboardMenu($event)">
 </adf-grid-component>
 
 <adf-board-configuration-modal #boardConfigModal
-                               (dashboardCreateEvent)="gadgetGrid.createBoard($event)"
-                               (dashboardEditEvent)="gadgetGrid.editBoard($event)"
-                               (dashboardDeleteEvent)="gadgetGrid.deleteBoard($event)"
+                               (dashboardCreateEvent)="widgetGrid.createBoard($event)"
+                               (dashboardEditEvent)="widgetGrid.editBoard($event)"
+                               (dashboardDeleteEvent)="widgetGrid.deleteBoard($event)"
                                [dashboardList]="dashboardList">
 
 
