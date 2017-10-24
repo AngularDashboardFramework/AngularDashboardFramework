@@ -7,7 +7,7 @@ import { WidgetConfigModel } from '../widgets/_common/widget-config-model';
 @Component({
     moduleId: module.id,
     selector: 'adf-grid',
-    templateUrl: './grid.html',
+    templateUrl: './grid.component.html',
     styleUrls: [
         './styles-grid.scss'
     ]
