@@ -25,7 +25,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         EndPointDetailComponent
     ],
     providers: [
-
         EndPointService
     ],
     exports: [

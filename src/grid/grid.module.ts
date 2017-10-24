@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { DndModule } from 'ng2-dnd';
+
+import { DynamicFormModule } from '../dynamic-form/dynamic-form-module';
+
 import { GridComponent } from './grid.component';
 import { CellComponent } from './cell.component';
 import { GadgetInstanceService } from './grid.service';
 import { ConfigurationService } from '../services/configuration.service';
-import { DndModule } from 'ng2-dnd';
 
 import { GadgetPropertyService } from '../gadgets/_common/gadget-property.service';
 import { CPUMGadgetComponent } from '../gadgets/cpum/cpum-gadget.component';
@@ -38,9 +41,11 @@ import { TrendLineService } from '../gadgets/trend-line/service';
         CommonModule,
         FormsModule,
         HttpModule,
-        DndModule.forRoot()
+        DndModule.forRoot(),
+        DynamicFormModule
     ],
     exports: [
+        DndModule,
         GridComponent
     ],
     providers: [

@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {MatButtonModule, MatIconModule} from '@angular/material';
 
-import {DndModule} from 'ng2-dnd';
-
 import {GridModule} from '../grid/grid.module';
 import {GadgetModule} from '../gadgets/gadget.module';
 import {AddGadgetService} from '../add-gadget/service';
@@ -46,6 +44,11 @@ import {ObservableWebSocketService} from '../services/websocket-service';
     ],
     imports: [
         CommonModule,
+        FormsModule,
+        HttpModule,
+        MatButtonModule,
+        MatIconModule,
+        GadgetModule,
         NotificationModule,
         AddGadgetModule,
         LayoutModule,
@@ -63,16 +66,10 @@ import {ObservableWebSocketService} from '../services/websocket-service';
             TrendLineGadgetComponent,
             EdgeServiceListGadgetComponent,
             CPUMGadgetComponent
-        ]),
-        GadgetModule,
-        DndModule.forRoot(),
-        MatButtonModule, MatIconModule,
-        FormsModule,
-        HttpModule,
+        ])
     ],
     exports: [
-        BoardComponent,
-        GadgetModule
+        BoardComponent
     ],
     providers: [
         EndPointService,
@@ -88,7 +85,7 @@ export class BoardModule {
     static forRoot(): ModuleWithProviders {
       return {
         ngModule: BoardModule,
-        //providers: [SampleService]
+        providers: []
       };
     }
   }
