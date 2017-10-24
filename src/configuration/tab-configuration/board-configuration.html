@@ -12,21 +12,30 @@
 
     </div>
 
-    <div *ngFor="let tab of tabsModel; let i = index" [ngClass]="{'active': tab.displayName == currentTab }"
-         class="ui bottom attached tab segment"
-         attr.data-tab="{{tab.groupId}}" [@contentSwitch]="tab.displayName == currentTab ? 'active':'inactive'">
-
+    <div
+        *ngFor="let tab of tabsModel; let i = index"
+        [ngClass]="{'active': tab.displayName == currentTab }"
+        class="ui bottom attached tab segment"
+        attr.data-tab="{{tab.groupId}}"
+        [@contentSwitch]="tab.displayName == currentTab ? 'active':'inactive'">
 
         <div *ngIf="tab.groupId == 'dashboard_config'">
 
-            <table class="ui padded table" dnd-sortable-container [sortableData]="dashboardList">
+            <table
+                dnd-sortable-container
+                [attr.sortableData]="dashboardList"
+                class="ui padded table">
                 <thead>
                 <th class="c-col">#</th>
                 <th>name</th>
                 <th></th>
                 </thead>
-                <tr class="ui basic segment" *ngFor="let board of dashboardList; let i = index" dnd-sortable
-                    [sortableIndex]="i">
+                <tr
+                    *ngFor="let board of dashboardList; let i = index"
+                    dnd-sortable
+                    [attr.sortableIndex]="i"
+                    class="ui basic segment">
+					
                     <td class="c-col">{{i + 1}}</td>
                     <td>{{board}}</td>
                     <td style="text-align:right">
