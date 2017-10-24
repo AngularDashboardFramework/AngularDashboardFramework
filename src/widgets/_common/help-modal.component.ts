@@ -9,8 +9,6 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/take';
 
-
-
 declare var jQuery: any;
 
 /**
@@ -27,7 +25,6 @@ declare var jQuery: any;
     selector: 'adf-help-modal',
     moduleId: module.id,
     templateUrl: './help-modal.html',
-
 })
 export class HelpModalComponent implements AfterViewInit {
 
@@ -40,10 +37,8 @@ export class HelpModalComponent implements AfterViewInit {
     @ViewChild('helpmodal_tag') helpmodalaRef: ElementRef;
     configModal: any;
 
-
     constructor() {
     }
-
 
     popConfigModal(icon: string, header: string, message: string, durationms: number) {
         this.showMessageModal(icon, header, message);
@@ -59,9 +54,7 @@ export class HelpModalComponent implements AfterViewInit {
         this.modalheader = header;
         this.modalconfig = message;
         this.configModal.modal('show');
-
     }
-
 
     hideMessageModal() {
         this.modalicon = '';
@@ -70,16 +63,12 @@ export class HelpModalComponent implements AfterViewInit {
         this.configModal.modal('hide');
     }
 
-
     ngAfterViewInit() {
         this.configModal = jQuery(this.helpmodalaRef.nativeElement);
         this.configModal.modal('hide');
     }
 
     showHelp() {
-
         this.showMessageModal(null, 'Help', 'Get me out of here!');
-
     }
-
 }

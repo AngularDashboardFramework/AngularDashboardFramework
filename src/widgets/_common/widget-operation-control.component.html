@@ -1,0 +1,19 @@
+<button class="compact ui button right floated"
+    *ngIf="!inRun && !actionInitiated && showOperationControls && widgetHasOperationControls"
+    (click)="run()">
+    <i class="green play icon" style="margin-right:0 !important"></i>
+</button>
+
+<button class="compact ui button right floated"
+    *ngIf="!inRun && 
+        actionInitiated && 
+        showOperationControls && 
+        widgetHasOperationControls">
+    <i class="black spinner loading icon" style="margin-right:0 !important"></i>
+</button>
+
+<button class="compact ui button right floated"
+    *ngIf="inRun && !actionInitiated && showOperationControls && widgetHasOperationControls"
+    (click)="stop()">
+    <i class="red stop icon" style="margin-right:0 !important"></i>
+</button>

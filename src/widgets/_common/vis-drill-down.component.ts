@@ -53,18 +53,16 @@ declare var jQuery: any;
             transition('active => inactive', animate('750ms ease-out'))
         ])
     ]
-
-
 })
 export class VisDrillDownComponent implements AfterViewInit {
-
     modalicon: string;
     modalheader: string;
     modalconfig: string;
 
-    @ViewChild('vismodal_tag') vismodalaRef: ElementRef;
-    configModal: any;
+    @ViewChild('vismodal_tag')
+    vismodalaRef: ElementRef;
 
+    configModal: any;
 
     constructor() {
 
@@ -76,9 +74,7 @@ export class VisDrillDownComponent implements AfterViewInit {
         this.modalheader = header;
         this.modalconfig = message;
         this.configModal.modal('show');
-
     }
-
 
     hideMessageModal() {
         this.modalicon = '';
@@ -87,20 +83,16 @@ export class VisDrillDownComponent implements AfterViewInit {
         this.configModal.modal('hide');
     }
 
-
     ngAfterViewInit() {
         this.configModal = jQuery(this.vismodalaRef.nativeElement);
         this.configModal.modal('hide');
     }
 
     showDetail($event) {
-
         console.log($event);
         const data: string = JSON.stringify($event, null, 4);
 
         console.log(data);
         this.showMessageModal(null, 'Detail', data);
-
     }
-
 }

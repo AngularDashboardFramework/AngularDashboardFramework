@@ -15,7 +15,7 @@ import {IWidget} from './iwidget';
 export abstract class WidgetBase implements IWidget, OnDestroy, OnInit, AfterViewInit {
     @ViewChild(DynamicFormComponent)
     propertyPageForm: DynamicFormComponent;
-    
+
     title: string;
     instanceId: number;
     config: any;
@@ -87,15 +87,12 @@ export abstract class WidgetBase implements IWidget, OnDestroy, OnInit, AfterVie
     }
 
     public ngOnInit() {
-
         this.toggleConfigMode();
         this.changeDetectionRef.detectChanges();
     }
 
     public ngAfterViewInit() {
-
         if (this.propertyPageForm) {
-
             if (this.propertyPageForm.isPropertyPageValid) {
                 this.toggleConfigMode();
                 this.changeDetectionRef.detectChanges();
@@ -107,6 +104,7 @@ export abstract class WidgetBase implements IWidget, OnDestroy, OnInit, AfterVie
                 this.changeDetectionRef.detectChanges();
             }
         }
+
         this.preRun();
     }
 
@@ -115,16 +113,15 @@ export abstract class WidgetBase implements IWidget, OnDestroy, OnInit, AfterVie
     }
 
     public toggleConfigMode() {
-
         if (!this.inConfig) {
 
             this.initializeProperties();
         }
+
         this.inConfig = !this.inConfig;
     }
 
     public initializeProperties() {
-
         if (this.propertyPages.length === 0 && this.config.propertyPages) {
             this._propertyService.setPropertyPagesAndProperties(this.config.propertyPages, this.propertyPages);
         }
@@ -141,13 +138,10 @@ export abstract class WidgetBase implements IWidget, OnDestroy, OnInit, AfterVie
     public abstract preRun(): void
 
     public handleError(error: ErrorObject) {
-
-
         this.inRun = false;
         this.actionInitiated = false;
         this.errorExists = true;
         this.errorObject = error;
-
     }
 
     public remove() {
@@ -165,7 +159,6 @@ export abstract class WidgetBase implements IWidget, OnDestroy, OnInit, AfterVie
      * the statistic widget uses preRun() to make a single call to the endpoint to update its display.
      * */
     public configureWidget(instanceId: number, config: any) {
-
         this.instanceId = instanceId;
         this.config = config;
 
@@ -173,13 +166,10 @@ export abstract class WidgetBase implements IWidget, OnDestroy, OnInit, AfterVie
         this.setEndPoint(this.getPropFromPropertyPages('endpoint'));
 
         this.preRun();
-
     }
 
     protected setEndPoint(endpoint: string) {
-
         this._endPointService.getEndPoints().subscribe(data => {
-
             if (data['endPoint']) {
                 data['endPoint'].forEach(item => {
                     if (item.name === endpoint) {
@@ -199,17 +189,14 @@ export abstract class WidgetBase implements IWidget, OnDestroy, OnInit, AfterVie
     }
 
     protected getPropFromPropertyPages(prop: string) {
-
         for (let x = 0; x < this.config.propertyPages.length; x++) {
-
             for (let i = 0; i < this.config.propertyPages[x].properties.length; i++) {
-
                 if (this.config.propertyPages[x].properties[i].key === prop) {
                     return this.config.propertyPages[x].properties[i].value;
                 }
             }
-
         }
+
         return 'Unknown';
     }
 

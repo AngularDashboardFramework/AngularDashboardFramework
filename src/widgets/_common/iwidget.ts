@@ -22,6 +22,4 @@ export interface IWidget {
     showWidgetControls(enable: boolean);
 
     configureWidget(instanceId: number, config: any);
-
-
 }
