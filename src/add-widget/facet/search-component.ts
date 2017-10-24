@@ -11,7 +11,7 @@ import {Component, ElementRef} from '@angular/core';
 
         <h3>Search Results For</h3>
         <hr>
-        <br>
+        <br />
         <div class='ui category search'>
             <div class='ui icon input'>
                 <input class='prompt' type='text' placeholder='Search...' [(ngModel)]=query (keyup)=filter()>
@@ -35,15 +35,11 @@ export class SearchComponent {
     public elementRef;
 
     constructor(myElement: ElementRef) {
-
-
         this.searchList.push('astring 1');
         this.searchList.push('bstring 1');
         this.searchList.push('cstring 1');
 
-
         this.elementRef = myElement;
-
     }
 
     filter() {

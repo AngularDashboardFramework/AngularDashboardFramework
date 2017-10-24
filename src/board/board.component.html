@@ -2,14 +2,14 @@
 
     <div class="ui secondary pointing menu">
         <a *ngFor="let board of dashboardList; let i = index" class="item"
-           [ngClass]="{'active':board == selectedBoard}"
-           (click)="widgetGrid.loadBoard(board)" (click)="selectBoard(board)">
+            [ngClass]="{'active':board == selectedBoard}"
+            (click)="widgetGrid.loadBoard(board)"
+            (click)="selectBoard(board)">
             {{board}}
         </a>
     </div>
 
     <div class="right floated eight wide column">
-
         <a mat-mini-fab routerLink="." color="primary"
            (click)="notifcationModal.showNotificationModal('Notifications')">
             <mat-icon>notifications</mat-icon>
@@ -22,7 +22,7 @@
            (click)="addWidgetModal.showComponentLibraryModal('Add Widget')">
             <mat-icon>add_circle_outline</mat-icon>
         </a>
-        Add Widget
+        <span>Add Widget</span>
         &nbsp;
 
         <a mat-mini-fab routerLink="." color="primary"
@@ -42,28 +42,24 @@
 </div>
 
 <adf-board-layout-manager-modal #boardLayoutModal
-                                (boardLayoutChangeEvent)="widgetGrid.updateBoardLayout($event)">
-
+    (boardLayoutChangeEvent)="widgetGrid.updateBoardLayout($event)">
 </adf-board-layout-manager-modal>
 
 <!-- the modal will emit an event and call the grid component to add the requested cell to the board -->
 <adf-add-widget-modal #addWidgetModal
-                      (addWidgetEvent)="widgetGrid.addWidget($event)">
+    (addWidgetEvent)="widgetGrid.addWidget($event)">
 </adf-add-widget-modal>
 
 <!-- the grid component will create the requested widget dynamically -->
-<adf-grid-component  #widgetGrid
-                    (boardUpdateEvent)="updateDashboardMenu($event)">
-</adf-grid-component>
+<adf-grid #widgetGrid
+    (boardUpdateEvent)="updateDashboardMenu($event)">
+</adf-grid>
 
 <adf-board-configuration-modal #boardConfigModal
-                               (dashboardCreateEvent)="widgetGrid.createBoard($event)"
-                               (dashboardEditEvent)="widgetGrid.editBoard($event)"
-                               (dashboardDeleteEvent)="widgetGrid.deleteBoard($event)"
-                               [dashboardList]="dashboardList">
-
-
+    (dashboardCreateEvent)="widgetGrid.createBoard($event)"
+    (dashboardEditEvent)="widgetGrid.editBoard($event)"
+    (dashboardDeleteEvent)="widgetGrid.deleteBoard($event)"
+    [dashboardList]="dashboardList">
 </adf-board-configuration-modal>
-
 
 <adf-notification-modal #notifcationModal></adf-notification-modal>

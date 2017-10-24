@@ -3,13 +3,12 @@
         <h2>{{modalheader}}</h2>
     </div>
 
-
     <div class="ui top attached tabular menu">
-
-        <a *ngFor="let tab of tabsModel; let i = index" class="item"
-           [ngClass]="{'active': tab.displayName == currentTab }"
-           attr.data-tab="{{tab.groupId}}" (click)="setCurrentTab(i)">{{tab.displayName}}</a>
-
+        <a *ngFor="let tab of tabsModel; let i = index"
+            class="item"
+            [ngClass]="{'active': tab.displayName == currentTab }"
+            attr.data-tab="{{tab.groupId}}"
+            (click)="setCurrentTab(i)">{{tab.displayName}}</a>
     </div>
 
     <div
@@ -20,15 +19,14 @@
         [@contentSwitch]="tab.displayName == currentTab ? 'active':'inactive'">
 
         <div *ngIf="tab.groupId == 'dashboard_config'">
-
             <table
                 dnd-sortable-container
                 [sortableData]="dashboardList"
                 class="ui padded table">
                 <thead>
-                <th class="c-col">#</th>
-                <th>name</th>
-                <th></th>
+                    <th class="c-col">#</th>
+                    <th>name</th>
+                    <th></th>
                 </thead>
                 <tr
                     *ngFor="let board of dashboardList; let i = index"
@@ -47,7 +45,6 @@
             </table>
 
             <div class="ui basic segment">
-
                 <div class="grid-row">
                     <mat-input-container class="example-full-width">
                         <input [(ngModel)]="newDashboardItem" matInput placeholder="Enter Dashboard Name">
@@ -57,7 +54,6 @@
                     <mat-icon>add</mat-icon>
                 </a>
                 </div>
-
             </div>
         </div>
 
@@ -65,7 +61,6 @@
             <adf-endpoint></adf-endpoint>
         </div>
     </div>
-
 
     <div class="actions">
         <div class="ui approve button">Close</div>

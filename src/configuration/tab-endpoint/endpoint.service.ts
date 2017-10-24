@@ -10,8 +10,8 @@ import {EndPoint} from "./endpoint.model";
 
 @Injectable()
 export class EndPointService {
-
     localStore = 'http://localhost:8090/api/store';
+
     private subject: Subject<any> = new Subject<any>();
     demo = true;
 
@@ -23,7 +23,6 @@ export class EndPointService {
         if (this.demo) {
 
             if (localStorage.getItem('endpoint') == null) {
-
                 return new Observable(observer => {
                     const base = {endPoint: []};
                     const testEndPoint = new EndPoint(

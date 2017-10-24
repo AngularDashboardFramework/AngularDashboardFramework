@@ -1,4 +1,4 @@
-import {Facet} from './facet-search-model';
+import { Facet } from './facet-search-model';
 import {
     Component, EventEmitter, Input, OnInit, Output
 } from '@angular/core';
@@ -14,9 +14,8 @@ import {
     moduleId: module.id,
     selector: 'adf-facet',
     template: `
-
         <hr style='max-width: 100%; margin-left:0;'>
-        <br>
+        <br />
         <div class='ui container grid'>
             <div class='eight wide column' style="margin-left: 0 !important;padding-left: 0 !important;">
                 <h4>{{facet.name}}</h4>
@@ -44,8 +43,7 @@ import {
                 </tbody>
             </table>
         </div>
-        <br>
-
+        <br />
     `,
     styleUrls: ['../styles.css'],
     animations: [
@@ -75,9 +73,14 @@ import {
     ]
 })
 export class FacetComponent implements OnInit {
-    @Output() tagSelectEvent: EventEmitter<any> = new EventEmitter();
-    @Input() facet: Facet;
-    @Input() openFacet: boolean;
+    @Output()
+    tagSelectEvent: EventEmitter<any> = new EventEmitter();
+
+    @Input()
+    facet: Facet;
+    
+    @Input()
+    openFacet: boolean;
 
     facetOpen: string;
 
@@ -87,18 +90,16 @@ export class FacetComponent implements OnInit {
     ngOnInit() {
         if (this.openFacet) {
             this.facetOpen = 'in';
-        }else {
+        } else {
             this.facetOpen = 'out';
         }
     }
 
     toggleAccordion() {
         this.facetOpen = this.facetOpen === 'out' ? 'in' : 'out';
-
     }
 
     tagSelect(tagName) {
         this.tagSelectEvent.emit(tagName);
     }
-
 }

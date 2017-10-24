@@ -8,15 +8,15 @@
         </div>
 
         <div [@contentSwitch]="page.groupId == currentTab ? 'active':'inactive'"
-             *ngFor="let page of propertyPages; let i = index" [ngClass]="{'active': page.groupId == currentTab }"
-             class="proppages ui bottom attached tab segment"
-             attr.data-tab="{{page.groupId}}">
-
+            *ngFor="let page of propertyPages; let i = index"
+            [ngClass]="{'active': page.groupId == currentTab }"
+            class="proppages ui bottom attached tab segment"
+            attr.data-tab="{{page.groupId}}">
 
             <div *ngFor="let property of page.properties"
                  class="form-row">
                 <adf-df-property [property]="property" [form]="form"></adf-df-property>
-                <br>
+                <br />
             </div>
 
         </div>
@@ -26,8 +26,7 @@
     </form>
 
     <div *ngIf="showMessage" [@showHideAnimation] class="form-row">
-        <br>
+        <br />
         <div class="ui success message">Saved!</div>
     </div>
-
 </div>

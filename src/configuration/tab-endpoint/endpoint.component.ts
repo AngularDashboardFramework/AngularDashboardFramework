@@ -10,24 +10,19 @@ import {EndPointService} from './endpoint.service';
     moduleId: module.id,
     templateUrl: './endpoint.html',
     styleUrls: ['./styles-endpoints.css']
-
-
 })
 export class EndPointComponent {
-
     endPoints: EndPoint[];
 
     currentEndPoint: EndPoint = new EndPoint('', '', '', '', '', '');
 
     constructor(private _endPointService: EndPointService) {
-
         this._endPointService.getEndPoints().subscribe(data => {
             this.endPoints = data['endPoint'];
 
             if (this.endPoints && this.endPoints.length) {
                 this.setSelectedEndPoint(this.endPoints[0]);
             }
-
         });
     }
 
@@ -36,7 +31,6 @@ export class EndPointComponent {
     }
 
     createEndPoint(endPoint: EndPoint) {
-
         if (!this.endPoints) {
             this.endPoints = [];
         }
@@ -51,17 +45,14 @@ export class EndPointComponent {
     }
 
     updateEndPoint(endPoint: EndPoint) {
-
-
     }
 
     deleteEndPoint(endPoint: EndPoint) {
-
         // find endPoint in memory by name for now (need to use the id) and remove it
         this.endPoints.forEach(item => {
-
             if (item.name === endPoint.name) {
                const index = this.endPoints.indexOf(item);
+
                if ( index > -1 ) {
                    this.endPoints.splice(index, 1);
                }
@@ -83,7 +74,6 @@ export class EndPointComponent {
     }
 
     clearPersistantStore() {
-
         // delete the currently persisted structure
         this._endPointService.deleteEndPoint().subscribe(data => {
 
@@ -94,20 +84,15 @@ export class EndPointComponent {
     }
 
     persistInMemoryDataToStore() {
-
         const endpointModel = {
             endPoint: this.endPoints
         };
+
         // persist in memory structure
         this._endPointService.saveEndPoint(endpointModel).subscribe(data => {
-
             /**
              * todo - error handling
              */
         });
-
     }
-
 }
-
-

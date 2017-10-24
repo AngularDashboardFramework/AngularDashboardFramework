@@ -6,8 +6,14 @@ import {BoardLayoutManagerComponent} from './layout.component';
     imports: [
         CommonModule
     ],
-    declarations: [BoardLayoutManagerComponent],
-    exports: [BoardLayoutManagerComponent]
+    declarations: [
+        BoardLayoutManagerComponent
+    ],
+    exports: [
+        BoardLayoutManagerComponent
+    ],
+    providers: [
+    ]
 })
 export class LayoutModule {
 }

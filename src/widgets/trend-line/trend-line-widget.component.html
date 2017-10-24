@@ -1,7 +1,11 @@
-<div (mouseover)="showWidgetControls(true)"
-     (mouseleave)="showWidgetControls(false)"
-     class="ui  center aligned segment widget" dnd-draggable
-     [dragEnabled]="true" [dragData]="instanceId" [dropZones]="['c0','c1','c2','c3','r0','r1']">
+<div
+    (mouseover)="showWidgetControls(true)"
+    (mouseleave)="showWidgetControls(false)"
+    class="ui center aligned segment widget"
+    dnd-draggable
+    [dragEnabled]="true"
+    [dragData]="instanceId"
+    [dropZones]="['c0','c1','c2','c3','r0','r1']">
 
     <a class="ui left corner label">
         <i class="circle icon" [ngClass]="{'green':inRun, 'yellow':!inRun}"></i>
@@ -27,28 +31,28 @@
         <div class="row">
             <div *ngIf="!inConfig" style="min-height: 275px">
                 <ngx-charts-line-chart
-                        [view]="view"
-                        [scheme]="colorScheme"
-                        [results]="multi"
-                        [gradient]="gradient"
-                        [xAxis]="showXAxis"
-                        [yAxis]="showYAxis"
-                        [legend]="showLegend"
-                        [showXAxisLabel]="showXAxisLabel"
-                        [showYAxisLabel]="showYAxisLabel"
-                        [xAxisLabel]="xAxisLabel"
-                        [yAxisLabel]="yAxisLabel"
-                        [autoScale]="autoScale"
-                        (select)="drillDownPopUp.showDetail($event)">
+                    [view]="view"
+                    [scheme]="colorScheme"
+                    [results]="multi"
+                    [gradient]="gradient"
+                    [xAxis]="showXAxis"
+                    [yAxis]="showYAxis"
+                    [legend]="showLegend"
+                    [showXAxisLabel]="showXAxisLabel"
+                    [showYAxisLabel]="showYAxisLabel"
+                    [xAxisLabel]="xAxisLabel"
+                    [yAxisLabel]="yAxisLabel"
+                    [autoScale]="autoScale"
+                    (select)="drillDownPopUp.showDetail($event)">
                 </ngx-charts-line-chart>
             </div>
         </div>
     </div>
 
     <adf-dynamic-form *ngIf="inConfig"
-                  [propertyPages]="propertyPages"
-                  [instanceId]="instanceId"
-                  (updatePropertiesEvent)="updateProperties($event)">
+        [propertyPages]="propertyPages"
+        [instanceId]="instanceId"
+        (updatePropertiesEvent)="updateProperties($event)">
     </adf-dynamic-form>
 
     <adf-error-handler
@@ -59,8 +63,4 @@
     <adf-vis-drill-down-modal #drillDownPopUp></adf-vis-drill-down-modal>
 
     <adf-help-modal #helpModal [topic]="topic"></adf-help-modal>
-
-
 </div>
-
-

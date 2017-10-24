@@ -23,13 +23,11 @@ export class NotificationComponent implements OnInit, AfterViewInit {
     modalHeader: string;
 
     constructor() {
-
         this.notificationFilters.push({name: 'Unacknowledged', count: 4});
         this.notificationFilters.push({name: 'All Notifications', count: 4});
         this.notificationFilters.push({name: 'Trend Widget', count: 4});
         this.notificationFilters.push({name: 'CPU Widget', count: 0});
         this.setSelectedNotificationFilter({name: 'Unacknowledged', count: 4});
-
     }
 
     ngOnInit() {
@@ -40,9 +38,7 @@ export class NotificationComponent implements OnInit, AfterViewInit {
     }
 
     setSelectedNotificationFilter(item) {
-
         this.currentNotificationFilter = item;
-
     }
 
     showNotificationModal(header: string) {
@@ -55,5 +51,4 @@ export class NotificationComponent implements OnInit, AfterViewInit {
         this.modalHeader = '';
         this.notificationModal.modal('hide');
     }
-
 }

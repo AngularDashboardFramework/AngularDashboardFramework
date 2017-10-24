@@ -2,7 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {MatButtonModule, MatIconModule} from '@angular/material';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 
 import {GridModule} from '../grid/grid.module';
 import {WidgetModule} from '../widgets/widget.module';
@@ -33,7 +33,7 @@ import {ServiceListWidgetComponent} from '../widgets/service-list/service-list-w
 import {CPUWidgetComponent} from '../widgets/cpu/cpu-widget.component';
 import {MemoryWidgetComponent} from '../widgets/memory/memory-widget.component';
 
-import {ObservableWebSocketService} from '../services/websocket-service';
+import { ObservableWebSocketService } from '../services/websocket-service';
 
 @NgModule({
     declarations: [

@@ -44,11 +44,10 @@ declare var jQuery: any;
                 ])
             ])
     ],
-
 })
 export class AddWidgetComponent implements AfterViewInit {
-
-    @Output() addWidgetEvent: EventEmitter<any> = new EventEmitter();
+    @Output()
+    addWidgetEvent: EventEmitter<any> = new EventEmitter();
 
     widgetLibraryData: any[] = [];
     widgetLibraryDataFiltered: any[] = [];
@@ -58,19 +57,18 @@ export class AddWidgetComponent implements AfterViewInit {
     modalheader: string;
     modalmessage: string;
 
-    @ViewChild('messagemodal_tag') messagemodalRef: ElementRef;
+    @ViewChild('messagemodal_tag')
+    messagemodalRef: ElementRef;
 
     messageModal: any;
 
     constructor(private _addWidgetService: AddWidgetService) {
-
         this.getWidgetsFromLibrary();
     }
 
     addWidget(widget: any) {
         this.addWidgetEvent.emit(widget);
         this.hideMessageModal();
-
     }
 
     popMessageModal(icon: string, header: string, message: string, durationms: number) {
@@ -87,11 +85,9 @@ export class AddWidgetComponent implements AfterViewInit {
         this.modalheader = header;
         this.modalmessage = message;
         this.messageModal.modal('show');
-
     }
 
     showComponentLibraryModal(header: string) {
-
         this.modalheader = header;
         this.messageModal.modal('show');
     }
@@ -108,21 +104,17 @@ export class AddWidgetComponent implements AfterViewInit {
     }
 
     adjustWidgetLibraryListWithFilter(filterList) {
-
         console.log('FILTER LIST');
         console.log(filterList);
 
         this.widgetLibraryDataFiltered = this.widgetLibraryData.filter(widget => {
-
             let tagFound = false;
 
             if (!filterList.length) {
                 return true;
             } else {
                 widget.tags.forEach(tag => {
-
                     filterList.forEach(filter => {
-
                         if (tag.name.toLocaleLowerCase() === filter.toLocaleLowerCase()) {
                             tagFound = true;
                         }
@@ -132,23 +124,19 @@ export class AddWidgetComponent implements AfterViewInit {
                 return tagFound;
             }
         });
-
-
     }
 
     getWidgetsFromLibrary() {
-
         this._addWidgetService.getWidgetLibrary().subscribe(data => {
-
             this.widgetLibraryData.length = 0;
             this.widgetLibraryDataFiltered.length = 0;
 
             const me = this;
+
             data.forEach(function (item) {
                 me.widgetLibraryData.push(item);
                 me.widgetLibraryDataFiltered.push(item);
             });
         });
-
     }
 }

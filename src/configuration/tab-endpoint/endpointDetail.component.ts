@@ -14,21 +14,24 @@ import {credentialScheme, EndPoint} from './endpoint.model';
 
 })
 export class EndPointDetailComponent implements OnChanges {
+    @Input()
+    currentEndPoint: EndPoint;
 
-    @Input() currentEndPoint: EndPoint;
+    @Output()
+    createEvent: EventEmitter<EndPoint> = new EventEmitter();
 
-    @Output() createEvent: EventEmitter<EndPoint> = new EventEmitter();
-    @Output() updateEvent: EventEmitter<EndPoint> = new EventEmitter();
-    @Output() deleteEvent: EventEmitter<EndPoint> = new EventEmitter();
+    @Output()
+    updateEvent: EventEmitter<EndPoint> = new EventEmitter();
+
+    @Output()
+    deleteEvent: EventEmitter<EndPoint> = new EventEmitter();
 
     currentState: string;
 
     endPointForm: FormGroup;
     credentialScheme = credentialScheme;
 
-
     ngOnChanges() {
-
         this.endPointForm.reset();
         this.endPointForm.setValue({
             name: this.currentEndPoint.name,
@@ -41,9 +44,10 @@ export class EndPointDetailComponent implements OnChanges {
     }
 
     constructor(private fb: FormBuilder) {
-
         this.createForm();
+
         const me = this;
+
         this.endPointForm.valueChanges.forEach(
             (value => {
                 if (this.currentState !== 'create') {
@@ -54,13 +58,10 @@ export class EndPointDetailComponent implements OnChanges {
     }
 
     setFormState() {
-
         /**
          * todo - implement state machine
          */
-
         if (this.endPointForm.get('name').pristine) {
-
             // something other than name changed so this must be an update
             if (this.endPointForm.dirty) {
                 this.currentState = 'update';
@@ -77,9 +78,7 @@ export class EndPointDetailComponent implements OnChanges {
     }
 
     createForm() {
-
         this.endPointForm = this.fb.group({
-
             name: ['', Validators.required],
             address: ['', Validators.required],
             user: ['', Validators.required],
@@ -87,11 +86,9 @@ export class EndPointDetailComponent implements OnChanges {
             credential: ['', Validators.required],
             description: ''
         });
-
     }
 
     createEndPoint() {
-
         const ep: EndPoint = new EndPoint(
             this.endPointForm.value.name,
             this.endPointForm.value.address,
@@ -106,7 +103,6 @@ export class EndPointDetailComponent implements OnChanges {
     }
 
     updateEndPoint() {
-
         this.currentEndPoint.name = this.endPointForm.value.name;
         this.currentEndPoint.address = this.endPointForm.value.address;
         this.currentEndPoint.user = this.endPointForm.value.user;
@@ -129,12 +125,9 @@ export class EndPointDetailComponent implements OnChanges {
 
     resetEndPoint() {
         this.ngOnChanges();
-
     }
 
     deleteEndPoint() {
-
         this.deleteEvent.emit(this.currentEndPoint);
-
     }
 }

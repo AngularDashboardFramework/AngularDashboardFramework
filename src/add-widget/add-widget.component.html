@@ -10,9 +10,9 @@
                 <adf-filter-list (tagSelectEvent)="filterTag.updateFilterList($event)"></adf-filter-list>
             </div>
             <div class="ten wide column">
-                <h3>Widget Results</h3>
-                <hr>
-                <br>
+                <h3>Widget Filter Results</h3>
+                <hr />
+                <br />
 
                 <adf-filter-tag #filterTag
                                 (updateFilterListEvent)="adjustWidgetLibraryListWithFilter($event)"></adf-filter-tag>

@@ -3,7 +3,6 @@ export class Facet {
     tags: Array<Tag>;
 
     constructor(name: string, tags: Array<Tag>) {
-
         this.name = name;
         this.tags = tags;
     }

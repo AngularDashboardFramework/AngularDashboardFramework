@@ -16,7 +16,6 @@ import {
     templateUrl: './dynamic-form-property.component.html',
     styleUrls: ['./styles-props.css'],
     animations: [
-
         trigger(
             'showHideAnimation',
             [
@@ -31,26 +30,25 @@ import {
     ]
 })
 export class DynamicFormPropertyComponent {
-    @Input() property: PropertyBase<any>;
-    @Input() form: FormGroup;
+    @Input()
+    property: PropertyBase<any>;
+
+    @Input()
+    form: FormGroup;
+
     endPoints: string[] = [];
 
     get isValid() {
-
         return this.form.controls[this.property.key].valid;
     }
 
     constructor(private endPointService: EndPointService) {
-
         this.updateEndPointList();
     }
 
     updateEndPointList() {
-
         this.endPointService.getEndPoints().subscribe(data => {
-
             this.endPoints = data['endPoint'];
-
         });
     }
 }

@@ -1,10 +1,8 @@
-
 td.selected {
     border-radius: 6px;
     background-color: #3f51b5 !important;
     color: white;
     font-weight: bold;
-
 }
 
 .ui.table {
@@ -22,16 +20,14 @@ td.selected {
     height: 3em !important;
 }
 
-.ui.form input{
-
+.ui.form input {
     color: rgba(97, 97, 97, 0.68) !important;
-
 }
-.ui.table tr td{
+
+.ui.table tr td {
     border:none !important;
 }
 
-.ui.form textarea{
-
+.ui.form textarea {
     color: rgba(97, 97, 97, 0.68) !important;
 }

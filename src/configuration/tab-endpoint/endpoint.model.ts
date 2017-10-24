@@ -16,8 +16,6 @@ export class EndPoint {
         this.description = description;
         this.id = 0;
     }
-
 }
 
 export const credentialScheme = ['password', 'ssh key', 'OAuth Secret'];
-

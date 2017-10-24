@@ -8,23 +8,18 @@ import {PropertyBase} from './property-base';
 
 @Injectable()
 export class PropertyControlService {
-
     constructor() {
     }
 
-
     toFormGroupFromPP(propertyPages: any[]) {
-
         const group: any = {};
 
         propertyPages.forEach(propertyPage => {
-
             propertyPage.properties.forEach(property => {
-                group[property.key] = property.required ? new FormControl(property.value
-                    || '', Validators.required) : new FormControl(property.value
-                    || '');
+                group[property.key] = property.required
+                    ? new FormControl(property.value || '', Validators.required)
+                    : new FormControl(property.value || '');
             });
-
         });
 
         return new FormGroup(group);

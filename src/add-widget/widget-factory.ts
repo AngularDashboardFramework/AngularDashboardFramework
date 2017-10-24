@@ -13,10 +13,7 @@ import {CPUMWidgetComponent} from '../widgets/cpum/cpum-widget.component';
 /**
  * Created by jayhamilton on 6/30/17.
  */
-
 export class WidgetFactory {
-
-
     /**
      * todo - return new instances  instead of the same instance. This requires the creation of new configuration options.
      * @param widgetType
@@ -24,7 +21,6 @@ export class WidgetFactory {
      */
 
     static getComponentType(widgetType): any {
-
         switch (widgetType) {
 
             case 'CPUWidgetComponent':
@@ -53,7 +49,6 @@ export class WidgetFactory {
                 return CPUMWidgetComponent;
             default:
                 return null;
-
         }
     }
 }

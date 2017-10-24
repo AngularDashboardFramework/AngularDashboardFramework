@@ -9,7 +9,6 @@ import {NumberProperty} from '../../dynamic-form/property-number';
 
 @Injectable()
 export class WidgetPropertyService {
-
     constructor() {
     }
 
@@ -19,7 +18,6 @@ export class WidgetPropertyService {
         properties.length = 0;
 
         defaultProperties.forEach(function (property) {
-
             if (property.controlType === 'dropdown') {
                 ctrl = new DropdownProperty(property);
                 properties.push(ctrl);
@@ -38,7 +36,6 @@ export class WidgetPropertyService {
             } else if (property.controlType === 'dynamicdropdown') {
                 ctrl = new DynamicDropdownProperty(property);
                 properties.push(ctrl);
-
             }
         });
 
@@ -46,24 +43,17 @@ export class WidgetPropertyService {
     }
 
     setPropertyPagesAndProperties(defaultPropertyPages: any[], propertyPages: any[]) {
-
         const me = this;
 
         // for each defaultPropertyPage object, get the properties
         defaultPropertyPages.forEach(function (propertyPage) {
-
             const newPropertyPage: any = {};
 
             for (const property in propertyPage) {
-
                 if (propertyPage.hasOwnProperty(property)) {
-
                     if (property !== 'properties') {
-
                         newPropertyPage[property] = propertyPage[property];
-
                     } else {
-
                         const properties: PropertyBase<any>[] = [];
                         me.setPropertiesAndValues(propertyPage.properties, properties);
                         newPropertyPage['properties'] = properties;
@@ -72,7 +62,6 @@ export class WidgetPropertyService {
             }
 
             propertyPages.push(newPropertyPage);
-
         });
     }
 }

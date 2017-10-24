@@ -28,9 +28,7 @@ import {Component, ElementRef} from '@angular/core';
     styleUrls: ['../../widgets/_common/styles-widget.css']
 })
 export class SearchResultComponent {
-
     constructor(myElement: ElementRef) {
-
 
     }
 }

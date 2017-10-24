@@ -20,7 +20,6 @@ export class PropertyBase<T> {
         options?:any
     } = {},
    ) {
-
         this.value = props.value;
         this.key = props.key || '';
         this.label = props.label || '';
@@ -28,6 +27,5 @@ export class PropertyBase<T> {
         this.order = props.order === undefined ? 1 : props.order;
         this.controlType = props.controlType || '';
         this.options = props.options;
-
     }
 }

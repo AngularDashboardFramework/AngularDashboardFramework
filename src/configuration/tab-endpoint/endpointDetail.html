@@ -11,7 +11,6 @@
             &nbsp;save&nbsp;
         </span>
 
-
         <span *ngIf="currentState == 'create' && endPointForm.valid">
             <a mat-mini-fab routerLink="." color='primary' (click)="createEndPoint()"><mat-icon>save</mat-icon></a>
             &nbsp;save&nbsp;
@@ -35,7 +34,7 @@
     </div>
 </div>
 
-<br>
+<br />
 
 <form [formGroup]="endPointForm" novalidate class="ui form">
     <div class="field">
@@ -82,8 +81,3 @@
         </div>
     </div>
 </form>
-
-
-
-
-

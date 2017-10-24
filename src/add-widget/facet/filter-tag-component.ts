@@ -36,7 +36,8 @@ import {
 })
 export class FilterTagComponent {
 
-    @Output() updateFilterListEvent = new EventEmitter<any>();
+    @Output()
+    updateFilterListEvent = new EventEmitter<any>();
 
     filterList: Array<string> = [];
 

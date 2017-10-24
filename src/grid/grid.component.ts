@@ -1,18 +1,20 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+
 import { WidgetInstanceService } from './grid.service';
 import { ConfigurationService } from '../services/configuration.service';
 import { WidgetConfigModel } from '../widgets/_common/widget-config-model';
 
 @Component({
     moduleId: module.id,
-    selector: 'adf-grid-component',
+    selector: 'adf-grid',
     templateUrl: './grid.html',
     styleUrls: [
         './styles-grid.scss'
     ]
 })
 export class GridComponent {
-    @Output() boardUpdateEvent: EventEmitter<any> = new EventEmitter();
+    @Output()
+    boardUpdateEvent: EventEmitter<any> = new EventEmitter();
 
     model: any = {};
     noWidgets = true;
@@ -32,7 +34,6 @@ export class GridComponent {
      * @param _widgetInstanceService
      * @param _procmonConfigurationService
      */
-
     constructor(
         private _widgetInstanceService: WidgetInstanceService,
         private _configurationService: ConfigurationService
@@ -43,7 +44,6 @@ export class GridComponent {
         });
 
         this.initializeBoard();
-
     }
 
     updateWidgetPositionInBoard($event, columnNumber, rowNumber, type) {
@@ -90,11 +90,8 @@ export class GridComponent {
     }
 
     public deleteBoard(name: string) {
-
         this._configurationService.deleteBoard(name).subscribe(data => {
-
                 this.initializeBoard();
-
             },
             error => console.error('Deletion error', error),
             () => console.debug('Board Deletion: ' + name));
@@ -102,7 +99,6 @@ export class GridComponent {
     }
 
     public addWidget(widget: any) {
-
         const _widget = Object.assign({}, widget);
 
         _widget.instanceId = new Date().getTime();
@@ -114,17 +110,15 @@ export class GridComponent {
         const y = this.gridInsertionPosition.y;
 
         if (!this.getModel().rows[x].columns[y].widgets) {
-
             this.getModel().rows[x].columns[y].widgets = [];
         }
+
         this.getModel().rows[x].columns[y].widgets.push(_widget);
 
         this.saveBoard('Adding Widget to the Board', false);
-
     }
 
     public updateBoardLayout(structure) {
-
         const _model = Object.assign({}, this.getModel());
 
         const columns: any[] = this.readColumnsFromOriginalModel(_model);
@@ -145,15 +139,14 @@ export class GridComponent {
         this.setModel(_model);
 
         // clear temporary object
-        for (const member in  _model) {
-            delete  _model[member];
+        for (const member in _model) {
+            delete _model[member];
         }
 
         this.saveBoard('Grid Layout Update', false);
     }
 
     private updateGridState() {
-
         let widgetCount = 0;
 
         if (this.getModel().rows) {
@@ -179,39 +172,40 @@ export class GridComponent {
     }
 
     private readColumnsFromOriginalModel(_model) {
-
         const columns = [];
+
         _model.rows.forEach(function (row) {
             row.columns.forEach(function (col) {
                 columns.push(col);
             });
         });
-        return columns;
 
+        return columns;
     }
 
     private fillGridStructure(_model, columns: any[], counter: number) {
-
         let me = this;
+
         _model.rows.forEach(function (row) {
             row.columns.forEach(function (column) {
                 if (!column.widgets) {
                     column.widgets = [];
                 }
+
                 if (columns[counter]) {
                     me.copyWidgets(columns[counter], column);
                     counter++;
                 }
             });
         });
-        return counter;
 
+        return counter;
     }
 
     private copyWidgets(source, target) {
-
         if (source.widgets && source.widgets.length > 0) {
             let w = source.widgets.shift();
+
             while (w) {
                 target.widgets.push(w);
                 w = source.widgets.shift();
@@ -220,34 +214,27 @@ export class GridComponent {
     }
 
     public enableConfigMode() {
-
         this._widgetInstanceService.enableConfigureMode();
     }
 
     private initializeBoard() {
-
         this._configurationService.getBoards().subscribe(board => {
-
             if (board && board instanceof Array && board.length) {
-
                 const sortedBoard = board.sort(function(a, b){
                     return a.id - b.id;
                 });
 
                 this.loadBoard(sortedBoard[0].title);
             } else {
-
                 this.loadDefaultBoard();
             }
         });
     }
 
     private loadBoard(boardTitle: string) {
-
         this.clearGridModelAndWidgetInstanceStructures();
 
         this._configurationService.getBoardByTitle(boardTitle).subscribe(board => {
-
                 this.setModel(board);
                 this.updateServicesAndGridWithModel();
                 this.boardUpdateEvent.emit(boardTitle);
@@ -257,26 +244,21 @@ export class GridComponent {
                 this.loadDefaultBoard();
 
             });
-
     }
 
     private loadDefaultBoard() {
-
         this.clearGridModelAndWidgetInstanceStructures();
 
         this._configurationService.getDefaultBoard().subscribe(board => {
-
             console.log('loading default board');
+
             this.setModel(board);
             this.updateServicesAndGridWithModel();
             this.saveBoard('Initialization of a default board', true);
-
-
         });
     }
 
     private loadNewBoard(name: string) {
-
         this.clearGridModelAndWidgetInstanceStructures();
 
         this._configurationService.getDefaultBoard().subscribe(res => {
@@ -287,36 +269,33 @@ export class GridComponent {
 
             this.updateServicesAndGridWithModel();
             this.saveBoard('Initialization of a new board', true);
-
-
         });
     }
 
     private updateServicesAndGridWithModel() {
         this._widgetInstanceService.setCurrentModel(this.getModel());
         this._configurationService.setCurrentModel(this.getModel());
+
         this.updateGridState();
     }
 
     private saveBoard(operation: string, alertBoardListenerThatTheMenuShouldBeUpdated: boolean) {
-
         this.updateServicesAndGridWithModel();
 
         this._configurationService.saveBoard(this.getModel()).subscribe(result => {
-
-
                 if (alertBoardListenerThatTheMenuShouldBeUpdated) {
                     this.boardUpdateEvent.emit(this.getModel().title);
                 }
             },
             error => console.error('Error' + error),
-            () => console.debug('Saving configuration to store!'));
-
+            () => console.debug('Saving configuration to store!')
+        );
     }
 
     private clearGridModelAndWidgetInstanceStructures() {
         // clear widgetInstances
         this._widgetInstanceService.clearAllInstances();
+
         // clear current model
         for (const prop in this.getModel()) {
             if (this.model.hasOwnProperty(prop)) {
@@ -326,20 +305,16 @@ export class GridComponent {
     }
 
     private setWidgetInsertPosition() {
-
         for (let x = 0; x < this.getModel().rows.length; x++) {
-
             for (let y = 0; y < this.getModel().rows[x].columns.length; y++) {
-
                 if (this.getModel().rows[x].columns[y].widgets && this.getModel().rows[x].columns[y].widgets.length === 0) {
-
                     this.gridInsertionPosition.x = x;
                     this.gridInsertionPosition.y = y;
                     return;
-
                 }
             }
         }
+
         // we go here because the board is either empty or full
         // insert in the top left most cell
         this.gridInsertionPosition.y = 0;
@@ -354,12 +329,10 @@ export class GridComponent {
     }
 
     public setModel(model: any) {
-
         this.model = Object.assign({}, model);
     }
 
     public getModel() {
         return this.model;
     }
-
 }

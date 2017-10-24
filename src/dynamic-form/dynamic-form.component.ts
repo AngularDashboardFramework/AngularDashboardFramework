@@ -2,8 +2,7 @@
  * Created by jayhamilton on 2/5/17.
  */
 import {
-    Component, Input, OnInit, Output, EventEmitter,
-    ChangeDetectorRef, AfterViewInit
+    Component, Input, OnInit, Output, EventEmitter, ChangeDetectorRef, AfterViewInit
 } from '@angular/core';
 
 import {
@@ -54,7 +53,7 @@ import {EndPoint} from '../configuration/tab-endpoint/endpoint.model';
 export class DynamicFormComponent implements OnInit, AfterViewInit {
     @Input()
     propertyPages: any[];
-    
+
     @Input()
     instanceId: number;
 
@@ -70,16 +69,17 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
     payLoad = '';
     showMessage = false;
 
-    constructor(private pcs: PropertyControlService,
-                private configService: ConfigurationService,
-                private endPointService: EndPointService,
-                private changeDetectionRef: ChangeDetectorRef) {
+    constructor(
+        private pcs: PropertyControlService,
+        private configService: ConfigurationService,
+        private endPointService: EndPointService,
+        private changeDetectionRef: ChangeDetectorRef
+    ) {
 
         this.updateEndPointList();
     }
 
     updateEndPointList() {
-
         this.endPointService.getEndPoints().subscribe(data => {
             this.endPoints = data['endPoint'];
         });
@@ -87,18 +87,14 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
 
     /* better solution that solves error: Expression has changed after it was checked exception resolution*/
     ngAfterViewInit(): void {
-
         this.changeDetectionRef.detectChanges();
     }
 
     ngOnInit() {
-
         this.form = this.pcs.toFormGroupFromPP(this.propertyPages);
-
     }
 
     onSubmit() {
-
         this.payLoad = JSON.stringify(this.form.value);
 
         console.debug('Saving Form!');
@@ -118,16 +114,9 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
 
     setCurrentTab(tab) {
         this.currentTab = tab.groupId;
-
     }
 
     get isPropertyPageValid (){
-
         return this.form.valid;
     }
 }
-
-
-
-
-
