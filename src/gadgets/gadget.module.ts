@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DndModule } from 'ng2-dnd';
-
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { DynamicFormModule } from '../dynamic-form/dynamic-form-module';
@@ -46,12 +45,14 @@ import { ServiceListGadgetComponent } from './service-list/service-list-gadget.c
     imports: [
         CommonModule,
         DndModule.forRoot(),
+        NgxChartsModule,
         GadgetSharedModule,
         DynamicFormModule,
-        ErrorHandlerModule,
-        NgxChartsModule
+        ErrorHandlerModule
     ],
     exports: [
+        DndModule,
+        NgxChartsModule,
         CPUGadgetComponent,
         CPUMGadgetComponent,
         DiskGadgetComponent,
