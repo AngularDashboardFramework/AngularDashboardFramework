@@ -33,8 +33,10 @@ export class GridComponent {
      * @param _procmonConfigurationService
      */
 
-    constructor(private _gadgetInstanceService: GadgetInstanceService,
-                private _configurationService: ConfigurationService) {
+    constructor(
+        private _gadgetInstanceService: GadgetInstanceService,
+        private _configurationService: ConfigurationService
+    ) {
 
         this._gadgetInstanceService.listenForInstanceRemovedEventsFromGadgets().subscribe((message: string) => {
             this.saveBoard('Gadget Removed From Board: ' + message, false)
