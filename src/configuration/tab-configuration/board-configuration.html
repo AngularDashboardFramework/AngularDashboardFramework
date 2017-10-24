@@ -23,7 +23,7 @@
 
             <table
                 dnd-sortable-container
-                [attr.sortableData]="dashboardList"
+                [sortableData]="dashboardList"
                 class="ui padded table">
                 <thead>
                 <th class="c-col">#</th>
@@ -33,7 +33,7 @@
                 <tr
                     *ngFor="let board of dashboardList; let i = index"
                     dnd-sortable
-                    [attr.sortableIndex]="i"
+                    [sortableIndex]="i"
                     class="ui basic segment">
 					
                     <td class="c-col">{{i + 1}}</td>
