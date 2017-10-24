@@ -13,7 +13,7 @@ import {ErrorObject} from './error-model';
 @Component({
     moduleId: module.id,
     selector: 'adf-error-handler',
-    templateUrl: './view.html',
+    templateUrl: './error-handler.component.html',
     styleUrls: ['./styles-error.css'],
     animations: [
 

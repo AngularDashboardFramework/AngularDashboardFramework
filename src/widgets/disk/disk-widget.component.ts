@@ -17,7 +17,7 @@ import {DiskService} from './service';
 @Component({
     selector: 'adf-dynamic-component',
     moduleId: module.id,
-    templateUrl: './view.html',
+    templateUrl: './disk-widget.component.html',
     styleUrls: ['../_common/styles-widget.css'],
     animations: [
 

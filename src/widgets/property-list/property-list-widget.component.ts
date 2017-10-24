@@ -9,7 +9,7 @@ import {WidgetPropertyService} from '../_common/widget-property.service';
 @Component({
     selector: 'adf-dynamic-component',
     moduleId: module.id,
-    templateUrl: './view.html',
+    templateUrl: './property-list-widget.component.html',
     styleUrls: ['../_common/styles-widget.css']
 })
 export class PropertyListWidgetComponent extends WidgetBase implements OnDestroy {

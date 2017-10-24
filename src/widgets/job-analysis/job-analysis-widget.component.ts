@@ -15,7 +15,7 @@ export type D3 = typeof d3;
 @Component({
     selector: 'adf-dynamic-component',
     moduleId: module.id,
-    templateUrl: './view.html',
+    templateUrl: './job-analysis.component.html',
     styleUrls: ['./ja.css']
 })
 

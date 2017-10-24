@@ -29,7 +29,7 @@ declare var jQuery: any;
 @Component({
     selector: 'adf-add-widget-modal',
     moduleId: module.id,
-    templateUrl: './view.html',
+    templateUrl: './add-widget.component.html',
     styleUrls: ['./styles.css'],
     animations: [
         trigger(

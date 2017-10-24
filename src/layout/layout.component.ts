@@ -24,7 +24,7 @@ declare var jQuery: any;
 @Component({
     selector: 'adf-board-layout-manager-modal',
     moduleId: module.id,
-    templateUrl: './view.html',
+    templateUrl: './layout.component.html',
     styleUrls: ['./styles.css']
 
 })

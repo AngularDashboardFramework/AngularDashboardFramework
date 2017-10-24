@@ -9,7 +9,7 @@ import {CPUService} from './service';
 @Component({
     selector: 'adf-dynamic-component',
     moduleId: module.id,
-    templateUrl: './view.html',
+    templateUrl: './cpu-widget.component.html',
     styleUrls: ['../_common/styles-widget.css']
 })
 

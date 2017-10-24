@@ -13,7 +13,7 @@ export type D3 = typeof d3;
 @Component({
     selector: 'adf-dynamic-component',
     moduleId: module.id,
-    templateUrl: './view.html',
+    templateUrl: './trend-widget.component.html',
     styleUrls: ['../_common/styles-widget.css']
 })
 

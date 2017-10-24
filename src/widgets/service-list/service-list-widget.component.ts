@@ -14,7 +14,7 @@ import {WidgetBase} from '../_common/widget-base';
 @Component({
     selector: 'adf-dynamic-component',
     moduleId: module.id,
-    templateUrl: './view.html',
+    templateUrl: './service-list-widget.component.html',
     styleUrls: ['../_common/styles-widget.css'],
     animations: [
         trigger(

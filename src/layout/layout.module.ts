@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {BoardLayoutManagerComponent} from './layout-component';
+import {BoardLayoutManagerComponent} from './layout.component';
 
 @NgModule({
     imports: [

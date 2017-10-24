@@ -10,7 +10,7 @@ import {ObservableWebSocketService} from '../../services/websocket-service';
 @Component({
     selector: 'adf-dynamic-component',
     moduleId: module.id,
-    templateUrl: './view.html',
+    templateUrl: './memory-widget.component.html',
     styleUrls: ['../_common/styles-widget.css']
 })
 

@@ -7,7 +7,7 @@ import { ConfigurationService } from '../services/configuration.service';
  */
 @Component({
     selector: 'adf-board',
-    templateUrl: './view.html',
+    templateUrl: './board.component.html',
     styleUrls: ['./styles-board.css']
 })
 export class BoardComponent implements OnInit {
