@@ -7,7 +7,7 @@
             <div class="three wide column"></div>
             <div class="ten wide column">
                 <div class="inLine"
-                     *ngFor="let layout of boardLayouts; let i = index">
+                     *ngFor="let layout of layouts; let i = index">
                     <img src="/assets/images/{{layout.title}}.png"
                          (click)="selectBoardLayout(layout.id)">
                 </div>

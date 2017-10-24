@@ -42,6 +42,7 @@
 </div>
 
 <adf-board-layout-manager-modal #boardLayoutModal
+    [layouts]="layouts"
     (boardLayoutChangeEvent)="widgetGrid.updateBoardLayout($event)">
 </adf-board-layout-manager-modal>
 

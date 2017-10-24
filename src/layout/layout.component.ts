@@ -2,12 +2,15 @@
  * Created by jayhamilton on 1/24/17.
  */
 import {
-    ViewChild, ElementRef, AfterViewInit, Component, Output, EventEmitter
+    ViewChild, ElementRef, OnInit, AfterViewInit, Component, Input, Output, EventEmitter
 } from '@angular/core';
+
 import {Observable} from 'rxjs/Observable';
+
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/take';
-import {boardLayouts} from './model';
+
+import { Layout } from './layout';
 
 declare var jQuery: any;
 
@@ -26,33 +29,43 @@ declare var jQuery: any;
     moduleId: module.id,
     templateUrl: './layout.component.html',
     styleUrls: ['./styles.css']
-
 })
-export class BoardLayoutManagerComponent implements AfterViewInit {
+export class BoardLayoutManagerComponent implements OnInit, AfterViewInit {
+    @Input()
+    layouts: Layout[] = [];
 
-    @Output() boardLayoutChangeEvent: EventEmitter<any> = new EventEmitter();
+    @Output()
+    boardLayoutChangeEvent: EventEmitter<any> = new EventEmitter();
 
-    boardLayouts: any[];
+    error: string = "";
+
+    defaultLayout: string = "boardLayouts";
 
     modalicon: string;
     modalheader: string;
     modalmessage: string;
     currentBoardLayout = 4;
 
-    @ViewChild('messagemodala_tag') messagemodalaRef: ElementRef;
+    @ViewChild('messagemodala_tag')
+    messagemodalaRef: ElementRef;
+
     messageModal: any;
 
-    constructor() {
-        this.initializeLayouts();
+    constructor() { }
+
+    ngOnInit() {
+    }
+
+    ngAfterViewInit() {
+        this.messageModal = jQuery(this.messagemodalaRef.nativeElement);
     }
 
     selectBoardLayout(layoutId: number) {
-
         this.currentBoardLayout = layoutId;
-        for (let x = 0; x < this.boardLayouts.length; x++) {
 
-            if (this.boardLayouts[x].id === layoutId) {
-                this.boardLayoutChangeEvent.emit(this.boardLayouts[x]);
+        for (let x = 0; x < this.layouts.length; x++) {
+            if (this.layouts[x].id === layoutId) {
+                this.boardLayoutChangeEvent.emit(this.layouts[x]);
                 break;
             }
         }
@@ -62,6 +75,7 @@ export class BoardLayoutManagerComponent implements AfterViewInit {
 
     popMessageModal(icon: string, header: string, message: string, durationms: number) {
         this.showMessageModal(icon, header, message);
+
         Observable.interval(durationms).take(1).subscribe(
             () => {
                 this.hideMessageModal();
@@ -74,7 +88,6 @@ export class BoardLayoutManagerComponent implements AfterViewInit {
         this.modalheader = header;
         this.modalmessage = message;
         this.messageModal.modal('show');
-
     }
 
     showBoardLayoutsModal(header: string, selectedStructure: string) {
@@ -89,20 +102,8 @@ export class BoardLayoutManagerComponent implements AfterViewInit {
         this.messageModal.modal('hide');
     }
 
-    ngAfterViewInit() {
-        this.messageModal = jQuery(this.messagemodalaRef.nativeElement);
-    }
-
-    initializeLayouts() {
-
-
-        Object.assign(this, {boardLayouts});
-
-    }
-
     setChecked(selectedStructure: string) {
-
-        this.boardLayouts.forEach(function (_selectedStructure) {
+        this.layouts.forEach(function (_selectedStructure) {
             if (selectedStructure.toString().includes(_selectedStructure.structure)) {
                 _selectedStructure.checked = true;
             } else {

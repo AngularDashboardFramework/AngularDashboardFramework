@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Layout } from '../layout/layout';
 
 import { ConfigurationService } from '../services/configuration.service';
 
@@ -13,6 +14,8 @@ import { ConfigurationService } from '../services/configuration.service';
     styleUrls: ['./styles-board.css']
 })
 export class BoardComponent implements OnInit {
+    @Input()
+    layouts: Layout[];
 
     dashboardList: any[] = [];
 
