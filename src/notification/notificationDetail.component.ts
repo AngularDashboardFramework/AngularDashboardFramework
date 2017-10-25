@@ -16,11 +16,11 @@ export class NotificationDetailComponent {
     constructor() {
         this.notifications = [];
 
-        let notification = new Notification('CPU Widget', 'this is a cpu widget error');
+        let notification = new Notification('CPU Widget', 'this is a cpu widget error.');
         notification.setWhen((new Date()).toString());
         this.notifications.push(notification);
 
-        notification = new Notification ('Trend Widget', 'this is a trend widget error2');
+        notification = new Notification ('Area Widget', 'this is an area widget error.');
         notification.setWhen((new Date()).toString());
         this.notifications.push(notification);
 

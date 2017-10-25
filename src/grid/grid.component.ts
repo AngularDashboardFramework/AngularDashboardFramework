@@ -1,4 +1,5 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 import { WidgetInstanceService } from './grid.service';
 import { ConfigurationService } from '../services/configuration.service';
@@ -12,16 +13,20 @@ import { WidgetConfigModel } from '../widgets/_common/widget-config-model';
         './styles-grid.scss'
     ]
 })
-export class GridComponent {
+export class GridComponent implements OnInit {
     @Output()
     boardUpdateEvent: EventEmitter<any> = new EventEmitter();
 
     model: any = {};
+
     noWidgets = true;
+
     dashedStyle: {};
+
     dropZone1: any = null;
     dropZone2: any = null;
     dropZone3: any = null;
+
 
     gridInsertionPosition = {
         x: 0,
@@ -44,6 +49,10 @@ export class GridComponent {
         });
 
         this.initializeBoard();
+    }
+
+    ngOnInit() {
+    
     }
 
     updateWidgetPositionInBoard($event, columnNumber, rowNumber, type) {
@@ -94,8 +103,8 @@ export class GridComponent {
                 this.initializeBoard();
             },
             error => console.error('Deletion error', error),
-            () => console.debug('Board Deletion: ' + name));
-
+            () => console.debug('Board Deletion: ' + name)
+        );
     }
 
     public addWidget(widget: any) {

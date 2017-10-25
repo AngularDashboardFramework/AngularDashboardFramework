@@ -1,7 +1,7 @@
 /**
  * Created by jayhamilton on 2/7/17.
  */
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -9,7 +9,6 @@ import 'rxjs/add/observable/empty';
 
 import { defaultBoard } from '../board/models/board-default';
 import { sampleBoardCollection } from '../board/models/board-collection-sample';
-
 
 @Injectable()
 export class ConfigurationService {
@@ -159,7 +158,6 @@ export class ConfigurationService {
         if (this.demo) {
 
             return new Observable(observer => {
-
                 this.deleteBoardFromLocalStore(boardTitle);
 
                 observer.next({});
@@ -167,22 +165,18 @@ export class ConfigurationService {
                 };
 
             });
-
         } else {
-
             return this._http.delete(this.remoteConfigurationRepository + '/' + boardTitle);
         }
     }
 
     public getDefaultBoard() {
-
         return new Observable(observer => {
             observer.next(this.defaultBoard);
             return () => {
             };
         });
     }
-
 
     /*
      when a widget instance's property page is updated and saved, the change gets communicated to all
@@ -191,21 +185,16 @@ export class ConfigurationService {
      that allows us to update the persisted board model.
      */
     notifyWidgetOnPropertyChange(widgetConfig: string, instanceId: number) {
-
         this.savePropertyPageConfigurationToStore(widgetConfig, instanceId);
     }
-
 
     setCurrentModel(_currentModel: any) {
         this.currentModel = _currentModel;
     }
 
     savePropertyPageConfigurationToStore(widgetConfig: string, instanceId: number) {
-
         this.currentModel.rows.forEach(row => {
-
             row.columns.forEach(column => {
-
                 if (column.widgets) {
                     column.widgets.forEach(widget => {
                         this.updateProperties(widgetConfig, widget, instanceId);
@@ -216,7 +205,6 @@ export class ConfigurationService {
         });
 
         this.saveBoard(this.currentModel).subscribe(result => {
-
                 /**
                  * todo - create popup/toast to show configuration saved message
                  */
@@ -224,7 +212,8 @@ export class ConfigurationService {
 
             },
             error => console.error('Error' + error),
-            () => console.debug('Saving configuration to store!'));
+            () => console.debug('Saving configuration to store!')
+	);
 
 
     }
