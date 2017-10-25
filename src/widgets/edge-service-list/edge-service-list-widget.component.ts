@@ -16,7 +16,7 @@ declare var jQuery: any;
 @Component({
     selector: 'adf-dynamic-component',
     moduleId: module.id,
-    templateUrl: './edge-service-list.component.html',
+    templateUrl: './edge-service-list-widget.component.html',
     styleUrls: ['../_common/styles-widget.css'],
     animations: [
         trigger(
