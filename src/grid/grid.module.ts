@@ -9,6 +9,7 @@ import { DynamicFormModule } from '../dynamic-form/dynamic-form-module';
 
 import { GridComponent } from './grid.component';
 import { CellComponent } from './cell.component';
+
 import { WidgetInstanceService } from './grid.service';
 import { ConfigurationService } from '../services/configuration.service';
 

@@ -25,10 +25,13 @@ export class ConfigurationService {
      */
     remoteConfigurationRepository = 'http://localhost:8090/api/store';
 
-    constructor(private _http: Http) {
+    constructor(
+        private _http: Http
+    ) {
 
         Object.assign(this, {defaultBoard});
         Object.assign(this, {sampleBoardCollection});
+
         this.seedLocalStorageWithSampleBoardCollection();
     }
 
