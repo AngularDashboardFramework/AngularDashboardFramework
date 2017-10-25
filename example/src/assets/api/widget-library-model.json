@@ -1,9 +1,9 @@
 [
   {
-    "componentType": "CPUMWidgetComponent",
-    "name": "CPUM Chart",
+    "componentType": "BarVerticalChartWidgetComponent",
+    "name": "Vertical Bar Chart",
     "description": "Monitors CPU utilization.",
-    "icon": "assets/images/cpu.png",
+    "icon": "/assets/images/widgets/charts/bar-horizontal.png",
     "instanceId": -1,
     "tags": [
       {
@@ -131,10 +131,10 @@
     }
   },
   {
-    "componentType": "TrendWidgetComponent",
-    "name": "Trend",
+    "componentType": "AreaChartWidgetComponent",
+    "name": "Area Chart",
     "description": "General trends.",
-    "icon": "assets/images/trend.png",
+    "icon": "/assets/images/widgets/charts/area-chart.png",
     "instanceId": -1,
     "tags": [
       {
@@ -198,10 +198,10 @@
     }
   },
   {
-    "componentType": "TrendLineWidgetComponent",
+    "componentType": "LineChartWidgetComponent",
     "name": "Realtime Performance",
     "description": "Monitors IOPs and network bandwidth.",
-    "icon": "assets/images/trend-line.png",
+    "icon": "/assets/images/widgets/charts/line-chart.png",
     "instanceId": -1,
     "tags": [
       {
@@ -265,10 +265,10 @@
     }
   },
   {
-    "componentType": "CPUWidgetComponent",
-    "name": "CPU Chart",
+    "componentType": "BarHorizontalChartWidgetComponent",
+    "name": "Horizontal Bar Chart",
     "description": "Monitors CPU utilization.",
-    "icon": "assets/images/cpu.png",
+    "icon": "/assets/images/widgets/charts/bar-horizontal.png",
     "instanceId": -1,
     "tags": [
       {
@@ -332,10 +332,10 @@
     }
   },
   {
-    "componentType": "MemoryWidgetComponent",
-    "name": "Memory Chart",
+    "componentType": "LinearGaugeChartWidgetComponent",
+    "name": "Linear Gauge Chart",
     "description": "Monitors memory utilization",
-    "icon": "assets/images/memory.png",
+    "icon": "/assets/images/widgets/charts/linear-gauge.png",
     "instanceId": -1,
     "tags": [
       {
@@ -518,10 +518,10 @@
     }
   },
   {
-    "componentType": "DiskWidgetComponent",
-    "name": "Disk Utilization",
+    "componentType": "PieChartWidgetComponent",
+    "name": "Pie Chart Widget",
     "description": "Disk consumption information.",
-    "icon": "assets/images/donut.png",
+    "icon": "/assets/images/widgets/charts/pie.png",
     "instanceId": -1,
     "tags": [
       {

@@ -8,34 +8,41 @@ import { DynamicFormModule } from '../dynamic-form/dynamic-form-module';
 import { WidgetSharedModule } from './_common/widget-shared.module';
 import { ErrorHandlerModule } from '../error/error.module';
 
-import { CPUWidgetComponent } from './cpu/cpu-widget.component';
-import { CPUMWidgetComponent } from './cpum/cpum-widget.component';
-import { DiskWidgetComponent } from './disk/disk-widget.component';
-import { MemoryWidgetComponent } from './memory/memory-widget.component';
+import { AreaChartWidgetComponent } from './charts/area/area-chart-widget.component';
+import { AreaChartWidgetService } from './charts/area/area-chart-widget.service';
+
+import { BarHorizontalChartWidgetComponent } from './charts/bar-horizontal/bar-horizontal-chart-widget.component';
+import { BarHorizontalChartWidgetService } from './charts/bar-horizontal/bar-horizontal-chart-widget.service';
+
+import { BarVerticalChartWidgetComponent } from './charts/bar-vertical/bar-vertical-chart-widget.component';
+
+import { LinearGaugeChartWidgetComponent } from './charts/linear-gauge/linear-gauge-chart-widget.component';
+
+import { LineChartWidgetComponent } from './charts/line/line-chart-widget.component';
+
+import { PieChartWidgetComponent } from './charts/pie/pie-chart-widget.component';
+import { PieChartWidgetService } from './charts/pie/pie-chart-widget.service';
+
 import { EdgeServiceListWidgetComponent } from './edge-service-list/edge-service-list-widget.component';
 import { StatisticWidgetComponent } from './statistic/statistic-widget.component';
-import { TrendWidgetComponent } from './trend/trend-widget.component';
-import { TrendLineWidgetComponent } from './trend-line/trend-line-widget.component';
+
 import { NewsWidgetComponent } from './news/news-widget.component';
 import { JobAnalysisWidgetComponent } from './job-analysis/job-analysis-widget.component';
-import { CPUService } from './cpu/service';
 import { EdgeService } from './edge-service-list/service';
 import { StatisticService } from './statistic/service';
-import { DiskService } from './disk/service';
-import { TrendService } from './trend/service';
 import { PropertyListWidgetComponent } from './property-list/property-list-widget.component';
 import { ServiceListWidgetComponent } from './service-list/service-list-widget.component';
 
 @NgModule({
     declarations: [
-        CPUWidgetComponent,
-        CPUMWidgetComponent,
-        DiskWidgetComponent,
-        MemoryWidgetComponent,
+        AreaChartWidgetComponent,
+        BarHorizontalChartWidgetComponent,
+        BarVerticalChartWidgetComponent,
+        LineChartWidgetComponent,
+        PieChartWidgetComponent,
+        LinearGaugeChartWidgetComponent,
         EdgeServiceListWidgetComponent,
         StatisticWidgetComponent,
-        TrendWidgetComponent,
-        TrendLineWidgetComponent,
         NewsWidgetComponent,
         JobAnalysisWidgetComponent,
         StatisticWidgetComponent,
@@ -53,14 +60,14 @@ import { ServiceListWidgetComponent } from './service-list/service-list-widget.c
     exports: [
         DndModule,
         NgxChartsModule,
-        CPUWidgetComponent,
-        CPUMWidgetComponent,
-        DiskWidgetComponent,
-        MemoryWidgetComponent,
+        AreaChartWidgetComponent,
+        BarHorizontalChartWidgetComponent,
+        BarVerticalChartWidgetComponent,
+        LineChartWidgetComponent,
+        PieChartWidgetComponent,
+        LinearGaugeChartWidgetComponent,
         EdgeServiceListWidgetComponent,
         StatisticWidgetComponent,
-        TrendWidgetComponent,
-        TrendLineWidgetComponent,
         NewsWidgetComponent,
         JobAnalysisWidgetComponent,
         StatisticWidgetComponent,
@@ -68,11 +75,11 @@ import { ServiceListWidgetComponent } from './service-list/service-list-widget.c
         ServiceListWidgetComponent
     ],
     providers: [
-        TrendService,
-        DiskService,
+        AreaChartWidgetService,
+        BarHorizontalChartWidgetService,
+        PieChartWidgetService,
         StatisticService,
-        EdgeService,
-        CPUService
+        EdgeService
     ]
 })
 export class WidgetModule {

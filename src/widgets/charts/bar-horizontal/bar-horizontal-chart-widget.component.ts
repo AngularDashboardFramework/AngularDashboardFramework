@@ -1,93 +1,60 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
-import * as d3 from 'd3-shape';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 
-import {WidgetInstanceService} from '../../grid/grid.service';
-import {RuntimeService} from '../../services/runtime.service';
-import {WidgetPropertyService} from '../_common/widget-property.service';
-import {EndPointService} from '../../configuration/tab-endpoint/endpoint.service';
-import {WidgetBase} from '../_common/widget-base';
-import {TrendLineService} from './service';
-import {Observable} from 'rxjs/Observable';
+import { WidgetInstanceService } from '../../../grid/grid.service';
+import { RuntimeService } from '../../../services/runtime.service';
+import { WidgetPropertyService } from '../../_common/widget-property.service';
+import { EndPointService } from '../../../configuration/tab-endpoint/endpoint.service';
 
-export type D3 = typeof d3;
+import { WidgetBase } from '../../_common/widget-base';
+import { BarHorizontalChartWidgetService } from './bar-horizontal-chart-widget.service';
 
 @Component({
     selector: 'adf-dynamic-component',
     moduleId: module.id,
-    templateUrl: './trend-line-widget.component.html',
-    styleUrls: ['../_common/styles-widget.css']
+    templateUrl: './bar-horizontal-chart-widget.component.html',
+    styleUrls: ['../../_common/styles-widget.css']
 })
 
-export class TrendLineWidgetComponent extends WidgetBase {
-
-
-    topic: any;
-
+export class BarHorizontalChartWidgetComponent extends WidgetBase implements OnDestroy, OnInit {
     // chart options
-    showXAxis  = true;
-    showYAxis  = true;
-    gradient  = true;
-    showLegend  = true;
-    showXAxisLabel  = true;
-    showYAxisLabel  = true;
-    yAxisLabel  = 'IOPS';
-    xAxisLabel  = 'Time';
-    autoScale = true;
+    showXAxis = true;
+    showYAxis = true;
+    gradient = true;
+    showLegend = true;
+    showXAxisLabel = true;
+    showYAxisLabel = true;
+    yAxisLabel = 'Available CPUs';
+    xAxisLabel = 'Percent Utilization';
     view: any[];
+    cpu: any[] = [];
     colorScheme: any = {
-        domain: ['#2185D0', '#0AFF16']
+        domain: ['#0d5481', '#0AFF16']
     };
 
-    d3:D3 = d3;
-
-    multi: any[] = [];
-
-    collectors: Array<string> = [];
-
-    eventTimerSubscription: any;
-
-    constructor(protected _trendLineService: TrendLineService,
-                protected _runtimeService: RuntimeService,
+    constructor(protected _runtimeService: RuntimeService,
                 protected _widgetInstanceService: WidgetInstanceService,
                 protected _propertyService: WidgetPropertyService,
                 protected _endPointService: EndPointService,
-                protected _changeDetectionRef: ChangeDetectorRef) {
+                protected _chartService: BarHorizontalChartWidgetService,
+                private _changeDetectionRef: ChangeDetectorRef) {
         super(_runtimeService,
             _widgetInstanceService,
             _propertyService,
             _endPointService,
             _changeDetectionRef);
-
-
     }
 
-
     public preRun(): void {
-
-        this.setHelpTopic();
-        /**
-         * todo - get collectors from property page data
-         * @type {[string,string]}
-         */
-        this.collectors = ['read', 'write'];
-
-        for (let y = 0; y < this.collectors.length; y++) {
-
-            this.multi[y] = {
-                'name': this.collectors[y],
-                'series': TrendLineService.seedData()
-            };
-        }
+        this.run();
     }
 
     public run() {
+        this.cpu = [];
         this.errorExists = false;
         this.actionInitiated = true;
         this.actionInitiated = false;
         this.inRun = true;
-
-        this.updateData();
-
+        this.updateData(null);
     }
 
     public stop() {
@@ -95,29 +62,16 @@ export class TrendLineWidgetComponent extends WidgetBase {
         this.actionInitiated = true;
         this.actionInitiated = false;
         this.inRun = false;
-
-        this._trendLineService.stop(this.eventTimerSubscription);
     }
 
-    public updateData() {
-
-        this.eventTimerSubscription = this._trendLineService.get(this.collectors).subscribe(data => {
-
-                for (let x = 0; x < this.collectors.length; x++) {
-
-                    this.multi[x].series.shift();
-                    this.multi[x].series.push(data[x]);
-
-                }
-
-                this.multi = [...this.multi];
+    public updateData(data: any[]) {
+        this._chartService.getMockData().subscribe(cpu => {
+                Object.assign(this, {cpu});
             },
             error => this.handleError(error));
     }
 
-
     public updateProperties(updatedProperties: any) {
-
         /**
          * todo
          *  A similar operation exists on the procmman-config-service
@@ -127,20 +81,15 @@ export class TrendLineWidgetComponent extends WidgetBase {
          *  config service or the property page service.
          *
          * **/
-
         const updatedPropsObject = JSON.parse(updatedProperties);
 
         this.propertyPages.forEach(function (propertyPage) {
-
-
             for (let x = 0; x < propertyPage.properties.length; x++) {
-
                 for (const prop in updatedPropsObject) {
                     if (updatedPropsObject.hasOwnProperty(prop)) {
                         if (prop === propertyPage.properties[x].key) {
                             propertyPage.properties[x].value = updatedPropsObject[prop];
                         }
-
                     }
                 }
             }
@@ -157,20 +106,5 @@ export class TrendLineWidgetComponent extends WidgetBase {
         this.setEndPoint(updatedPropsObject.endpoint);
 
         this.showOperationControls = true;
-
-        /**
-         * todo - adjust collectors from property page data
-         * @type {[string,string]}
-         */
-
     }
-
-    private setHelpTopic() {
-        this._trendLineService.getHelpTopic().subscribe(data => {
-
-            this.topic = data;
-
-        });
-    }
-
 }

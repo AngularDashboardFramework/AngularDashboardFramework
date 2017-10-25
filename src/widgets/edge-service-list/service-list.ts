@@ -12,7 +12,7 @@ export const serviceList: {
         active: false,
         applicationName: 'Virgo',
         description: 'Main ECX Application container that manages all of the ECX functions.',
-        icon: 'images/donut.png',
+        icon: '/assets/images/widgets/charts/pie.png',
         pseudoName: 'ECX',
         processId: ''
     },
@@ -20,7 +20,7 @@ export const serviceList: {
         active: false,
         applicationName: 'Eureka',
         description: 'This is a microservice discovery service. Used for such items as VADP Proxy.',
-        icon: 'images/donut.png',
+        icon: '/assets/images/widgets/charts/pie.png',
         pseudoName: 'Eureka',
         processId: ''
     },
@@ -28,7 +28,7 @@ export const serviceList: {
         active: false,
         applicationName: 'PostGresql',
         description: 'This is a database server used for job management and security.',
-        icon: 'images/donut.png',
+        icon: '/assets/images/widgets/charts/pie.png',
         pseudoName: 'SQL DB',
         processId: ''
     },
@@ -36,7 +36,7 @@ export const serviceList: {
         active: false,
         applicationName: 'Mongo',
         description: 'This is a database server used for ECX operation management.',
-        icon: 'images/donut.png',
+        icon: '/assets/images/widgets/charts/pie.png',
         pseudoName: 'Catalog DB',
         processId: ''
     },
@@ -44,7 +44,7 @@ export const serviceList: {
         active: false,
         applicationName: 'Mongo',
         description: 'This is a database server used for ECX configuration.',
-        icon: 'images/donut.png',
+        icon: '/assets/images/widgets/charts/pie.png',
         pseudoName: 'Configuration DB',
         processId: ''
     },

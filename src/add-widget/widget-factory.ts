@@ -1,15 +1,19 @@
-import {CPUWidgetComponent} from '../widgets/cpu/cpu-widget.component';
-import {MemoryWidgetComponent} from '../widgets/memory/memory-widget.component';
-import {PropertyListWidgetComponent} from '../widgets/property-list/property-list-widget.component';
-import {DiskWidgetComponent} from '../widgets/disk/disk-widget.component';
-import {ServiceListWidgetComponent} from '../widgets/service-list/service-list-widget.component';
-import {StatisticWidgetComponent} from '../widgets/statistic/statistic-widget.component';
-import {TrendWidgetComponent} from '../widgets/trend/trend-widget.component';
-import {NewsWidgetComponent} from '../widgets/news/news-widget.component';
-import {JobAnalysisWidgetComponent} from '../widgets/job-analysis/job-analysis-widget.component';
-import {TrendLineWidgetComponent} from '../widgets/trend-line/trend-line-widget.component';
-import {EdgeServiceListWidgetComponent} from '../widgets/edge-service-list/edge-service-list-widget.component';
-import {CPUMWidgetComponent} from '../widgets/cpum/cpum-widget.component';
+
+import { AreaChartWidgetComponent } from '../widgets/charts/area/area-chart-widget.component';
+import { BarHorizontalChartWidgetComponent } from '../widgets/charts/bar-horizontal/bar-horizontal-chart-widget.component';
+import { BarVerticalChartWidgetComponent } from '../widgets/charts/bar-vertical/bar-vertical-chart-widget.component';
+
+import { LineChartWidgetComponent } from '../widgets/charts/line/line-chart-widget.component';
+
+import { LinearGaugeChartWidgetComponent } from '../widgets/charts/linear-gauge/linear-gauge-chart-widget.component';
+import { PieChartWidgetComponent } from '../widgets/charts/pie/pie-chart-widget.component';
+
+import { PropertyListWidgetComponent } from '../widgets/property-list/property-list-widget.component';
+import { ServiceListWidgetComponent } from '../widgets/service-list/service-list-widget.component';
+import { StatisticWidgetComponent } from '../widgets/statistic/statistic-widget.component';
+import { NewsWidgetComponent } from '../widgets/news/news-widget.component';
+import { JobAnalysisWidgetComponent } from '../widgets/job-analysis/job-analysis-widget.component';
+import { EdgeServiceListWidgetComponent } from '../widgets/edge-service-list/edge-service-list-widget.component';
 /**
  * Created by jayhamilton on 6/30/17.
  */
@@ -23,30 +27,30 @@ export class WidgetFactory {
     static getComponentType(widgetType): any {
         switch (widgetType) {
 
-            case 'CPUWidgetComponent':
-                return CPUWidgetComponent;
-            case 'MemoryWidgetComponent':
-                return MemoryWidgetComponent;
+            case 'BarHorizontalChartWidgetComponent':
+                return BarHorizontalChartWidgetComponent;
+            case 'BarVerticalChartWidgetComponent':
+                return BarVerticalChartWidgetComponent;
+            case 'LinearGaugeChartWidgetComponent':
+                return LinearGaugeChartWidgetComponent;
             case 'PropertyListWidgetComponent':
                 return PropertyListWidgetComponent;
-            case 'DiskWidgetComponent':
-                return DiskWidgetComponent;
+            case 'PieChartWidgetComponent':
+                return PieChartWidgetComponent;
             case 'ServiceListWidgetComponent':
                 return ServiceListWidgetComponent;
             case 'StatisticWidgetComponent':
                 return StatisticWidgetComponent;
-            case 'TrendWidgetComponent':
-                return TrendWidgetComponent;
+            case 'AreaChartWidgetComponent':
+                return AreaChartWidgetComponent;
             case 'NewsWidgetComponent':
                 return NewsWidgetComponent;
             case'JobAnalysisWidgetComponent':
                 return JobAnalysisWidgetComponent;
-            case'TrendLineWidgetComponent':
-                return TrendLineWidgetComponent;
+            case'LineChartWidgetComponent':
+                return LineChartWidgetComponent;
             case'EdgeServiceListWidgetComponent':
                 return EdgeServiceListWidgetComponent;
-            case 'CPUMWidgetComponent':
-                return CPUMWidgetComponent;
             default:
                 return null;
         }

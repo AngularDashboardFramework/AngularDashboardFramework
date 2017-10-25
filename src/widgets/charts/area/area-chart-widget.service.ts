@@ -1,11 +1,10 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { RuntimeService } from '../../services/runtime.service';
+import { RuntimeService } from '../../../services/runtime.service';
 
 @Injectable()
-export class TrendService {
-
+export class AreaChartWidgetService {
     constructor(private _http: Http) {
     }
 

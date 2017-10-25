@@ -1,23 +1,24 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
-import * as d3 from 'd3-shape'; //"../node_modules/d3-shape/build/d3-shape.min.js"
+import { ChangeDetectorRef, Component } from '@angular/core';
+import * as d3 from 'd3-shape';
 
-import {WidgetInstanceService} from '../../grid/grid.service';
-import {RuntimeService} from '../../services/runtime.service';
-import {WidgetPropertyService} from '../_common/widget-property.service';
-import {EndPointService} from '../../configuration/tab-endpoint/endpoint.service';
-import {WidgetBase} from '../_common/widget-base';
-import {TrendService} from './service';
+import { WidgetInstanceService } from '../../../grid/grid.service';
+import { RuntimeService } from '../../../services/runtime.service';
+import { WidgetPropertyService } from '../../_common/widget-property.service';
+import { EndPointService } from '../../../configuration/tab-endpoint/endpoint.service';
+
+import { WidgetBase } from '../../_common/widget-base';
+
+import { AreaChartWidgetService } from './area-chart-widget.service';
 
 export type D3 = typeof d3;
 
 @Component({
     selector: 'adf-dynamic-component',
     moduleId: module.id,
-    templateUrl: './trend-widget.component.html',
-    styleUrls: ['../_common/styles-widget.css']
+    templateUrl: './area-chart-widget.component.html',
+    styleUrls: ['../../_common/styles-widget.css']
 })
-
-export class TrendWidgetComponent extends WidgetBase {
+export class AreaChartWidgetComponent extends WidgetBase {
     // chart options
     showXAxis = true;
     showYAxis = true;
@@ -35,7 +36,7 @@ export class TrendWidgetComponent extends WidgetBase {
 
     d3:D3 = d3;
 
-    constructor(protected _trendService: TrendService,
+    constructor(protected _areaService: AreaChartWidgetService,
                 protected _runtimeService: RuntimeService,
                 protected _widgetInstanceService: WidgetInstanceService,
                 protected _propertyService: WidgetPropertyService,
@@ -50,7 +51,6 @@ export class TrendWidgetComponent extends WidgetBase {
     }
 
     public preRun(): void {
-
         this.run();
     }
 
@@ -71,15 +71,13 @@ export class TrendWidgetComponent extends WidgetBase {
     }
 
     public updateData(data: any[]) {
-
-        this._trendService.get().subscribe(res => {
+        this._areaService.get().subscribe(res => {
                 this.data = res.data;
             },
             error => this.handleError(error));
     }
 
     public updateProperties(updatedProperties: any) {
-
         /**
          * todo
          *  A similar operation exists on the procmman-config-service
@@ -91,12 +89,8 @@ export class TrendWidgetComponent extends WidgetBase {
          * **/
 
         const updatedPropsObject = JSON.parse(updatedProperties);
-
         this.propertyPages.forEach(function (propertyPage) {
-
-
             for (let x = 0; x < propertyPage.properties.length; x++) {
-
                 for (const prop in updatedPropsObject) {
                     if (updatedPropsObject.hasOwnProperty(prop)) {
                         if (prop === propertyPage.properties[x].key) {
@@ -119,8 +113,5 @@ export class TrendWidgetComponent extends WidgetBase {
         this.setEndPoint(updatedPropsObject.endpoint);
 
         this.showOperationControls = true;
-
-
     }
-
 }

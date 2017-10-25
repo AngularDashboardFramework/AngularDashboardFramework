@@ -1,13 +1,13 @@
-import {Http} from '@angular/http';
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {RuntimeService} from '../../services/runtime.service';
+import { Http } from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { RuntimeService } from '../../../services/runtime.service';
 
 @Injectable()
-export class TrendLineService {
+export class LineChartWidgetService {
     static seedData() {
-
         const array = [];
+
         for (let i = 0; i < 25; i++) {
             array.push({
                 'name': i.toString(),
@@ -16,27 +16,26 @@ export class TrendLineService {
         }
         return array;
     }
+    
     static retrieveData() {
-
         const currentDate = new Date();
-        const time = TrendLineService.getDay(
+        const time = LineChartWidgetService.getDay(
             currentDate.getDay()) + ':' +
             currentDate.getHours() + ':' +
             currentDate.getMinutes() + ':' +
             currentDate.getSeconds();
 
         return {
-
             'name': time,
-            'value': TrendLineService.getRandomArbitrary(5, 20)
+            'value': LineChartWidgetService.getRandomArbitrary(5, 20)
         };
-
     }
+
     static getRandomArbitrary(min, max) {
         return Math.round(Math.random() * (max - min) + min);
     }
-    static getDay(dayOfWeek: number) {
 
+    static getDay(dayOfWeek: number) {
         switch (dayOfWeek) {
             case 0:
                 return 'sun';
@@ -54,16 +53,17 @@ export class TrendLineService {
                 return 'sat';
         }
     }
+
     constructor(private _http: Http) {
     }
 
     public get(collectors: any[]) {
         return new Observable(observer => {
             Observable.timer(500, 5000).subscribe(t => {
-
                 const data = [];
+
                 collectors.forEach(collector => {
-                    data.push(TrendLineService.retrieveData());
+                    data.push(LineChartWidgetService.retrieveData());
                 });
 
                 observer.next(data);
@@ -76,7 +76,6 @@ export class TrendLineService {
     }
 
     getHelpTopic() {
-
         return this._http.request('/assets/api/trendline-help-model.json')
             .map(res => res.json())
             .catch(RuntimeService.handleError);

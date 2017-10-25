@@ -1,13 +1,14 @@
 /**
  * Created by jayhamilton on 6/24/17.
  */
-import {Http} from '@angular/http';
-import {Injectable} from '@angular/core';
-import {RuntimeService} from '../../services/runtime.service';
-import {TrendLineService} from '../trend-line/service';
-import {Observable} from 'rxjs/Observable';
+import { Http } from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import { RuntimeService } from '../../../services/runtime.service';
+
 @Injectable()
-export class CPUService {
+export class BarHorizontalChartWidgetService {
 
     constructor(private _http: Http) {
     }

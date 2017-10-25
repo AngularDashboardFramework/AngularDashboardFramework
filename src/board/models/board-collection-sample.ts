@@ -66,10 +66,10 @@ export const sampleBoardCollection = {
                         'styleClass': 'twelve wide',
                         'widgets': [
                             {
-                                'componentType': 'CPUWidgetComponent',
+                                'componentType': 'BarHorizontalChartWidgetComponent',
                                 'name': 'CPU Chart',
                                 'description': 'Monitors CPU utilization for CDM.',
-                                'icon': 'images/cpu.png',
+                                'icon': '/assets/images/widgets/charts/bar-horizontal.png',
                                 'instanceId': 1499912922910,
                                 'tags': [
                                     {
@@ -132,10 +132,10 @@ export const sampleBoardCollection = {
                                 }
                             },
                             {
-                                'componentType': 'TrendWidgetComponent',
+                                'componentType': 'AreaChartWidgetComponent',
                                 'name': 'Trend',
                                 'description': 'General trends.',
-                                'icon': 'images/trend.png',
+                                'icon': '/assets/images/widgets/charts/area-chart.png',
                                 'instanceId': 1499912901569,
                                 'tags': [
                                     {
@@ -529,10 +529,10 @@ export const sampleBoardCollection = {
                             'styleClass': 'eight wide',
                             'widgets': [
                                 {
-                                    'componentType': 'TrendLineWidgetComponent',
+                                    'componentType': 'LineChartWidgetComponent',
                                     'name': 'Realtime Performance',
                                     'description': 'IOPs and Network Bandwidth.',
-                                    'icon': 'images/trend-line.png',
+                                    'icon': '/assets/images/widgets/charts/line-chart.png',
                                     'instanceId': 1500251340757,
                                     'tags': [
                                         {
@@ -662,10 +662,10 @@ export const sampleBoardCollection = {
                             'styleClass': 'four wide',
                             'widgets': [
                                 {
-                                    'componentType': 'DiskWidgetComponent',
+                                    'componentType': 'PieChartWidgetComponent',
                                     'name': 'Disk Utilization',
                                     'description': 'Disk consumption information for ECX.',
-                                    'icon': 'images/donut.png',
+                                    'icon': '/assets/images/widgets/charts/pie.png',
                                     'instanceId': 1500253741130,
                                     'tags': [
                                         {
@@ -794,10 +794,10 @@ export const sampleBoardCollection = {
                             'styleClass': 'four wide',
                             'widgets': [
                                 {
-                                    'componentType': 'DiskWidgetComponent',
+                                    'componentType': 'PieChartWidgetComponent',
                                     'name': 'Disk Utilization',
                                     'description': 'Disk consumption information for ECX.',
-                                    'icon': 'images/donut.png',
+                                    'icon': '/assets/images/widgets/charts/pie.png',
                                     'instanceId': 1500252483066,
                                     'tags': [
                                         {
@@ -921,10 +921,10 @@ export const sampleBoardCollection = {
                                     }
                                 },
                                 {
-                                    'componentType': 'TrendWidgetComponent',
+                                    'componentType': 'AreaChartWidgetComponent',
                                     'name': 'Trend',
                                     'description': 'General trends.',
-                                    'icon': 'images/trend.png',
+                                    'icon': "/assets/images/widgets/charts/area-chart.png",
                                     'instanceId': 1500252536414,
                                     'tags': [
                                         {

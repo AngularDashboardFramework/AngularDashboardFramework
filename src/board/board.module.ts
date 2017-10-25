@@ -1,39 +1,41 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { CommonModule} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MatButtonModule, MatIconModule } from '@angular/material';
 
-import {GridModule} from '../grid/grid.module';
-import {WidgetModule} from '../widgets/widget.module';
-import {AddWidgetService} from '../add-widget/service';
+import { GridModule } from '../grid/grid.module';
+import { WidgetModule } from '../widgets/widget.module';
+import { AddWidgetService } from '../add-widget/service';
 
-import {ConfigurationModule} from '../configuration/configuration.module';
-import {LayoutModule} from '../layout/layout.module';
-import {AddWidgetModule} from '../add-widget/add-widget.module';
-import {NotificationModule} from '../notification/notification.module';
+import { ConfigurationModule } from '../configuration/configuration.module';
+import { LayoutModule } from '../layout/layout.module';
+import { AddWidgetModule } from '../add-widget/add-widget.module';
+import { NotificationModule } from '../notification/notification.module';
 
-import {WidgetPropertyService} from '../widgets/_common/widget-property.service';
+import { WidgetPropertyService } from '../widgets/_common/widget-property.service';
 
-import {ConfigurationService} from '../services/configuration.service';
-import {RuntimeService} from '../services/runtime.service';
-import {EndPointService} from '../configuration/tab-endpoint/endpoint.service';
-import {BoardComponent} from './board.component';
-
-import {CPUMWidgetComponent} from '../widgets/cpum/cpum-widget.component';
-import {EdgeServiceListWidgetComponent} from '../widgets/edge-service-list/edge-service-list-widget.component';
-import {TrendLineWidgetComponent} from '../widgets/trend-line/trend-line-widget.component';
-import {JobAnalysisWidgetComponent} from '../widgets/job-analysis/job-analysis-widget.component';
-import {NewsWidgetComponent} from '../widgets/news/news-widget.component';
-import {TrendWidgetComponent} from '../widgets/trend/trend-widget.component';
-import {StatisticWidgetComponent} from '../widgets/statistic/statistic-widget.component';
-import {DiskWidgetComponent} from '../widgets/disk/disk-widget.component';
-import {PropertyListWidgetComponent} from '../widgets/property-list/property-list-widget.component';
-import {ServiceListWidgetComponent} from '../widgets/service-list/service-list-widget.component';
-import {CPUWidgetComponent} from '../widgets/cpu/cpu-widget.component';
-import {MemoryWidgetComponent} from '../widgets/memory/memory-widget.component';
+import { ConfigurationService } from '../services/configuration.service';
+import { RuntimeService } from '../services/runtime.service';
+import { EndPointService } from '../configuration/tab-endpoint/endpoint.service';
+import { BoardComponent } from './board.component';
 
 import { ObservableWebSocketService } from '../services/websocket-service';
+
+import { AreaChartWidgetComponent } from '../widgets/charts/area/area-chart-widget.component';
+import { BarHorizontalChartWidgetComponent } from '../widgets/charts/bar-horizontal/bar-horizontal-chart-widget.component';
+import { BarVerticalChartWidgetComponent } from '../widgets/charts/bar-vertical/bar-vertical-chart-widget.component';
+import { LineChartWidgetComponent } from '../widgets/charts/line/line-chart-widget.component';
+import { LinearGaugeChartWidgetComponent } from '../widgets/charts/linear-gauge/linear-gauge-chart-widget.component';
+import { PieChartWidgetComponent } from '../widgets/charts/pie/pie-chart-widget.component';
+
+import { EdgeServiceListWidgetComponent } from '../widgets/edge-service-list/edge-service-list-widget.component';
+
+import { JobAnalysisWidgetComponent } from '../widgets/job-analysis/job-analysis-widget.component';
+import { NewsWidgetComponent } from '../widgets/news/news-widget.component';
+import { StatisticWidgetComponent } from '../widgets/statistic/statistic-widget.component';
+import { PropertyListWidgetComponent } from '../widgets/property-list/property-list-widget.component';
+import { ServiceListWidgetComponent } from '../widgets/service-list/service-list-widget.component';
 
 @NgModule({
     declarations: [
@@ -54,18 +56,18 @@ import { ObservableWebSocketService } from '../services/websocket-service';
         LayoutModule,
         ConfigurationModule,
         GridModule.withComponents([
-            MemoryWidgetComponent,
-            CPUWidgetComponent,
+            LinearGaugeChartWidgetComponent,
+            BarHorizontalChartWidgetComponent,
+            BarVerticalChartWidgetComponent,
             ServiceListWidgetComponent,
             PropertyListWidgetComponent,
-            DiskWidgetComponent,
+            PieChartWidgetComponent,
             StatisticWidgetComponent,
-            TrendWidgetComponent,
+            AreaChartWidgetComponent,
             NewsWidgetComponent,
             JobAnalysisWidgetComponent,
-            TrendLineWidgetComponent,
-            EdgeServiceListWidgetComponent,
-            CPUMWidgetComponent
+            LineChartWidgetComponent,
+            EdgeServiceListWidgetComponent
         ])
     ],
     exports: [

@@ -1,23 +1,22 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
-import {WidgetInstanceService} from '../../grid/grid.service';
-import {RuntimeService} from '../../services/runtime.service';
-import {WidgetPropertyService} from '../_common/widget-property.service';
-import {EndPointService} from '../../configuration/tab-endpoint/endpoint.service';
-import {WidgetBase} from '../_common/widget-base';
-import {Observable} from 'rxjs/Observable';
-import {ObservableWebSocketService} from '../../services/websocket-service';
-import {ErrorObject} from "../../error/error-model";
-import {ErrorHandler} from "../../error/error-handler";
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import { WidgetInstanceService } from '../../../grid/grid.service';
+import { RuntimeService } from '../../../services/runtime.service';
+import { WidgetPropertyService } from '../../_common/widget-property.service';
+import { EndPointService } from '../../../configuration/tab-endpoint/endpoint.service';
+import { WidgetBase } from '../../_common/widget-base';
+import { ObservableWebSocketService } from '../../../services/websocket-service';
+import { ErrorObject } from "../../../error/error-model";
+import { ErrorHandler } from "../../../error/error-handler";
 
 @Component({
     selector: 'adf-dynamic-component',
     moduleId: module.id,
-    templateUrl: './cpum-widget.component.html',
-    styleUrls: ['../_common/styles-widget.css']
+    templateUrl: './bar-vertical-chart-widget.component.html',
+    styleUrls: ['../../_common/styles-widget.css']
 })
-
-export class CPUMWidgetComponent extends WidgetBase implements OnDestroy, OnInit {
-
+export class BarVerticalChartWidgetComponent extends WidgetBase implements OnDestroy, OnInit {
     // chart options
     showXAxis = true;
     showYAxis = true;
@@ -49,20 +48,21 @@ export class CPUMWidgetComponent extends WidgetBase implements OnDestroy, OnInit
         );
     }
 
+    ngOnInit()
+    {
+
+    }
+
     public preRun(): void {
     }
 
     public run() {
-
         this.errorExists = false;
         this.actionInitiated = true;
 
         this.webSocket = this._webSocketService.createObservableWebSocket(this.getEndPoint().address).subscribe(data => {
-
                 const dataObject = JSON.parse(data);
-
                 this.updateGraph(dataObject['utilPct']);
-
             },
             error => {
                 /**
@@ -77,9 +77,7 @@ export class CPUMWidgetComponent extends WidgetBase implements OnDestroy, OnInit
                 this.handleError(ErrorHandler.getErrorObject(errMsg));
             },
             () => {
-
                 if (this.inRun) {
-
                     /**
                      * todo improve this error handling
                      * @type {{status: string; statusText: string; resource: string}}
@@ -101,7 +99,6 @@ export class CPUMWidgetComponent extends WidgetBase implements OnDestroy, OnInit
         const timer = Observable.timer(this.waitForConnectionDelay);
 
         timer.subscribe(t => {
-
             // todo test whether we are connected of not
             this._webSocketService.sendMessage('start');
 
@@ -117,23 +114,17 @@ export class CPUMWidgetComponent extends WidgetBase implements OnDestroy, OnInit
         this.actionInitiated = true;
 
         try {
-
             this._webSocketService.sendMessage('stop');
-
             this.webSocket.unsubscribe();
-
             this.updateGraph(0);
-
         } catch (error) {
             this.handleError(error);
         }
 
         this.actionInitiated = false;
-
     }
 
     public updateGraph(value: number) {
-
         const series: any[] = [];
         const single: any = [];
         series.push({
@@ -151,7 +142,6 @@ export class CPUMWidgetComponent extends WidgetBase implements OnDestroy, OnInit
         });
 
         Object.assign(this, {single});
-
     }
 
     public updateData(data: any[]) {
@@ -159,7 +149,6 @@ export class CPUMWidgetComponent extends WidgetBase implements OnDestroy, OnInit
     }
 
     public updateProperties(updatedProperties: any) {
-
         /**
          * todo
          *  A similar operation exists on the procmman-config-service
@@ -169,14 +158,10 @@ export class CPUMWidgetComponent extends WidgetBase implements OnDestroy, OnInit
          *  config service or the property page service.
          *
          * **/
-
         const updatedPropsObject = JSON.parse(updatedProperties);
 
         this.propertyPages.forEach(function (propertyPage) {
-
-
             for (let x = 0; x < propertyPage.properties.length; x++) {
-
                 for (const prop in updatedPropsObject) {
                     if (updatedPropsObject.hasOwnProperty(prop)) {
                         if (prop === propertyPage.properties[x].key) {
@@ -199,13 +184,9 @@ export class CPUMWidgetComponent extends WidgetBase implements OnDestroy, OnInit
         this.setEndPoint(updatedPropsObject.endpoint);
 
         this.showOperationControls = true;
-
     }
 
     public ngOnDestroy() {
-
         this.stop();
-
     }
-
 }

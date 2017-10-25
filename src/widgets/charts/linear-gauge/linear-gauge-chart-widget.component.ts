@@ -1,21 +1,21 @@
-import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
-import {RuntimeService} from '../../services/runtime.service';
-import {WidgetInstanceService} from '../../grid/grid.service';
-import {WidgetPropertyService} from '../_common/widget-property.service';
-import {EndPointService} from '../../configuration/tab-endpoint/endpoint.service';
-import {WidgetBase} from '../_common/widget-base';
-import {Observable} from 'rxjs/Observable';
-import {ObservableWebSocketService} from '../../services/websocket-service';
+import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import { RuntimeService } from '../../../services/runtime.service';
+import { WidgetInstanceService } from '../../../grid/grid.service';
+import { WidgetPropertyService } from '../../_common/widget-property.service';
+import { EndPointService } from '../../../configuration/tab-endpoint/endpoint.service';
+import { WidgetBase } from '../../_common/widget-base';
+import { ObservableWebSocketService } from '../../../services/websocket-service';
 
 @Component({
     selector: 'adf-dynamic-component',
     moduleId: module.id,
-    templateUrl: './memory-widget.component.html',
-    styleUrls: ['../_common/styles-widget.css']
+    templateUrl: './linear-gauge-chart-widget.component.html',
+    styleUrls: ['../../_common/styles-widget.css']
 })
 
-export class MemoryWidgetComponent extends WidgetBase implements OnDestroy {
-
+export class LinearGaugeChartWidgetComponent extends WidgetBase implements OnDestroy {
     // chart options
     view: any[];
     colorScheme = {

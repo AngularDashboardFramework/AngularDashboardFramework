@@ -1,24 +1,21 @@
-import {
-    ChangeDetectorRef, Component
-} from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 
-import {
-    style, trigger, animate, transition, state
-} from '@angular/animations';
+import { style, trigger, animate, transition, state } from '@angular/animations';
 
-import {RuntimeService} from '../../services/runtime.service';
-import {WidgetInstanceService} from '../../grid/grid.service';
-import {EndPointService} from '../../configuration/tab-endpoint/endpoint.service';
-import {WidgetPropertyService} from '../_common/widget-property.service';
-import {WidgetBase} from '../_common/widget-base';
-import {DiskService} from './service';
+import { RuntimeService } from '../../../services/runtime.service';
+import { WidgetInstanceService } from '../../../grid/grid.service';
+import { EndPointService } from '../../../configuration/tab-endpoint/endpoint.service';
+import { WidgetPropertyService } from '../../_common/widget-property.service';
+import { WidgetBase } from '../../_common/widget-base';
+
+import { PieChartWidgetService } from './pie-chart-widget.service';
 
 
 @Component({
     selector: 'adf-dynamic-component',
     moduleId: module.id,
-    templateUrl: './disk-widget.component.html',
-    styleUrls: ['../_common/styles-widget.css'],
+    templateUrl: './pie-chart-widget.component.html',
+    styleUrls: ['../../_common/styles-widget.css'],
     animations: [
 
         trigger('accordion', [
@@ -45,7 +42,7 @@ import {DiskService} from './service';
         ])
     ]
 })
-export class DiskWidgetComponent extends WidgetBase {
+export class PieChartWidgetComponent extends WidgetBase {
 
     topic: any;
 
@@ -73,7 +70,7 @@ export class DiskWidgetComponent extends WidgetBase {
                 protected _propertyService: WidgetPropertyService,
                 protected _endPointService: EndPointService,
                 protected _changeDetectionRef: ChangeDetectorRef,
-                protected _diskService: DiskService) {
+                protected _diskService: PieChartWidgetService) {
         super(_runtimeService,
             _widgetInstanceService,
             _propertyService,
