@@ -67,7 +67,6 @@ import { ServiceListWidgetComponent } from './service-list/service-list-widget.c
         LinearGaugeChartWidgetComponent,
         EdgeServiceListWidgetComponent,
         StatisticWidgetComponent,
-        StatisticWidgetComponent,
         NewsWidgetComponent,
         JobAnalysisWidgetComponent,
         PropertyListWidgetComponent,
