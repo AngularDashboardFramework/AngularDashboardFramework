@@ -26,7 +26,6 @@ export class WidgetFactory {
 
     static getComponentType(widgetType): any {
         switch (widgetType) {
-
             case 'BarHorizontalChartWidgetComponent':
                 return BarHorizontalChartWidgetComponent;
             case 'BarVerticalChartWidgetComponent':

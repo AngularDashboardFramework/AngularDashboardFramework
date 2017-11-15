@@ -45,7 +45,6 @@ import { ServiceListWidgetComponent } from './service-list/service-list-widget.c
         StatisticWidgetComponent,
         NewsWidgetComponent,
         JobAnalysisWidgetComponent,
-        StatisticWidgetComponent,
         PropertyListWidgetComponent,
         ServiceListWidgetComponent
     ],
@@ -68,9 +67,9 @@ import { ServiceListWidgetComponent } from './service-list/service-list-widget.c
         LinearGaugeChartWidgetComponent,
         EdgeServiceListWidgetComponent,
         StatisticWidgetComponent,
+        StatisticWidgetComponent,
         NewsWidgetComponent,
         JobAnalysisWidgetComponent,
-        StatisticWidgetComponent,
         PropertyListWidgetComponent,
         ServiceListWidgetComponent
     ],

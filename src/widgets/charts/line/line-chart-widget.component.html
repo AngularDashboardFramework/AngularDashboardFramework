@@ -12,19 +12,19 @@
     </a>
 
     <adf-widget-header
-            [title]="title"
-            [inRun]="inRun"
-            [inConfig]="inConfig"
-            [actionInitiated]="actionInitiated"
-            [showOperationControls]="showOperationControls"
-            [widgetHasOperationControls]="widgetHasOperationControls"
-            [showConfigurationControl]="showConfigurationControl"
-            [showControls]="showControls"
-            (toggleConfigModeEvent)="toggleConfigMode()"
-            (removeEvent)="remove()"
-            (runEvent)="run()"
-            (stopEvent)="stop()"
-            (helpEvent)="helpModal.showHelp()">
+        [title]="title"
+        [inRun]="inRun"
+        [inConfig]="inConfig"
+        [actionInitiated]="actionInitiated"
+        [showOperationControls]="showOperationControls"
+        [widgetHasOperationControls]="widgetHasOperationControls"
+        [showConfigurationControl]="showConfigurationControl"
+        [showControls]="showControls"
+        (toggleConfigModeEvent)="toggleConfigMode()"
+        (removeEvent)="remove()"
+        (runEvent)="run()"
+        (stopEvent)="stop()"
+        (helpEvent)="helpModal.showHelp()">
     </adf-widget-header>
 
     <div class="ui grid">
@@ -56,8 +56,8 @@
     </adf-dynamic-form>
 
     <adf-error-handler
-            [errorObject]="errorObject"
-            [errorExists]="errorExists">
+        [errorObject]="errorObject"
+        [errorExists]="errorExists">
     </adf-error-handler>
 
     <adf-vis-drill-down-modal #drillDownPopUp></adf-vis-drill-down-modal>

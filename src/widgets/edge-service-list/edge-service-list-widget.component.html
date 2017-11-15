@@ -1,28 +1,32 @@
-<div (mouseover)="showWidgetControls(true)"
-     (mouseleave)="showWidgetControls(false)" class="ui   segment left aligned widget" dnd-draggable
-     [dragEnabled]="true" [dragData]="instanceId" [dropZones]="['c0','c1','c2','c3','r0','r1']">
+<div
+    (mouseover)="showWidgetControls(true)"
+    (mouseleave)="showWidgetControls(false)"
+    class="ui segment left aligned widget"
+    dnd-draggable
+    [dragEnabled]="true"
+    [dragData]="instanceId"
+    [dropZones]="['c0','c1','c2','c3','r0','r1']">
 
     <a class="ui left corner label">
         <i class="circle icon" [ngClass]="{'green':inRun, 'yellow':!inRun}"></i>
     </a>
 
     <adf-widget-header
-            [title]="title"
-            [inRun]="inRun"
-            [inConfig]="inConfig"
-            [actionInitiated]="actionInitiated"
-            [showOperationControls]="showOperationControls"
-            [widgetHasOperationControls]="widgetHasOperationControls"
-            [showConfigurationControl]="showConfigurationControl"
-            [showControls]="showControls"
-            (toggleConfigModeEvent)="toggleConfigMode()"
-            (removeEvent)="remove()"
-            (runEvent)="run()"
-            (stopEvent)="stop()">
+        [title]="title"
+        [inRun]="inRun"
+        [inConfig]="inConfig"
+        [actionInitiated]="actionInitiated"
+        [showOperationControls]="showOperationControls"
+        [widgetHasOperationControls]="widgetHasOperationControls"
+        [showConfigurationControl]="showConfigurationControl"
+        [showControls]="showControls"
+        (toggleConfigModeEvent)="toggleConfigMode()"
+        (removeEvent)="remove()"
+        (runEvent)="run()"
+        (stopEvent)="stop()">
     </adf-widget-header>
 
     <div class="ui divided selection list" *ngIf="!inConfig">
-
         <table class="ui padded table">
             <tr>
                 <td>
@@ -34,7 +38,7 @@
                     </button>
                 </td>
                 <td>
-                    <select  style="text-overflow: ellipsis; text-align:center; color:#2185D0; background: transparent;padding: 10px;font-size: 14px;line-height: 1; border-width:1px;border-style:solid; border-color:#2185D0; height: 37px;-webkit-appearance: none;
+                    <select style="text-overflow: ellipsis; text-align:center; color:#2185D0; background: transparent;padding: 10px;font-size: 14px;line-height: 1; border-width:1px;border-style:solid; border-color:#2185D0; height: 37px;-webkit-appearance: none;
    }">
                         <option value="none">Affinity</option>
                         <option value="lan"> lan</option>
@@ -42,7 +46,7 @@
                     </select>
                 </td>
                 <td>
-                    <select  style="text-overflow: ellipsis; text-align:center; color:#2185D0; background: transparent;padding: 10px;font-size: 14px;line-height: 1; border-width:1px;border-style:solid; border-color:#2185D0; height: 37px;-webkit-appearance: none;
+                    <select style="text-overflow: ellipsis; text-align:center; color:#2185D0; background: transparent;padding: 10px;font-size: 14px;line-height: 1; border-width:1px;border-style:solid; border-color:#2185D0; height: 37px;-webkit-appearance: none;
    }">
                         <option value="none">Proximity</option>
                         <option value="lan"> ny</option>
@@ -109,19 +113,19 @@
                 <tr>
                     <td>
                         <ngx-charts-bar-vertical
-                                [view]="view"
-                                [scheme]="colorScheme"
-                                [results]="single"
-                                [gradient]="gradient"
-                                [xAxis]="showXAxis"
-                                [yAxis]="showYAxis"
-                                [legend]="showLegend"
-                                [showXAxisLabel]="showXAxisLabel"
-                                [showYAxisLabel]="showYAxisLabel"
-                                [xAxisLabel]="xAxisLabel"
-                                [yAxisLabel]="yAxisLabel"
-                                [barPadding]="20"
-                                (select)="onSelect($event)">
+                            [view]="view"
+                            [scheme]="colorScheme"
+                            [results]="single"
+                            [gradient]="gradient"
+                            [xAxis]="showXAxis"
+                            [yAxis]="showYAxis"
+                            [legend]="showLegend"
+                            [showXAxisLabel]="showXAxisLabel"
+                            [showYAxisLabel]="showYAxisLabel"
+                            [xAxisLabel]="xAxisLabel"
+                            [yAxisLabel]="yAxisLabel"
+                            [barPadding]="20"
+                            (select)="onSelect($event)">
                         </ngx-charts-bar-vertical>
                     </td>
                 </tr>
@@ -133,20 +137,21 @@
     </div>
 
     <adf-dynamic-form *ngIf="inConfig"
-                      [propertyPages]="propertyPages"
-                      [instanceId]="instanceId"
-                      (updatePropertiesEvent)="updateProperties($event)">
+        [propertyPages]="propertyPages"
+        [instanceId]="instanceId"
+        (updatePropertiesEvent)="updateProperties($event)">
     </adf-dynamic-form>
 
     <adf-error-handler
-            [errorObject]="errorObject"
-            [errorExists]="errorExists">
+        [errorObject]="errorObject"
+        [errorExists]="errorExists">
     </adf-error-handler>
 
-    <div *ngIf="!inConfig" class="ui bottom right attached label" style="background-color: white"><i
-            class="large chevron icon" (click)="toggleAcordion()"
+    <div *ngIf="!inConfig" class="ui bottom right attached label" style="background-color: white">
+        <i
+            class="large chevron icon"
+            (click)="toggleAcordion()"
             [ngClass]="{'up':detailMenuOpen == 'in', 'down': detailMenuOpen=='out'}"
-            style="color:lightgrey"></i></div>
-
+            style="color:lightgrey"></i>
+    </div>
 </div>
-

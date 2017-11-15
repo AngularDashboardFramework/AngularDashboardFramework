@@ -18,10 +18,7 @@ export type D3 = typeof d3;
     templateUrl: './job-analysis-widget.component.html',
     styleUrls: ['./ja.css']
 })
-
 export class JobAnalysisWidgetComponent extends WidgetBase {
-
-
     showOperationControls = false;
 
     constructor(protected _runtimeService: RuntimeService,

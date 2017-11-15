@@ -1,29 +1,33 @@
-<div (mouseover)="showWidgetControls(true)"
-     (mouseleave)="showWidgetControls(false)"  class="ui segment left aligned widget" dnd-draggable
-     [dragEnabled]="true" [dragData]="instanceId" [dropZones]="['c0','c1','c2','c3','r0','r1']">
+<div
+    (mouseover)="showWidgetControls(true)"
+    (mouseleave)="showWidgetControls(false)"
+    class="ui segment left aligned widget"
+    dnd-draggable
+    [dragEnabled]="true"
+    [dragData]="instanceId"
+    [dropZones]="['c0','c1','c2','c3','r0','r1']">
 
     <a class="ui left corner label">
         <i class="circle icon" [ngClass]="{'green':inRun, 'yellow':!inRun}"></i>
     </a>
 
     <adf-widget-header
-            [title]="title"
-            [inRun]="inRun"
-            [inConfig]="inConfig"
-            [actionInitiated]="actionInitiated"
-            [showOperationControls]="showOperationControls"
-            [widgetHasOperationControls]="widgetHasOperationControls"
-            [showConfigurationControl]="showConfigurationControl"
-            [showControls]="showControls"
-            (toggleConfigModeEvent)="toggleConfigMode()"
-            (removeEvent)="remove()"
-            (runEvent)="run()"
-            (stopEvent)="stop()">
+        [title]="title"
+        [inRun]="inRun"
+        [inConfig]="inConfig"
+        [actionInitiated]="actionInitiated"
+        [showOperationControls]="showOperationControls"
+        [widgetHasOperationControls]="widgetHasOperationControls"
+        [showConfigurationControl]="showConfigurationControl"
+        [showControls]="showControls"
+        (toggleConfigModeEvent)="toggleConfigMode()"
+        (removeEvent)="remove()"
+        (runEvent)="run()"
+        (stopEvent)="stop()">
     </adf-widget-header>
 
     <div class="ui divided selection list" *ngIf="!inConfig" style="min-height: 250px">
         <div *ngFor="let serviceItem of serviceList" class="item">
-
             <div class="left floated content">
                <i *ngIf="serviceItem.processId" [@showHideAnimation] class="big green check icon"></i>
                 <i *ngIf="serviceItem.processId==''" [@showHideAnimation] class="big red minus circle"></i>
@@ -36,15 +40,13 @@
     </div>
 
     <adf-dynamic-form *ngIf="inConfig"
-                  [propertyPages]="propertyPages"
-                  [instanceId]="instanceId"
-                  (updatePropertiesEvent)="updateProperties($event)">
+        [propertyPages]="propertyPages"
+        [instanceId]="instanceId"
+        (updatePropertiesEvent)="updateProperties($event)">
     </adf-dynamic-form>
 
     <adf-error-handler
-            [errorObject]="errorObject"
-            [errorExists]="errorExists">
+        [errorObject]="errorObject"
+        [errorExists]="errorExists">
     </adf-error-handler>
-
 </div>
-
