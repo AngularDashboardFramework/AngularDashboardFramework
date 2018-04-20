@@ -6,7 +6,6 @@
     [dragEnabled]="true"
     [dragData]="instanceId"
     [dropZones]="['c0','c1','c2','c3','r0','r1']">
-
     <a class="ui left corner label">
         <i class="circle icon" [ngClass]="{'green':inRun, 'yellow':!inRun}"></i>
     </a>
@@ -32,7 +31,7 @@
                 <ngx-charts-bar-horizontal-normalized
                     [view]="view"
                     [scheme]="colorScheme"
-                    [results]="cpu"
+                    [results]="data"
                     [gradient]="gradient"
                     [xAxis]="showXAxis"
                     [yAxis]="showYAxis"
@@ -48,12 +47,6 @@
         </div>
     </div>
 
-    <adf-dynamic-form *ngIf="inConfig"
-        [propertyPages]="propertyPages"
-        [instanceId]="instanceId"
-        (updatePropertiesEvent)="updateProperties($event)">
-    </adf-dynamic-form>
-
     <adf-error-handler
         [errorObject]="errorObject"
         [errorExists]="errorExists">
@@ -61,3 +54,9 @@
 
     <adf-vis-drill-down-modal #drillDownPopUp></adf-vis-drill-down-modal>
 </div>
+
+<adf-dynamic-form *ngIf="inConfig"
+    [propertyPages]="propertyPages"
+    [instanceId]="instanceId"
+    (updatePropertiesEvent)="updateProperties($event)">
+</adf-dynamic-form>

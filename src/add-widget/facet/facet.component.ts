@@ -14,7 +14,7 @@ import {
     moduleId: module.id,
     selector: 'adf-facet',
     templateUrl: 'facet.component.html',
-    styleUrls: ['../styles.css'],
+    styleUrls: ['../styles.scss'],
     animations: [
         trigger('accordion', [
             state('in', style({

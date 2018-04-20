@@ -13,7 +13,6 @@ import {StatisticService} from './service';
     styleUrls: ['../_common/styles-widget.css']
 })
 export class StatisticWidgetComponent extends WidgetBase {
-
     widgetHasOperationControls = false;
 
     // runtime document subscription
@@ -57,7 +56,6 @@ export class StatisticWidgetComponent extends WidgetBase {
     }
 
     public updateData(data: any[]) {
-
         this._statisticService.get(this.resource).subscribe(data => {
                 this.data = data;
             },
@@ -65,7 +63,6 @@ export class StatisticWidgetComponent extends WidgetBase {
     }
 
     public updateProperties(updatedProperties: any) {
-
         /**
          * todo
          *  A similar operation exists on the procmman-config-service
@@ -75,14 +72,10 @@ export class StatisticWidgetComponent extends WidgetBase {
          *  config service or the property page service.
          *
          * **/
-
         const updatedPropsObject = JSON.parse(updatedProperties);
 
         this.propertyPages.forEach(function (propertyPage) {
-
-
             for (let x = 0; x < propertyPage.properties.length; x++) {
-
                 for (const prop in updatedPropsObject) {
                     if (updatedPropsObject.hasOwnProperty(prop)) {
                         if (prop === propertyPage.properties[x].key) {
@@ -98,7 +91,5 @@ export class StatisticWidgetComponent extends WidgetBase {
         this.title = updatedPropsObject.title;
         this.setEndPoint(updatedPropsObject.endpoint);
         this.updateData(null);
-
     }
-
 }

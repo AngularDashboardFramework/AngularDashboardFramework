@@ -3,9 +3,7 @@
  */
 import {PropertyBase} from './property-base';
 
-
 export class HiddenProperty extends PropertyBase<string> {
-
     controlType = 'hidden';
     type: string;
 
@@ -13,5 +11,4 @@ export class HiddenProperty extends PropertyBase<string> {
         super(options);
         this.type = 'hidden';
     }
-
 }

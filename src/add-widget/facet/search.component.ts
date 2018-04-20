@@ -8,7 +8,7 @@ import {Component, ElementRef} from '@angular/core';
     moduleId: module.id,
     selector: 'adf-search',
     templateUrl: 'search.component.html',
-    styleUrls: ['../styles.css']
+    styleUrls: ['../styles.scss']
 })
 export class SearchComponent {
     public query = '';

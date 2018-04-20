@@ -1,0 +1,129 @@
+{
+    "componentType": "PieChartWidgetComponent",
+    "name": "Pie Chart Widget",
+    "description": "Disk consumption information.",
+    "icon": "/assets/images/widgets/charts/pie.png",
+    "instanceId": -1,
+    "tags": [
+      {
+        "facet":"Chart",
+        "name": "pie"
+      },{
+        "facet":"Performance",
+        "name":"storage"
+      }
+    ],
+    "config": {
+      "propertyPages": [
+        {
+          "displayName": "Run",
+          "groupId": "run",
+          "position": 10,
+          "properties": [
+            {
+              "controlType": "dynamicdropdown",
+              "key": "endpoint",
+              "label": "API Endpoints",
+              "value": "",
+              "required": true,
+              "order": 4
+            },
+            {
+              "controlType": "textbox",
+              "key": "title",
+              "label": "Title",
+              "value": "Disk Consumption",
+              "required": true,
+              "order": 1
+            },
+            {
+              "controlType": "number",
+              "key": "threshold",
+              "label": "Consumed Threshold",
+              "value": 50,
+              "required": true,
+              "order": 3
+            },
+            {
+              "controlType": "dropdown",
+              "key": "diskid",
+              "label": "Disk Id",
+              "value": "",
+              "required": true,
+              "order": 2,
+              "options": [
+                {
+                  "key": "2344112gdfgdfg",
+                  "value": "2344112gdfgdfg"
+                },
+                {
+                  "key": "g3g3egegre",
+                  "value": "g3g3egegre"
+                },
+                {
+                  "key": "8435f34",
+                  "value": "8435f34"
+                }
+
+              ]
+            },
+            {
+              "controlType": "hidden",
+              "key": "instanceId",
+              "label": "",
+              "value": 2,
+              "required": true,
+              "order": -1
+            }
+          ]
+        },
+        {
+          "displayName": "Thresholds",
+          "groupId": "threshold",
+          "position": 10,
+          "properties": [
+            {
+              "controlType": "number",
+              "key": "frequency",
+              "label": "Frequency",
+              "value": 30,
+              "required": true,
+              "order": 3
+            },
+            {
+              "controlType": "number",
+              "key": "retentionH",
+              "label": "Retention High",
+              "value": 30,
+              "required": true,
+              "order": 4
+            },
+            {
+              "controlType": "number",
+              "key": "retentionL",
+              "label": "Retention Low",
+              "value": 180,
+              "required": true,
+              "order": 4
+            }
+          ]
+        },
+        {
+          "displayName": "Chart",
+          "groupId": "chart",
+          "position": 11,
+          "properties": [
+            {
+              "controlType": "checkbox",
+              "type": "checkbox",
+              "key": "chart_properties",
+              "label": "Show chart details",
+              "value": true,
+              "required": true,
+              "order": 3
+            }
+          ]
+        }
+      ]
+    }
+  }

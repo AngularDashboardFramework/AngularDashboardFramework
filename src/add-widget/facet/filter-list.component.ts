@@ -8,12 +8,12 @@ import {Facet, Tag} from './facet-search-model';
     moduleId: module.id,
     selector: 'adf-filter-list',
     templateUrl: 'filter-list.component.html',
-    styleUrls: ['../styles.css']
+    styleUrls: ['../styles.scss']
 })
 export class FilterListComponent {
     @Output()
     tagSelectEvent: EventEmitter<any> = new EventEmitter();
-    
+
     facet_tags: Array<Facet> = [];
 
     constructor(private _addWidgetService: AddWidgetService) {
@@ -24,7 +24,7 @@ export class FilterListComponent {
         this._addWidgetService.getWidgetLibrary().subscribe(data => {
             const me = this;
 
-            data.forEach(function (item) {
+            (<any[]>data).forEach(function (item) {
                 me.formatAndUpdateTagList(item.tags);
             });
         });

@@ -9,6 +9,7 @@ import 'rxjs/add/observable/empty';
 
 import { defaultBoard } from '../board/models/board-default';
 import { sampleBoardCollection } from '../board/models/board-collection-sample';
+import { WidgetService } from './widget.service';
 
 @Injectable()
 export class ConfigurationService {
@@ -26,26 +27,39 @@ export class ConfigurationService {
     remoteConfigurationRepository = 'http://localhost:8090/api/store';
 
     constructor(
-        private _http: Http
+        private _http: Http,
+        private _widgetService: WidgetService
     ) {
-
         Object.assign(this, {defaultBoard});
         Object.assign(this, {sampleBoardCollection});
+
+        this._widgetService.DeleteBoard$.subscribe(board => {
+            this.deleteBoard(board);
+        });
+
+        this._widgetService.SaveBoard$.subscribe(board => {
+            this.saveBoard(board).subscribe(result => {
+                    /**
+                     * todo - create popup/toast to show configuration saved message
+                     */
+                    console.debug('The following configuration model was saved!');
+                },
+                error => console.error('Error' + error),
+                () => console.debug('Saving configuration to store!')
+            );
+        });
 
         this.seedLocalStorageWithSampleBoardCollection();
     }
 
     private seedLocalStorageWithSampleBoardCollection() {
-
         if (localStorage.getItem('board') === null) {
             localStorage.setItem('board', JSON.stringify(this.sampleBoardCollection));
         }
     }
 
     public getBoardByTitle(title: string) {
-
         if (this.demo) {
-
             return new Observable(observer => {
                 const board_collection = JSON.parse(localStorage.getItem('board'));
 
@@ -61,13 +75,11 @@ export class ConfigurationService {
                 };
             });
         } else {
-
             return this._http.get(this.remoteConfigurationRepository + '/' + name).map(res => res.json());
         }
     }
 
     public getBoards() {
-
         if (this.demo) {
             return new Observable(observer => {
                 let data = JSON.parse(localStorage.getItem('board'));
@@ -89,7 +101,6 @@ export class ConfigurationService {
     }
 
     public saveBoard(board: any) {
-
         this.model = board;
 
         if (Object.keys(board).length === 0 && board.constructor === Object) {
@@ -105,7 +116,6 @@ export class ConfigurationService {
 
                 // get a collection object and add board to it
                 if ((board_collection = JSON.parse(localStorage.getItem('board'))) == null) {
-
                     board_collection = {
                         board: []
                     };
@@ -119,11 +129,8 @@ export class ConfigurationService {
 
                 return () => {
                 };
-
             });
-
         } else {
-
             /**
              * todo - a delete must happen here
              *
@@ -134,32 +141,28 @@ export class ConfigurationService {
         }
     }
 
-    private delete(board_collection: any) {
-
-        localStorage.removeItem('board');
-        localStorage.setItem('board', JSON.stringify(board_collection));
-
-    }
-
     private deleteBoardFromLocalStore(boardTitle: string) {
         const board_collection = JSON.parse(localStorage.getItem('board'));
 
         let index;
-        if (board_collection && ( index = board_collection['board'].findIndex(item => {
+
+        if (board_collection && (index = board_collection['board'].findIndex(item => {
                 return item.title === boardTitle;
             })) >= 0) {
 
             board_collection['board'].splice(index, 1);
 
             this.delete(board_collection);
-
         }
     }
 
+    private delete(board_collection: any) {
+        localStorage.removeItem('board');
+        localStorage.setItem('board', JSON.stringify(board_collection));
+    }
+
     public deleteBoard(boardTitle: string) {
-
         if (this.demo) {
-
             return new Observable(observer => {
                 this.deleteBoardFromLocalStore(boardTitle);
 
@@ -181,65 +184,10 @@ export class ConfigurationService {
         });
     }
 
-    /*
-     when a widget instance's property page is updated and saved, the change gets communicated to all
-     widgets. The widget instance id that caused the change will update their current instance. todo - this might be able to be
-     improved. For now the utility of this approach allows the configuration service to capture the property page change in a way
-     that allows us to update the persisted board model.
-     */
-    notifyWidgetOnPropertyChange(widgetConfig: string, instanceId: number) {
-        this.savePropertyPageConfigurationToStore(widgetConfig, instanceId);
-    }
 
     setCurrentModel(_currentModel: any) {
         this.currentModel = _currentModel;
     }
 
-    savePropertyPageConfigurationToStore(widgetConfig: string, instanceId: number) {
-        this.currentModel.rows.forEach(row => {
-            row.columns.forEach(column => {
-                if (column.widgets) {
-                    column.widgets.forEach(widget => {
-                        this.updateProperties(widgetConfig, widget, instanceId);
 
-                    });
-                }
-            });
-        });
-
-        this.saveBoard(this.currentModel).subscribe(result => {
-                /**
-                 * todo - create popup/toast to show configuration saved message
-                 */
-                console.debug('The following configuration model was saved!');
-
-            },
-            error => console.error('Error' + error),
-            () => console.debug('Saving configuration to store!')
-	);
-
-
-    }
-
-    updateProperties(updatedProperties: any, widget: any, instanceId: number) {
-
-        const updatedPropsObject = JSON.parse(updatedProperties);
-
-        if (widget.instanceId === instanceId) {
-
-            widget.config.propertyPages.forEach(function (propertyPage) {
-
-                for (let x = 0; x < propertyPage.properties.length; x++) {
-
-                    for (const prop in updatedPropsObject) {
-                        if (updatedPropsObject.hasOwnProperty(prop)) {
-                            if (prop === propertyPage.properties[x].key) {
-                                propertyPage.properties[x].value = updatedPropsObject[prop];
-                            }
-                        }
-                    }
-                }
-            });
-        }
-    }
 }

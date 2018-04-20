@@ -1,6 +1,6 @@
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 //import { RoutingModule } from './routing.module';
@@ -14,12 +14,17 @@ import { AdfModule, BoardModule } from 'ng-adf';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        //RoutingModule,
+        // RoutingModule,
         AdfModule,
-        //BoardModule
+        // BoardModule
     ],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule {
+    constructor() {
+
+    }
 }

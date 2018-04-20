@@ -1,4 +1,4 @@
-@import "~ng2-dnd/style";
+@import "~ng2-dnd/bundles/style";
 
 .ui.info.message {
     background-color: #C8CBCE;
@@ -17,3 +17,6 @@
     min-height:370px;
 }
 
+.show-targets {
+    border: dashed;
+}

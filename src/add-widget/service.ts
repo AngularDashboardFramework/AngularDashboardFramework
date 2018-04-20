@@ -2,15 +2,14 @@
  * Created by jayhamilton on 2/7/17.
  */
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AddWidgetService {
-    constructor(private _http: Http) {}
+    constructor(private _http: HttpClient) {}
 
     getWidgetLibrary() {
-        return this._http.request('/assets/api/widget-library-model.json')
-            .map(res => res.json());
+        return this._http.get('/assets/api/builder/widget-library-model.json');
     }
 }

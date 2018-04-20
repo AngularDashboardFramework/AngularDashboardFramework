@@ -11,10 +11,10 @@ import {
 
 import {FormGroup} from '@angular/forms';
 
-import {PropertyControlService} from './property-control.service';
-import {ConfigurationService} from '../services/configuration.service';
-import {EndPointService} from '../configuration/tab-endpoint/endpoint.service';
-import {EndPoint} from '../configuration/tab-endpoint/endpoint.model';
+import { PropertyControlService } from './property-control.service';
+import { WidgetService } from '../services/widget.service';
+import { EndPointService } from '../configuration/tab-endpoint/endpoint.service';
+import { EndPoint } from '../configuration/tab-endpoint/endpoint.model';
 
 
 /* solves error: Expression has changed after it was checked exception resolution - https://www.youtube.com/watch?v=K_BRcal-JfI*/
@@ -71,7 +71,7 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
 
     constructor(
         private pcs: PropertyControlService,
-        private configService: ConfigurationService,
+        private widgetService: WidgetService,
         private endPointService: EndPointService,
         private changeDetectionRef: ChangeDetectorRef
     ) {
@@ -101,7 +101,7 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
         this.updatePropertiesEvent.emit(this.payLoad);
 
         console.debug('Sending configuration to the config service!');
-        this.configService.notifyWidgetOnPropertyChange(this.payLoad, this.instanceId);
+        this.widgetService.notifyWidgetOnPropertyChange(this.payLoad, this.instanceId);
 
         if (this.payLoad) {
             this.showMessage = true;
@@ -120,3 +120,4 @@ export class DynamicFormComponent implements OnInit, AfterViewInit {
         return this.form.valid;
     }
 }
+

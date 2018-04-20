@@ -13,19 +13,20 @@ import {NewsService} from './service';
     styleUrls: ['../_common/styles-widget.css']
 })
 export class NewsWidgetComponent extends WidgetBase {
-
     // runtime document subscription
     news: any;
     resource: string;
 
     widgetHasOperationControls = false;
 
-    constructor(protected _runtimeService: RuntimeService,
-                protected _widgetInstanceService: WidgetInstanceService,
-                protected _propertyService: WidgetPropertyService,
-                protected _endPointService: EndPointService,
-                protected _changeDetectionRef: ChangeDetectorRef,
-                protected _newsService: NewsService) {
+    constructor(
+        protected _runtimeService: RuntimeService,
+        protected _widgetInstanceService: WidgetInstanceService,
+        protected _propertyService: WidgetPropertyService,
+        protected _endPointService: EndPointService,
+        protected _changeDetectionRef: ChangeDetectorRef,
+        protected _newsService: NewsService
+    ) {
         super(_runtimeService,
             _widgetInstanceService,
             _propertyService,
@@ -57,7 +58,6 @@ export class NewsWidgetComponent extends WidgetBase {
     }
 
     public updateData(data: any[]) {
-
         this._newsService.get().subscribe(news => {
                 this.news = news;
             },
@@ -65,7 +65,6 @@ export class NewsWidgetComponent extends WidgetBase {
     }
 
     public updateProperties(updatedProperties: any) {
-
         /**
          * todo
          *  A similar operation exists on the procmman-config-service
@@ -75,14 +74,10 @@ export class NewsWidgetComponent extends WidgetBase {
          *  config service or the property page service.
          *
          * **/
-
         const updatedPropsObject = JSON.parse(updatedProperties);
 
         this.propertyPages.forEach(function (propertyPage) {
-
-
             for (let x = 0; x < propertyPage.properties.length; x++) {
-
                 for (const prop in updatedPropsObject) {
                     if (updatedPropsObject.hasOwnProperty(prop)) {
                         if (prop === propertyPage.properties[x].key) {
@@ -98,5 +93,4 @@ export class NewsWidgetComponent extends WidgetBase {
         this.setEndPoint(updatedPropsObject.endpoint);
         this.updateData(null);
     }
-
 }

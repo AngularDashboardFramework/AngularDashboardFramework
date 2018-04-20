@@ -1,18 +1,19 @@
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "outDir": "../out-tsc/app",
-    "baseUrl": "./",
-    "module": "es2015",
-    "paths": {
-      "@angular/*": [
-        "../node_modules/@angular/*"
-      ]
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../out-tsc/app",
+        "baseUrl": "./",
+        "module": "es2015",
+        "typeRoots": [ "../node_modules/@types" ],
+        "paths": {
+            "@angular/*": [
+                "../node_modules/@angular/*"
+            ]
+        },
+        "types": ["node"]
     },
-    "types": []
-  },
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts"
-  ]
+    "exclude": [
+        "test.ts",
+        "**/*.spec.ts"
+    ]
 }

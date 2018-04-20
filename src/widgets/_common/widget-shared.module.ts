@@ -1,9 +1,9 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {WidgetHeaderComponent} from './widget-header.component';
-import {WidgetOperationComponent} from './widget-operation-control.component';
-import {HelpModalComponent} from './help-modal.component';
-import {VisDrillDownComponent} from './vis-drill-down.component';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { WidgetHeaderComponent } from './widget-header.component';
+import { WidgetOperationComponent } from './widget-operation-control.component';
+import { HelpModalComponent } from './help-modal.component';
+import { VisDrillDownComponent } from './vis-drill-down.component';
 
 @NgModule({
     imports: [

@@ -1,8 +1,9 @@
-import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { WidgetInstanceService } from './grid.service';
 import { ConfigurationService } from '../services/configuration.service';
+import { WidgetService } from '../services/widget.service';
 import { WidgetConfigModel } from '../widgets/_common/widget-config-model';
 
 @Component({
@@ -17,7 +18,7 @@ export class GridComponent implements OnInit {
     @Output()
     boardUpdateEvent: EventEmitter<any> = new EventEmitter();
 
-    model: any = {};
+    currentModel: any = {};
 
     noWidgets = true;
 
@@ -26,7 +27,6 @@ export class GridComponent implements OnInit {
     dropZone1: any = null;
     dropZone2: any = null;
     dropZone3: any = null;
-
 
     gridInsertionPosition = {
         x: 0,
@@ -41,9 +41,9 @@ export class GridComponent implements OnInit {
      */
     constructor(
         private _widgetInstanceService: WidgetInstanceService,
-        private _configurationService: ConfigurationService
+        private _configurationService: ConfigurationService,
+        private _widgetService: WidgetService
     ) {
-
         this._widgetInstanceService.listenForInstanceRemovedEventsFromWidgets().subscribe((message: string) => {
             this.saveBoard('Widget Removed From Board: ' + message, false)
         });
@@ -52,27 +52,21 @@ export class GridComponent implements OnInit {
     }
 
     ngOnInit() {
-    
     }
 
     updateWidgetPositionInBoard($event, columnNumber, rowNumber, type) {
-
         this.getModel().rows.forEach(row => {
-
             let colpos = 0;
 
             row.columns.forEach(column => {
-
                 let widgetpos = 0;
 
                 if (column.widgets) {
-
                     column.widgets.forEach(widget => {
 
                         if (widget.instanceId === $event.dragData) {
 
                             const widget = column.widgets.splice(widgetpos, 1);
-
 
                             if (!this.getModel().rows[rowNumber].columns[columnNumber].widgets) {
                                 this.getModel().rows[rowNumber].columns[columnNumber].widgets = [];
@@ -88,6 +82,10 @@ export class GridComponent implements OnInit {
                 }
             });
         });
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+
     }
 
     public createBoard(name: string) {
@@ -148,8 +146,12 @@ export class GridComponent implements OnInit {
         this.setModel(_model);
 
         // clear temporary object
-        for (const member in _model) {
-            delete _model[member];
+        if (_model) {
+            for (const member in _model) {
+                if (member) {
+                    delete _model[member];
+                }
+            }
         }
 
         this.saveBoard('Grid Layout Update', false);
@@ -193,7 +195,7 @@ export class GridComponent implements OnInit {
     }
 
     private fillGridStructure(_model, columns: any[], counter: number) {
-        let me = this;
+        const me = this;
 
         _model.rows.forEach(function (row) {
             row.columns.forEach(function (column) {
@@ -222,7 +224,7 @@ export class GridComponent implements OnInit {
         }
     }
 
-    public enableConfigMode() {
+    public enableConfigMode(): void {
         this._widgetInstanceService.enableConfigureMode();
     }
 
@@ -240,8 +242,8 @@ export class GridComponent implements OnInit {
         });
     }
 
-    private loadBoard(boardTitle: string) {
-        this.clearGridModelAndWidgetInstanceStructures();
+    public loadBoard(boardTitle: string) {
+        // this.clearGridModelAndWidgetInstanceStructures();
 
         this._configurationService.getBoardByTitle(boardTitle).subscribe(board => {
                 this.setModel(board);
@@ -255,8 +257,8 @@ export class GridComponent implements OnInit {
             });
     }
 
-    private loadDefaultBoard() {
-        this.clearGridModelAndWidgetInstanceStructures();
+    public loadDefaultBoard() {
+        // this.clearGridModelAndWidgetInstanceStructures();
 
         this._configurationService.getDefaultBoard().subscribe(board => {
             console.log('loading default board');
@@ -271,7 +273,6 @@ export class GridComponent implements OnInit {
         this.clearGridModelAndWidgetInstanceStructures();
 
         this._configurationService.getDefaultBoard().subscribe(res => {
-
             this.setModel(res);
             this.getModel().title = name;
             this.getModel().id = new Date().getTime();
@@ -301,14 +302,14 @@ export class GridComponent implements OnInit {
         );
     }
 
-    private clearGridModelAndWidgetInstanceStructures() {
+    private clearGridModelAndWidgetInstanceStructures(): void {
         // clear widgetInstances
         this._widgetInstanceService.clearAllInstances();
 
         // clear current model
         for (const prop in this.getModel()) {
-            if (this.model.hasOwnProperty(prop)) {
-                delete this.model[prop];
+            if (this.currentModel.hasOwnProperty(prop)) {
+                delete this.currentModel[prop];
             }
         }
     }
@@ -338,10 +339,10 @@ export class GridComponent implements OnInit {
     }
 
     public setModel(model: any) {
-        this.model = Object.assign({}, model);
+        this.currentModel = Object.assign({}, model);
     }
 
-    public getModel() {
-        return this.model;
+    public getModel(): any {
+        return this.currentModel;
     }
 }

@@ -5,12 +5,13 @@ import { HttpModule } from '@angular/http';
 import { MatButtonModule, MatIconModule } from '@angular/material';
 
 import { GridModule } from '../grid/grid.module';
-import { WidgetModule } from '../widgets/widget.module';
-import { AddWidgetService } from '../add-widget/service';
 
+import { WidgetModule } from '../widgets/widget.module';
+
+import { AddWidgetModule } from '../add-widget/add-widget.module';
+import { AddWidgetService } from '../add-widget/service';
 import { ConfigurationModule } from '../configuration/configuration.module';
 import { LayoutModule } from '../layout/layout.module';
-import { AddWidgetModule } from '../add-widget/add-widget.module';
 import { NotificationModule } from '../notification/notification.module';
 
 import { WidgetPropertyService } from '../widgets/_common/widget-property.service';
@@ -18,15 +19,16 @@ import { WidgetPropertyService } from '../widgets/_common/widget-property.servic
 import { ConfigurationService } from '../services/configuration.service';
 import { RuntimeService } from '../services/runtime.service';
 import { EndPointService } from '../configuration/tab-endpoint/endpoint.service';
+
 import { BoardComponent } from './board.component';
 
-import { ObservableWebSocketService } from '../services/websocket-service';
+import { ObservableWebSocketService } from '../services/websocket.service';
 
 import { AreaChartWidgetComponent } from '../widgets/charts/area/area-chart-widget.component';
 import { BarHorizontalChartWidgetComponent } from '../widgets/charts/bar-horizontal/bar-horizontal-chart-widget.component';
 import { BarVerticalChartWidgetComponent } from '../widgets/charts/bar-vertical/bar-vertical-chart-widget.component';
-import { LineChartWidgetComponent } from '../widgets/charts/line/line-chart-widget.component';
 import { LinearGaugeChartWidgetComponent } from '../widgets/charts/linear-gauge/linear-gauge-chart-widget.component';
+import { LineChartWidgetComponent } from '../widgets/charts/line/line-chart-widget.component';
 import { PieChartWidgetComponent } from '../widgets/charts/pie/pie-chart-widget.component';
 
 import { EdgeServiceListWidgetComponent } from '../widgets/edge-service-list/edge-service-list-widget.component';
@@ -82,7 +84,6 @@ import { ServiceListWidgetComponent } from '../widgets/service-list/service-list
         ObservableWebSocketService
     ]
 })
-
 export class BoardModule {
     static forRoot(): ModuleWithProviders {
       return {
@@ -90,4 +91,4 @@ export class BoardModule {
         providers: []
       };
     }
-  }
+}

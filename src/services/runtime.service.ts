@@ -2,10 +2,11 @@
  * Created by jayhamilton on 1/18/17.
  */
 import { Injectable} from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/Observable/ErrorObservable';
+import { catchError, map, tap } from 'rxjs/operators';
 import * as io from 'socket.io-client';
 import { ErrorHandler } from '../error/error-handler';
 
@@ -13,7 +14,7 @@ import { ErrorHandler } from '../error/error-handler';
 @Injectable()
 export class RuntimeService {
 
-    static handleError(error: Response | any) {
+    static handleError(err: HttpErrorResponse | any) {
 
         const errMsg: any = {
             status: '-1',
@@ -21,21 +22,32 @@ export class RuntimeService {
             resource: ''
         };
 
-        if (error instanceof Response) {
-            errMsg.status = error.status;
-            errMsg.statusText = error.statusText;
-            errMsg.resource = error.url;
+        if (err.error instanceof Error) {
+            errMsg.statusText = err.error.message;
+            console.error('Client error');
 
         } else {
-            errMsg.statusText = error.message ? error.message : error.toString();
+            errMsg.status = err.status;
+            errMsg.statusText = 'A backend error occurred';
+            errMsg.resource = err.url;
+            console.log('Backend error');
         }
+        console.error(err);
 
         return Observable.throw(ErrorHandler.getErrorObject(errMsg));
 
     }
 
-    constructor(private _http: Http) {
+    constructor(private _http: HttpClient) {
     }
 
+    testURLResponse(url: string) {
+        return this._http.get(url, {responseType: 'text'})
+            //.catch(RuntimeService.handleError)
+            .pipe(
+                catchError(RuntimeService.handleError)
+            );
+
+    }
 }
 

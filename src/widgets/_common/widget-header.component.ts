@@ -43,6 +43,9 @@ export class WidgetHeaderComponent {
     toggleConfigModeEvent: EventEmitter<any> = new EventEmitter();
 
     @Output()
+    showConfigEvent: EventEmitter<any> = new EventEmitter();
+
+    @Output()
     runEvent: EventEmitter<any> = new EventEmitter();
 
     @Output()
@@ -57,6 +60,10 @@ export class WidgetHeaderComponent {
 
     toggleConfigMode() {
         this.toggleConfigModeEvent.emit();
+    }
+
+    showConfig() {
+        this.showConfigEvent.emit();
     }
 
     run() {

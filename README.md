@@ -39,7 +39,7 @@ Features:
 ![Image of Filter Board To Screen](https://github.com/catalogicsoftware/Angular-2-Dashboard-Framework/blob/master//documentation/gifs/filter.gif)
 
 
-# Ng=ADF
+# NgADF
 
 The example project "example/" was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.0.
 

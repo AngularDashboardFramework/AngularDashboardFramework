@@ -4,9 +4,9 @@ import * as d3 from 'd3-shape';
 import { WidgetInstanceService } from '../../../grid/grid.service';
 import { RuntimeService } from '../../../services/runtime.service';
 import { WidgetPropertyService } from '../../_common/widget-property.service';
-import { EndPointService } from '../../../configuration/tab-endpoint/endpoint.service';
-
 import { WidgetBase } from '../../_common/widget-base';
+
+import { EndPointService } from '../../../configuration/tab-endpoint/endpoint.service';
 
 import { AreaChartWidgetService } from './area-chart-widget.service';
 
@@ -89,6 +89,7 @@ export class AreaChartWidgetComponent extends WidgetBase {
          * **/
 
         const updatedPropsObject = JSON.parse(updatedProperties);
+
         this.propertyPages.forEach(function (propertyPage) {
             for (let x = 0; x < propertyPage.properties.length; x++) {
                 for (const prop in updatedPropsObject) {

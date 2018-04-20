@@ -1,0 +1,51 @@
+{
+    "componentType": "NewsWidgetComponent",
+    "name": "News",
+    "description": "What's new",
+    "icon": "assets/images/news.png",
+    "instanceId": -1,
+    "tags": [
+      {
+        "facet":"Informational",
+        "name": "news"
+      },{
+        "facet":"List",
+        "name":"news"
+      }
+    ],
+    "config": {
+      "propertyPages": [
+        {
+          "displayName": "Run",
+          "groupId": "run",
+          "position": 10,
+          "properties": [
+            {
+              "controlType": "dynamicdropdown",
+              "key": "endpoint",
+              "label": "News URL",
+              "value": "news",
+              "required": true,
+              "order": 3
+            },
+            {
+              "controlType": "textbox",
+              "key": "title",
+              "label": "Title",
+              "value": "News",
+              "required": true,
+              "order": 1
+            },
+            {
+              "controlType": "hidden",
+              "key": "instanceId",
+              "label": "",
+              "value": 2,
+              "required": true,
+              "order": -1
+            }
+          ]
+        }
+      ]
+    }
+  }

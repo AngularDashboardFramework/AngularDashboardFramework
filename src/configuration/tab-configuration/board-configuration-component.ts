@@ -1,19 +1,15 @@
 /**
  * Created by jayhamilton on 1/24/17.
  */
-import {
-    ViewChild, ElementRef, AfterViewInit, Component, Output, EventEmitter, Input
-} from '@angular/core';
+import { ViewChild, ElementRef, AfterViewInit, Component, Output, EventEmitter, Input } from '@angular/core';
 
-import {
-     style, state, trigger, animate, transition
-} from '@angular/animations';
+import { style, state, trigger, animate, transition } from '@angular/animations';
 
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/take';
-import { Tab, tabsModel } from '../../board/models/board-configtabs.model';
-import {ConfigurationService} from '../../services/configuration.service';
+
+import { tabsModel } from '../../board/models/board-configtabs.model';
 
 declare var jQuery: any;
 
@@ -31,7 +27,9 @@ declare var jQuery: any;
     selector: 'adf-board-configuration-modal',
     moduleId: module.id,
     templateUrl: './board-configuration.html',
-    styleUrls: ['./styles-board.css'],
+    styleUrls: [
+        './styles-board.css'
+    ],
     animations: [
         trigger('contentSwitch', [
             state('inactive', style({
@@ -71,13 +69,14 @@ export class BoardConfigurationComponent implements AfterViewInit {
     currentTab: string;
     tabsModel: any[];
 
-    constructor(private _configurationService: ConfigurationService) {
+    constructor() {
         Object.assign(this, {tabsModel});
         this.setCurrentTab(0);
     }
 
     popConfigModal(icon: string, header: string, message: string, durationms: number) {
         this.showMessageModal(icon, header, message);
+
         Observable.interval(durationms).take(1).subscribe(
             () => {
                 this.hideMessageModal();

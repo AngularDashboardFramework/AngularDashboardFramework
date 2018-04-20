@@ -8,7 +8,7 @@ import { DndModule } from 'ng2-dnd';
 import { DynamicFormModule } from '../dynamic-form/dynamic-form-module';
 
 import { GridComponent } from './grid.component';
-import { CellComponent } from './cell.component';
+import { CellComponent } from './widget.component';
 
 import { WidgetInstanceService } from './grid.service';
 import { ConfigurationService } from '../services/configuration.service';

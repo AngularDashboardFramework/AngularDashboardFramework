@@ -1,18 +1,15 @@
 /**
  * Created by jayhamilton on 1/24/17.
  */
-import {
-    ViewChild, ElementRef, AfterViewInit, Component
-} from '@angular/core';
+import { ViewChild, ElementRef, AfterViewInit, Component } from '@angular/core';
 
 import {
     style, state, trigger, animate, transition
 } from '@angular/animations';
 
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/take';
-
 
 declare var jQuery: any;
 
@@ -31,7 +28,6 @@ declare var jQuery: any;
     moduleId: module.id,
     templateUrl: './vis-drill-down.html',
     animations: [
-
         trigger('contentSwitch', [
             state('inactive', style({
                 opacity: 0
@@ -67,7 +63,6 @@ export class VisDrillDownComponent implements AfterViewInit {
     constructor() {
 
     }
-
 
     showMessageModal(icon: string, header: string, message: string) {
         this.modalicon = icon;

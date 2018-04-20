@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Layout } from '../layout/layout';
 
@@ -11,15 +11,18 @@ import { ConfigurationService } from '../services/configuration.service';
 @Component({
     selector: 'adf-board',
     templateUrl: './board.component.html',
-    styleUrls: ['./styles-board.css']
+    styleUrls: [
+        './styles-board.css'
+    ]
 })
 export class BoardComponent implements OnInit {
     @Input()
     layouts: Layout[];
 
+
     dashboardList: any[] = [];
 
-    selectedBoard = "";
+    selectedBoard = '';
 
     constructor(
         private _configurationService: ConfigurationService
@@ -27,13 +30,13 @@ export class BoardComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.updateDashboardMenu("");
+        this.updateDashboardMenu('');
     }
 
     updateDashboardMenu(selectedBoard: string) {
         this._configurationService.getBoards().subscribe(data => {
-
             const me = this;
+
             if (data && data instanceof Array && data.length) {
                 this.dashboardList.length = 0;
 

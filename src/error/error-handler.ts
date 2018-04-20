@@ -23,6 +23,8 @@ export class ErrorHandler {
      */
     static getSolutionList(errMsg: string) {
 
+        console.error("ERROR CONDITION:  " + errMsg )
+
         const solutionList: SolutionObject[] = [];
 
         switch (ErrorHandler.getErrorType(errMsg.toLowerCase())) {

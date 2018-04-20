@@ -1,12 +1,9 @@
 /**
  * Created by jayhamilton on 1/24/17.
  */
-import {
-    ViewChild, ElementRef, OnInit, AfterViewInit, Component, Input, Output, EventEmitter
-} from '@angular/core';
+import { ViewChild, ElementRef, OnInit, AfterViewInit, Component, Input, Output, EventEmitter } from '@angular/core';
 
-import {Observable} from 'rxjs/Observable';
-
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/take';
 
@@ -28,7 +25,7 @@ declare var jQuery: any;
     selector: 'adf-board-layout-manager-modal',
     moduleId: module.id,
     templateUrl: './layout.component.html',
-    styleUrls: ['./styles.css']
+    styleUrls: ['./styles.scss']
 })
 export class BoardLayoutManagerComponent implements OnInit, AfterViewInit {
     @Input()
@@ -37,9 +34,9 @@ export class BoardLayoutManagerComponent implements OnInit, AfterViewInit {
     @Output()
     boardLayoutChangeEvent: EventEmitter<any> = new EventEmitter();
 
-    error: string = "";
+    error: string = '';
 
-    defaultLayout: string = "boardLayouts";
+    defaultLayout: string = 'boardLayouts';
 
     modalicon: string;
     modalheader: string;

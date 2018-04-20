@@ -45,6 +45,8 @@ export class EndPointComponent {
     }
 
     updateEndPoint(endPoint: EndPoint) {
+        this.deleteEndPoint(endPoint);
+        this.createEndPoint(endPoint);
     }
 
     deleteEndPoint(endPoint: EndPoint) {
@@ -89,7 +91,8 @@ export class EndPointComponent {
         };
 
         // persist in memory structure
-        this._endPointService.saveEndPoint(endpointModel).subscribe(data => {
+        this._endPointService.saveEndPoint(endpointModel)
+            .subscribe(data => {
             /**
              * todo - error handling
              */

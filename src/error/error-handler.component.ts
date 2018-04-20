@@ -1,22 +1,16 @@
-import {
-    Component, Input
-} from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { style, trigger, animate, transition } from '@angular/animations';
 
-import {
-    style, trigger, animate, transition
-} from '@angular/animations';
-
-import {ErrorObject} from './error-model';
-
-
+import { ErrorObject } from './error-model';
 
 @Component({
     moduleId: module.id,
     selector: 'adf-error-handler',
     templateUrl: './error-handler.component.html',
-    styleUrls: ['./styles-error.css'],
+    styleUrls: [
+    	'./styles-error.css'
+    ],
     animations: [
-
         trigger('error', [
             transition(':enter', [
                 style({opacity: 0}),
@@ -36,10 +30,8 @@ export class ErrorHandlerComponent {
     constructor() {
 
     }
-    public closeMessage() {
 
+    public closeMessage() {
         this.errorExists = false;
     }
-
 }
-

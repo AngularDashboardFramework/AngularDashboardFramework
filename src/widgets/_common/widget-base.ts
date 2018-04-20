@@ -114,7 +114,6 @@ export abstract class WidgetBase implements IWidget, OnDestroy, OnInit, AfterVie
 
     public toggleConfigMode() {
         if (!this.inConfig) {
-
             this.initializeProperties();
         }
 

@@ -1,18 +1,15 @@
 /**
  * Created by jayhamilton on 1/24/17.
  */
-import {
-    ViewChild, ElementRef, AfterViewInit, Component, Output, EventEmitter
-} from '@angular/core';
+import { ViewChild, ElementRef, AfterViewInit, Component, Output, EventEmitter } from '@angular/core';
 
-import {
-    style, trigger, animate, transition
-} from '@angular/animations';
+import { style, trigger, animate, transition } from '@angular/animations';
 
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/take';
-import {AddWidgetService} from './service';
+
+import { AddWidgetService } from './service';
 
 declare var jQuery: any;
 
@@ -30,7 +27,7 @@ declare var jQuery: any;
     selector: 'adf-add-widget-modal',
     moduleId: module.id,
     templateUrl: './add-widget.component.html',
-    styleUrls: ['./styles.css'],
+    styleUrls: ['./styles.scss'],
     animations: [
         trigger(
             'showHideAnimation',
@@ -113,7 +110,7 @@ export class AddWidgetComponent implements AfterViewInit {
             if (!filterList.length) {
                 return true;
             } else {
-                widget.tags.forEach(tag => {
+                (<any[]>widget.tags).forEach(tag => {
                     filterList.forEach(filter => {
                         if (tag.name.toLocaleLowerCase() === filter.toLocaleLowerCase()) {
                             tagFound = true;
@@ -133,7 +130,7 @@ export class AddWidgetComponent implements AfterViewInit {
 
             const me = this;
 
-            data.forEach(function (item) {
+            (<any[]>data).forEach(function (item) {
                 me.widgetLibraryData.push(item);
                 me.widgetLibraryDataFiltered.push(item);
             });

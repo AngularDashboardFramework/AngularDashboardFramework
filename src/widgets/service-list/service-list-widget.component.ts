@@ -31,7 +31,6 @@ import {WidgetBase} from '../_common/widget-base';
             ])]
 })
 export class ServiceListWidgetComponent extends WidgetBase implements OnDestroy {
-
     // todo just realy on json
     serviceList: {
         active: boolean,
@@ -39,7 +38,8 @@ export class ServiceListWidgetComponent extends WidgetBase implements OnDestroy 
         description: string,
         icon: string,
         pseudoName: string,
-        processId: string }[] = [];
+        processId: string
+    }[] = [];
 
     constructor(protected _procMonRuntimeService: RuntimeService,
                 protected _widgetInstanceService: WidgetInstanceService,
@@ -78,7 +78,6 @@ export class ServiceListWidgetComponent extends WidgetBase implements OnDestroy 
     }
 
     public updateProperties(updatedProperties: any) {
-
         /**
          * todo
          *  A similar operation exists on the procmman-config-service
@@ -88,14 +87,10 @@ export class ServiceListWidgetComponent extends WidgetBase implements OnDestroy 
          *  config service or the property page service.
          *
          * **/
-
         const updatedPropsObject = JSON.parse(updatedProperties);
 
         this.propertyPages.forEach(function (propertyPage) {
-
-
             for (let x = 0; x < propertyPage.properties.length; x++) {
-
                 for (const prop in updatedPropsObject) {
                     if (updatedPropsObject.hasOwnProperty(prop)) {
                         if (prop === propertyPage.properties[x].key) {
@@ -112,7 +107,5 @@ export class ServiceListWidgetComponent extends WidgetBase implements OnDestroy 
         this.setEndPoint(updatedPropsObject.endpoint);
 
         this.showOperationControls = true;
-
     }
-
 }

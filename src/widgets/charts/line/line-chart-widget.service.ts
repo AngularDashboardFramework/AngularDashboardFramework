@@ -1,6 +1,7 @@
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { catchError, map, tap } from 'rxjs/operators';
 import { RuntimeService } from '../../../services/runtime.service';
 
 @Injectable()
@@ -14,11 +15,13 @@ export class LineChartWidgetService {
                 'value': 0
             });
         }
+
         return array;
     }
-    
+
     static retrieveData() {
         const currentDate = new Date();
+
         const time = LineChartWidgetService.getDay(
             currentDate.getDay()) + ':' +
             currentDate.getHours() + ':' +
@@ -54,7 +57,7 @@ export class LineChartWidgetService {
         }
     }
 
-    constructor(private _http: Http) {
+    constructor(private _http: HttpClient) {
     }
 
     public get(collectors: any[]) {
@@ -76,9 +79,10 @@ export class LineChartWidgetService {
     }
 
     getHelpTopic() {
-        return this._http.request('/assets/api/trendline-help-model.json')
-            .map(res => res.json())
-            .catch(RuntimeService.handleError);
-
+        return this._http.get('/assets/api/data/trendline-help-model.json')
+            //.catch(RuntimeService.handleError)
+            .pipe(
+                catchError(RuntimeService.handleError)
+            );
     }
 }

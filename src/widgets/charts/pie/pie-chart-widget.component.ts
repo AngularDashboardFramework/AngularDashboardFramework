@@ -7,9 +7,7 @@ import { WidgetInstanceService } from '../../../grid/grid.service';
 import { EndPointService } from '../../../configuration/tab-endpoint/endpoint.service';
 import { WidgetPropertyService } from '../../_common/widget-property.service';
 import { WidgetBase } from '../../_common/widget-base';
-
 import { PieChartWidgetService } from './pie-chart-widget.service';
-
 
 @Component({
     selector: 'adf-dynamic-component',
@@ -17,7 +15,6 @@ import { PieChartWidgetService } from './pie-chart-widget.service';
     templateUrl: './pie-chart-widget.component.html',
     styleUrls: ['../../_common/styles-widget.css'],
     animations: [
-
         trigger('accordion', [
             state('in', style({
                 height: '*'
@@ -43,7 +40,6 @@ import { PieChartWidgetService } from './pie-chart-widget.service';
     ]
 })
 export class PieChartWidgetComponent extends WidgetBase {
-
     topic: any;
 
     showOperationControls = false;
@@ -55,9 +51,11 @@ export class PieChartWidgetComponent extends WidgetBase {
     badColorScheme = {
         domain: ['#a10910', '#DDDDDD']
     };
+
     goodColorScheme = {
         domain: ['#00c700', '#DDDDDD']
     };
+
     used;
     avail;
 
@@ -70,7 +68,7 @@ export class PieChartWidgetComponent extends WidgetBase {
                 protected _propertyService: WidgetPropertyService,
                 protected _endPointService: EndPointService,
                 protected _changeDetectionRef: ChangeDetectorRef,
-                protected _diskService: PieChartWidgetService) {
+                protected _pieChartService: PieChartWidgetService) {
         super(_runtimeService,
             _widgetInstanceService,
             _propertyService,
@@ -83,12 +81,9 @@ export class PieChartWidgetComponent extends WidgetBase {
 
 
     public preRun(): void {
-
         this.threshold = this.getPropFromPropertyPages('threshold');
         this.detailMenuOpen = 'out';
-
     }
-
 
     public run() {
         this.data = [];
@@ -107,8 +102,7 @@ export class PieChartWidgetComponent extends WidgetBase {
     }
 
     public updateData(data: any[]) {
-
-        this._diskService.getMockData().subscribe(_data => {
+        this._pieChartService.getMockData().subscribe(_data => {
                 this.data = _data;
 
                 const thresholdVal = Number(this.threshold);
@@ -123,11 +117,11 @@ export class PieChartWidgetComponent extends WidgetBase {
                 this.avail = this.data[1].value;
 
             },
-            error => this.handleError(error));
+            error => this.handleError(error)
+	);
     }
 
     public updateProperties(updatedProperties: any) {
-
         /**
          * todo
          *  A similar operation exists on the procmman-config-service
@@ -137,7 +131,6 @@ export class PieChartWidgetComponent extends WidgetBase {
          *  config service or the property page service.
          *
          * **/
-
         const updatedPropsObject = JSON.parse(updatedProperties);
 
         this.propertyPages.forEach(function (propertyPage) {
@@ -161,19 +154,15 @@ export class PieChartWidgetComponent extends WidgetBase {
         this.setEndPoint(updatedPropsObject.endpoint);
 
         this.run();
-
-
     }
+
     setTopic() {
-        this._diskService.getHelpTopic().subscribe(data => {
-
+        this._pieChartService.getHelpTopic().subscribe(data => {
             this.topic = data;
-
         });
     }
+
     toggleAcordion(): void {
-
         this.detailMenuOpen = this.detailMenuOpen === 'out' ? 'in' : 'out';
-
     }
 }

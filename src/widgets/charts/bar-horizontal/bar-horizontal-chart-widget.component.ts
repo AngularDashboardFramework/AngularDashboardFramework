@@ -6,6 +6,7 @@ import { WidgetPropertyService } from '../../_common/widget-property.service';
 import { EndPointService } from '../../../configuration/tab-endpoint/endpoint.service';
 
 import { WidgetBase } from '../../_common/widget-base';
+import { ChartBarHorizontalConfig } from './bar-horizontal-chart-widget.config';
 import { BarHorizontalChartWidgetService } from './bar-horizontal-chart-widget.service';
 
 @Component({
@@ -17,26 +18,32 @@ import { BarHorizontalChartWidgetService } from './bar-horizontal-chart-widget.s
 
 export class BarHorizontalChartWidgetComponent extends WidgetBase implements OnDestroy, OnInit {
     // chart options
-    showXAxis = true;
-    showYAxis = true;
-    gradient = true;
-    showLegend = true;
-    showXAxisLabel = true;
-    showYAxisLabel = true;
-    yAxisLabel = 'Available CPUs';
-    xAxisLabel = 'Percent Utilization';
+    config: ChartBarHorizontalConfig;
+
+    gradient: boolean = true;
+    showXAxis: boolean = true;
+    showYAxis: boolean = true;
+    showLegend: boolean = true;
+    showXAxisLabel: boolean = true;
+    showYAxisLabel: boolean = true;
+    yAxisLabel: string = 'Available CPUs';
+    xAxisLabel: string = 'Percent Utilization';
+
     view: any[];
-    cpu: any[] = [];
+    data: any[] = [];
+
     colorScheme: any = {
         domain: ['#0d5481', '#0AFF16']
     };
 
-    constructor(protected _runtimeService: RuntimeService,
-                protected _widgetInstanceService: WidgetInstanceService,
-                protected _propertyService: WidgetPropertyService,
-                protected _endPointService: EndPointService,
-                protected _chartService: BarHorizontalChartWidgetService,
-                private _changeDetectionRef: ChangeDetectorRef) {
+    constructor(
+        protected _runtimeService: RuntimeService,
+        protected _widgetInstanceService: WidgetInstanceService,
+        protected _propertyService: WidgetPropertyService,
+        protected _endPointService: EndPointService,
+        protected _service: BarHorizontalChartWidgetService,
+        private _changeDetectionRef: ChangeDetectorRef
+    ) {
         super(_runtimeService,
             _widgetInstanceService,
             _propertyService,
@@ -49,11 +56,12 @@ export class BarHorizontalChartWidgetComponent extends WidgetBase implements OnD
     }
 
     public run() {
-        this.cpu = [];
+        this.data = [];
         this.errorExists = false;
         this.actionInitiated = true;
         this.actionInitiated = false;
         this.inRun = true;
+
         this.updateData(null);
     }
 
@@ -65,10 +73,11 @@ export class BarHorizontalChartWidgetComponent extends WidgetBase implements OnD
     }
 
     public updateData(data: any[]) {
-        this._chartService.getMockData().subscribe(cpu => {
-                Object.assign(this, {cpu});
+        this._service.getMockData().subscribe(data => {
+                Object.assign(this, {data});
             },
-            error => this.handleError(error));
+            error => this.handleError(error)
+        );
     }
 
     public updateProperties(updatedProperties: any) {
@@ -95,6 +104,7 @@ export class BarHorizontalChartWidgetComponent extends WidgetBase implements OnD
             }
         });
 
+        //this.config = updatedPropsObject.chart_properties;
         this.title = updatedPropsObject.title;
         this.showXAxis = updatedPropsObject.chart_properties;
         this.showYAxis = updatedPropsObject.chart_properties;

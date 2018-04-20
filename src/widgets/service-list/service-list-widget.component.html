@@ -26,10 +26,10 @@
         (stopEvent)="stop()">
     </adf-widget-header>
 
-    <div class="ui divided selection list" *ngIf="!inConfig" style="min-height: 250px">
+    <div *ngIf="!inConfig" class="ui divided selection list" style="min-height: 250px">
         <div *ngFor="let serviceItem of serviceList" class="item">
             <div class="left floated content">
-               <i *ngIf="serviceItem.processId" [@showHideAnimation] class="big green check icon"></i>
+                <i *ngIf="serviceItem.processId" [@showHideAnimation] class="big green check icon"></i>
                 <i *ngIf="serviceItem.processId==''" [@showHideAnimation] class="big red minus circle"></i>
             </div>
             <div class="content">

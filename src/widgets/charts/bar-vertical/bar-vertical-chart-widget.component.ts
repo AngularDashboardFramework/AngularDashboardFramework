@@ -1,12 +1,14 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
+import { WidgetBase } from '../../_common/widget-base';
+
 import { WidgetInstanceService } from '../../../grid/grid.service';
 import { RuntimeService } from '../../../services/runtime.service';
 import { WidgetPropertyService } from '../../_common/widget-property.service';
 import { EndPointService } from '../../../configuration/tab-endpoint/endpoint.service';
-import { WidgetBase } from '../../_common/widget-base';
-import { ObservableWebSocketService } from '../../../services/websocket-service';
+
+import { ObservableWebSocketService } from '../../../services/websocket.service';
 import { ErrorObject } from "../../../error/error-model";
 import { ErrorHandler } from "../../../error/error-handler";
 
@@ -26,20 +28,25 @@ export class BarVerticalChartWidgetComponent extends WidgetBase implements OnDes
     showYAxisLabel = false;
     yAxisLabel = 'Available CPUs';
     xAxisLabel = 'Percent Utilization';
+
     view: any[];
     single: any[] = [];
+
     colorScheme: any = {
         domain: ['#0AFF16', '#0d5481']
     };
+
     webSocket: any;
     waitForConnectionDelay = 2000;
 
-    constructor(protected _runtimeService: RuntimeService,
-                protected _widgetInstanceService: WidgetInstanceService,
-                protected _propertyService: WidgetPropertyService,
-                protected _endPointService: EndPointService,
-                private _changeDetectionRef: ChangeDetectorRef,
-                private _webSocketService: ObservableWebSocketService) {
+    constructor(
+        protected _runtimeService: RuntimeService,
+        protected _widgetInstanceService: WidgetInstanceService,
+        protected _propertyService: WidgetPropertyService,
+        protected _endPointService: EndPointService,
+        private _changeDetectionRef: ChangeDetectorRef,
+        private _webSocketService: ObservableWebSocketService
+    ) {
         super(_runtimeService,
             _widgetInstanceService,
             _propertyService,
@@ -60,7 +67,8 @@ export class BarVerticalChartWidgetComponent extends WidgetBase implements OnDes
         this.errorExists = false;
         this.actionInitiated = true;
 
-        this.webSocket = this._webSocketService.createObservableWebSocket(this.getEndPoint().address).subscribe(data => {
+        this.webSocket = this._webSocketService.createObservableWebSocket(this.getEndPoint().address)
+            .subscribe(data => {
                 const dataObject = JSON.parse(data);
                 this.updateGraph(dataObject['utilPct']);
             },
@@ -104,7 +112,6 @@ export class BarVerticalChartWidgetComponent extends WidgetBase implements OnDes
 
             this.inRun = true;
             this.actionInitiated = false;
-
         });
     }
 
@@ -115,7 +122,9 @@ export class BarVerticalChartWidgetComponent extends WidgetBase implements OnDes
 
         try {
             this._webSocketService.sendMessage('stop');
+
             this.webSocket.unsubscribe();
+
             this.updateGraph(0);
         } catch (error) {
             this.handleError(error);
@@ -127,10 +136,12 @@ export class BarVerticalChartWidgetComponent extends WidgetBase implements OnDes
     public updateGraph(value: number) {
         const series: any[] = [];
         const single: any = [];
+
         series.push({
             'name': 'used',
             'value': value
         });
+
         series.push({
             'name': 'available',
             'value': 100 - value
@@ -167,7 +178,6 @@ export class BarVerticalChartWidgetComponent extends WidgetBase implements OnDes
                         if (prop === propertyPage.properties[x].key) {
                             propertyPage.properties[x].value = updatedPropsObject[prop];
                         }
-
                     }
                 }
             }

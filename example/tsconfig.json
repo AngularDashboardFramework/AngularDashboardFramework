@@ -1,21 +1,23 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "outDir": "../.example",
-    "target": "es5",
-    "module": "commonjs",
-    "baseUrl": "src",
-    "declaration": false,
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2016",
-      "dom"
+    "compileOnSave": false,
+    "compilerOptions": {
+        "outDir": "./dist/out-tsc",
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "target": "es5",
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "lib": [
+            "es2017",
+            "dom"
+        ]
+    },
+    "include": [
+        "./src",
+        "node_modules/healthbase-web-diagram"
     ]
-  }
 }

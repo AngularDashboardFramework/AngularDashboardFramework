@@ -1,15 +1,12 @@
-export class Column
-{
+export class Column {
 
 }
 
-export class Row
-{
-    colums: Column[];
+export class Row {
+    columns: Column[];
 }
 
-export interface Layout
-{
+export interface Layout {
     id: number;
     title: string;
     checked: boolean;

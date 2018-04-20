@@ -1,9 +1,7 @@
 /**
  * Created by jayhamilton on 1/24/17.
  */
-import {
-    ViewChild, ElementRef, AfterViewInit, Component, Input
-} from '@angular/core';
+import { ViewChild, ElementRef, AfterViewInit, Component, Input } from '@angular/core';
 
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
@@ -27,14 +25,16 @@ declare var jQuery: any;
     templateUrl: './help-modal.html',
 })
 export class HelpModalComponent implements AfterViewInit {
-
-    @Input() topic: any;
+    @Input()
+    topic: any;
 
     modalicon: string;
     modalheader: string;
     modalconfig: string;
 
-    @ViewChild('helpmodal_tag') helpmodalaRef: ElementRef;
+    @ViewChild('helpmodal_tag')
+    helpmodalaRef: ElementRef;
+    
     configModal: any;
 
     constructor() {
@@ -42,6 +42,7 @@ export class HelpModalComponent implements AfterViewInit {
 
     popConfigModal(icon: string, header: string, message: string, durationms: number) {
         this.showMessageModal(icon, header, message);
+
         Observable.interval(durationms).take(1).subscribe(
             () => {
                 this.hideMessageModal();

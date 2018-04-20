@@ -1,7 +1,7 @@
 <div
     (mouseover)="showWidgetControls(true)"
     (mouseleave)="showWidgetControls(false)"
-    class="ui center aligned segment widget"
+    class="ui segment center aligned widget"
     dnd-draggable
     [dragEnabled]="true"
     [dragData]="instanceId"
@@ -22,9 +22,10 @@
         (stopEvent)="stop()">
     </adf-widget-header>
 
-    <div class="ui grey small statistic" *ngIf="!inConfig">
+    <div *ngIf="!inConfig" class="ui grey small statistic">
         <div class="value">
-            {{data.total}}&nbsp;&nbsp;<i class=" {{data.color}}  {{data.icon}} "></i>
+            {{data.total}}&nbsp;&nbsp;
+            <i class="{{data.color}} {{data.icon}}"></i>
         </div>
         <div class="label">
             <span style="color:grey">{{data.name}}</span>
