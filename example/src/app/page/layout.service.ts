@@ -1,5 +1,5 @@
 // import { Injectable } from '@angular/core';
-// import { Http, Headers } from '@angular/http';
+// import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 // import { Observable } from 'rxjs/Observable';
 // import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -21,7 +21,7 @@
 //     private _layouts: Map<String, Layout> = new Map<String, Layout>();
 
 //     public layouts: BehaviorSubject<Layout[]> = new BehaviorSubject([]);
-    
+
 //     error: string;
 
 //     register(name: string, layout: Layout) {
@@ -35,7 +35,7 @@
 
 //     constructor (
 //       private _appConfigService: AppConfigService,
-//       private _http: Http
+//       private _http: HttpClient
 //     ) {
 //       this._appConfigService.AppConfig.subscribe(config => {
 //         if (config !== undefined)
@@ -50,8 +50,7 @@
 
 //     private reloadLayouts() {
 //       console.log("LayoutService:reloadLayouts()");
-//       if (this.configLayoutServiceAPI != "")
-//       {
+//       if (this.configLayoutServiceAPI != '') {
 //         console.log("LayoutService:Loading Layouts");
 
 //         this._layoutList.forEach(layoutSource => {
@@ -80,18 +79,18 @@
 //       this._layoutList.push(layoutSource);
 //       this.reloadLayouts();
 //     }
-  
+
 //     //TODO Make a Layout type
 //     getLayout(layoutSource: string): Observable<any> {
 //       return this._http.get(this.configLayoutServiceAPI + layoutSource + '.json')
-//         .map(res => res.json())
-//         .catch(this.handleError);
+//         // .map(res => res.json())
+//         // .catch(this.handleError);
 //     }
 
 //     private handleError(error: any) {
 //       // In a real world app, we might use a remote logging infrastructure
 //       // We'd also dig deeper into the error to get a better message
-//       let errMsg = (error.message)
+//       const errMsg = (error.message)
 //         ? error.message :
 //           (error.status)
 //             ? `${error.status} - ${error.statusText}`

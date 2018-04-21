@@ -1,7 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatButtonModule, MatIconModule } from '@angular/material';
 
 import { GridModule } from '../grid/grid.module';
@@ -39,7 +39,6 @@ import { StatisticWidgetComponent } from '../widgets/statistic/statistic-widget.
 import { PropertyListWidgetComponent } from '../widgets/property-list/property-list-widget.component';
 import { ServiceListWidgetComponent } from '../widgets/service-list/service-list-widget.component';
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -51,7 +50,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     imports: [
         CommonModule,
         FormsModule,
-        HttpModule,
         HttpClientModule,
         MatButtonModule,
         MatIconModule,

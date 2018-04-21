@@ -15,8 +15,8 @@ export class BarHorizontalChartWidgetService {
     }
 
     getMockData() {
-        return this._http.get('/assets/api/cpu-model.json')
-            //.catch(RuntimeService.handleError)
+        return this._http.get('/assets/api/data/cpu-model.json')
+            // .catch(RuntimeService.handleError)
             .pipe(
                 catchError(RuntimeService.handleError)
             );

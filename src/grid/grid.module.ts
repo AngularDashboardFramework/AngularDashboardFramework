@@ -2,6 +2,7 @@ import { NgModule, InjectionToken, ANALYZE_FOR_ENTRY_COMPONENTS } from '@angular
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { DndModule } from 'ng2-dnd';
 
@@ -54,6 +55,7 @@ import { NewsService } from '../widgets/news/service';
         CommonModule,
         FormsModule,
         HttpModule,
+        HttpClientModule,
         DndModule.forRoot(),
         DynamicFormModule
     ],

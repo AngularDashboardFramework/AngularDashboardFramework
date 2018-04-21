@@ -1,0 +1,26 @@
+{
+    "id": 7,
+    "title": "wide-top",
+    "checked": false,
+    "structure": "16/8-8",
+    "image": "/assets/builder/images/layouts/wide-top.png",
+    "rows": [
+        {
+            "columns": [
+                {
+                    "class": "sixteen wide"
+                }
+            ]
+        },
+        {
+            "columns": [
+                {
+                    "class": "eight wide"
+                },
+                {
+                    "class": "eight wide"
+                }
+            ]
+        }
+    ]
+}

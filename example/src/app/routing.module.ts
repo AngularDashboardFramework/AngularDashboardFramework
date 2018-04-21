@@ -1,7 +1,25 @@
+import { ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+export const routes: Routes = [
+	{
+  		path: '',
+		redirectTo: 'page',
+		pathMatch: 'full'
+	},
+	{
+		path: '**',
+		redirectTo: 'page/default/default'
+	}
+];
+
+export const routing: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true });
+
 // import { NgModule } from '@angular/core';
 // import { Routes, RouterModule } from '@angular/router';
 // import { AppComponent } from './app.component';
-// import { BoardComponent } from 'ng-adf';
+// import { BoardComponent } from './page/board/board.component';
+// import { Page } from './page/page.component';
 
 // export const routes: Routes = [
 //     {
@@ -12,12 +30,13 @@
 //             [
 //                 {
 //                     path: '',
-//                     redirectTo: 'main-board',
+//                     redirectTo: 'page',
 //                     pathMatch: 'full'
 //                 },
 //                 {
-//                     path: 'main-board',
-//                     component: BoardComponent
+//                     path: 'page',
+//                     //component: BoardComponent
+// 		            component: Page
 //                 }
 //             ]
 //     }

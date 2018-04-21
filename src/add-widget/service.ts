@@ -10,6 +10,6 @@ export class AddWidgetService {
     constructor(private _http: HttpClient) {}
 
     getWidgetLibrary() {
-        return this._http.get('/assets/api/widget-library-model.json');
+        return this._http.get('/assets/api/data/widget-library-model.json');
     }
 }

@@ -1,0 +1,16 @@
+{
+    "id": 4,
+    "title": "narrow-left",
+    "checked": false,
+    "structure": "4-12",
+    "image": "/assets/builder/images/layouts/narrow-left.png",
+    "rows": [{
+        "columns": [
+            {
+                "class": "four wide"
+            },
+            {
+                "class": "twelve wide"
+            }]
+    }]
+}

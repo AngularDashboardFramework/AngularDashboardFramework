@@ -1,0 +1,16 @@
+{
+    "id": 5,
+    "title": "two-even",
+    "checked": true,
+    "structure": "8-8",
+    "image": "/assets/builder/images/layouts/two-even.png",
+    "rows": [{
+        "columns": [
+            {
+                "class": "eight wide"
+            },
+            {
+                "class": "eight wide"
+            }]
+    }]
+}

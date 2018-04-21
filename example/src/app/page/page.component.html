@@ -1,6 +1,7 @@
 <div class="ui right aligned segment grid" style="margin-left: 20px; margin-right:20px">
     <div class="ui secondary pointing menu">
-        <a *ngFor="let board of dashboardList; let i = index" class="item"
+        <a *ngFor="let board of dashboardList; let i = index"
+            class="item"
             [ngClass]="{'active':board == selectedBoard}"
             (click)="widgetGrid.loadBoard(board)"
             (click)="selectBoard(board)">
@@ -12,7 +13,9 @@
         <a mat-mini-fab routerLink="." color="primary"
             (click)="notifcationModal.showNotificationModal('Notifications')">
             <mat-icon>notifications</mat-icon>
-            <div class="floating ui red label"><span style="font-size: 1.2em; font-weight: normal">4</span></div>
+            <div class="floating ui red label">
+                <span style="font-size: 1.2em; font-weight: normal">4</span>
+            </div>
         </a>
         Notifications
         &nbsp;

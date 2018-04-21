@@ -1,0 +1,16 @@
+{
+    "id": 2,
+    "title": "narrow-right",
+    "checked": false,
+    "structure": "10-6",
+    "image": "/assets/builder/images/layouts/narrow-right.png",
+    "rows": [{
+        "columns": [
+            {
+                "class": "ten wide"
+            },
+            {
+                "class": "six wide"
+            }]
+    }]
+}

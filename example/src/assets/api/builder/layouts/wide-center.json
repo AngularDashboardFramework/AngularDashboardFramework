@@ -1,0 +1,19 @@
+{
+    "id": 3,
+    "title": "wide-center",
+    "checked": false,
+    "structure": "4-8-4",
+    "image": "/assets/builder/images/layouts/wide-center.png",
+    "rows": [{
+        "columns": [
+            {
+                "class": "four wide"
+            },
+            {
+                "class": "eight wide"
+            },
+            {
+                "class": "four wide"
+            }]
+    }]
+}

@@ -1,0 +1,13 @@
+{
+    "id": 1,
+    "title": "single",
+    "checked": false,
+    "structure": "16",
+    "image": "/assets/builder/images/layouts/single.png",
+    "rows": [{
+        "columns": [
+            {
+                "class": "sixteen wide"
+            }]
+    }]
+}

@@ -19,9 +19,8 @@ export class BoardComponent implements OnInit {
     @Input()
     layouts: Layout[];
 
-
     dashboardList: any[] = [];
-
+x
     selectedBoard = '';
 
     constructor(

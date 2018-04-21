@@ -1,0 +1,6 @@
+{
+    "RemoteConfigurationRepository": "/assets/api/apps/",
+    "LayoutServiceAPI": "/assets/api/builder/layouts/",
+    "DefaultApp": "sample",
+    "DefaultPage": "sample"
+}
