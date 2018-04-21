@@ -10,6 +10,7 @@ import { DynamicFormModule } from '../dynamic-form/dynamic-form-module';
 import { GridComponent } from './grid.component';
 import { CellComponent } from './widget.component';
 
+import { WidgetService } from '../services/widget.service';
 import { WidgetInstanceService } from './grid.service';
 import { ConfigurationService } from '../services/configuration.service';
 
@@ -61,6 +62,7 @@ import { NewsService } from '../widgets/news/service';
         GridComponent
     ],
     providers: [
+        WidgetService,
         WidgetInstanceService,
         ConfigurationService,
         NewsService,

@@ -39,6 +39,8 @@ import { StatisticWidgetComponent } from '../widgets/statistic/statistic-widget.
 import { PropertyListWidgetComponent } from '../widgets/property-list/property-list-widget.component';
 import { ServiceListWidgetComponent } from '../widgets/service-list/service-list-widget.component';
 
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 @NgModule({
     declarations: [
         BoardComponent
@@ -50,6 +52,7 @@ import { ServiceListWidgetComponent } from '../widgets/service-list/service-list
         CommonModule,
         FormsModule,
         HttpModule,
+        HttpClientModule,
         MatButtonModule,
         MatIconModule,
         WidgetModule,
@@ -76,6 +79,7 @@ import { ServiceListWidgetComponent } from '../widgets/service-list/service-list
         BoardComponent
     ],
     providers: [
+        HttpClient,
         EndPointService,
         RuntimeService,
         ConfigurationService,
