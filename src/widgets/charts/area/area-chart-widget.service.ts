@@ -10,7 +10,7 @@ export class AreaChartWidgetService {
     }
 
     get() {
-        return this._http.get('/assets/api/data/trend-model.json')
+        return this._http.get('/assets/api/trend-model.json')
             //.catch(RuntimeService.handleError)
             .pipe(
                 catchError(RuntimeService.handleError)

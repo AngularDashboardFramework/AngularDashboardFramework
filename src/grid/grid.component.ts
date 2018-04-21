@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, EventEmitter, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, OnInit, OnChanges, EventEmitter, SimpleChanges, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { WidgetInstanceService } from './grid.service';
@@ -14,7 +14,7 @@ import { WidgetConfigModel } from '../widgets/_common/widget-config-model';
         './styles-grid.scss'
     ]
 })
-export class GridComponent implements OnInit {
+export class GridComponent implements OnInit, OnChanges {
     @Output()
     boardUpdateEvent: EventEmitter<any> = new EventEmitter();
 
@@ -84,7 +84,7 @@ export class GridComponent implements OnInit {
         });
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges (changes: SimpleChanges) {
 
     }
 

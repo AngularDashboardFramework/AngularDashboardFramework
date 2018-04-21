@@ -14,7 +14,7 @@ export class NewsService {
     }
 
     get() {
-        return this._http.get('/assets/api/data/news-model.json')
+        return this._http.get('/assets/api/news-model.json')
             //.catch(RuntimeService.handleError)
             .pipe(
                 catchError(RuntimeService.handleError)
