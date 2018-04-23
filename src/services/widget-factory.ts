@@ -1,3 +1,5 @@
+import { Injectable } from '@angular/core';
+import { WidgetDescriptor } from '../board/widget.descriptor';
 
 import { AreaChartWidgetComponent } from '../widgets/charts/area/area-chart-widget.component';
 
@@ -19,6 +21,7 @@ import { EdgeServiceListWidgetComponent } from '../widgets/edge-service-list/edg
 /**
  * Created by jayhamilton on 6/30/17.
  */
+@Injectable()
 export class WidgetFactory {
     /**
      * todo - return new instances instead of the same instance. This requires the creation of new configuration options.
@@ -56,4 +59,20 @@ export class WidgetFactory {
         }
     }
 
+  private idCounter = 0;
+  private widgets: Map<String, WidgetDescriptor> = new Map<String, WidgetDescriptor>();
+
+  register(name: string, descriptor: WidgetDescriptor) {
+    this.widgets.set(name, descriptor);
+  }
+
+  get(name: string): WidgetDescriptor {
+    return this.widgets.get(name);
+  }
+
+  id(): string {
+    return 'w-' + new Date().getTime() + '-' + (this.idCounter++);
+  }
+
+  constructor() { }
 }
