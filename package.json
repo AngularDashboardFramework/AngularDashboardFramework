@@ -32,6 +32,7 @@
   "dependencies": {
     "@swimlane/ngx-charts": "^6.1.0",
     "d3": "^4.13.0",
+    "ng2-ace-editor": "^0.3.7",
     "ng2-dnd": "^5.0.2"
   },
   "devDependencies": {
@@ -47,11 +48,13 @@
     "@angular/platform-browser": "^5.2.9",
     "@angular/platform-browser-dynamic": "^5.2.9",
     "@angular/router": "^5.2.9",
+    "@angulardynamic/databroker": "github:angulardynamic/databroker",
     "@compodoc/compodoc": "^1.0.9",
     "@types/d3": "^5.0.0",
     "@types/jasmine": "^2.6.0",
     "@types/node": "~9.4.7",
     "angular-in-memory-web-api": "^0.5.4",
+    "angular2-json-schema-form": "github:angulardynamic/schemaform",
     "codelyzer": "^4.2.1",
     "concurrently": "^3.5.1",
     "core-js": "^2.5.3",
@@ -77,7 +80,7 @@
     "reflect-metadata": "^0.1.10",
     "rollup": "^0.50.0",
     "run-sequence": "^2.2.0",
-    "rxjs": "^5.5.2",
+    "rxjs": "^5.5.10",
     "socket.io-client": "^2.0.4",
     "sockjs-client": "^1.1.4",
     "stompjs": "^2.3.3",
@@ -99,7 +102,8 @@
     "@angular/material": "^5.2.4",
     "@angular/platform-browser": "^5.2.9",
     "@angular/platform-browser-dynamic": "^5.2.9",
-    "@angular/router": "^5.2.9"
+    "@angular/router": "^5.2.9",
+    "rxjs": "^5.5.10"
   },
   "engines": {
     "node": ">=6.0.0"

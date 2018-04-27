@@ -1,0 +1,23 @@
+<!--<div *ngIf="!col.widgets || col.widgets.length== 0" class="ui center aligned massive info message"
+    style="text-align:center" [ngClass]="{'short-row': row.columns.length > 3, 'tall-row': row.columns.length <= 3 }">
+    <span style="font-size: .75em">Add Widget!</span>
+</div>-->
+
+<!--<div *ngIf="showTargets && (!widgets || widgets.length== 0)"
+    style="text-align:center"
+    class="ui center aligned massive info message"
+    [ngClass]="{'short-row': row.columns.length > 3, 'tall-row': row.columns.length <= 3 }">
+    <span style="font-size: .75em"></span>
+</div>-->
+
+<div *ngIf="showTargets && (!widgets || widgets.length== 0)"
+    style="text-align:center"
+    class="ui center aligned massive info message">
+    <span style="font-size: .75em"></span>
+</div>
+
+<adf-widget *ngFor="let widget of widgets"
+    [widgetInstanceId]="widget.instanceId"
+    [widgetConfig]="widget.config"
+    [widgetType]="widget.componentType">
+</adf-widget>

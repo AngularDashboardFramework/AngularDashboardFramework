@@ -1,0 +1,26 @@
+<form #editForm="ngForm" (ngSubmit)="save()">
+
+	<div class="form-group" [ngClass]="{'has-error': url.invalid}">
+		<label for="url">Feed URL</label>
+		<input type="url" class="form-control"
+           id="url" name="url"
+           [(ngModel)]="configuration" #url="ngModel"
+           required pattern="https?://.+">
+		<div class="has-error text-danger" [hidden]="url.valid">
+			<span [hidden]="!url.errors?.required">
+        URL is required
+      </span>
+      <span [hidden]="!url.errors?.pattern">
+        URL is invalid
+      </span>
+		</div>
+	</div>
+
+	<button type="submit" class="btn btn-primary" [disabled]="editForm.form.invalid">
+    Save
+  </button>
+	<button class="btn btn-warning" (click)="cancel()">
+    Cancel
+  </button>
+
+</form>

@@ -1,0 +1,23 @@
+
+<!--
+    <label [attr.for]="id" class="horizontal control-label">
+    {{ schema.description }}
+</label>-->
+<label *ngIf="options?.title"
+    [attr.for]="'control' + layoutNode?._id"
+    [class]="options?.labelHtmlClass || ''"
+    [style.display]="options?.notitle ? 'none' : ''"
+    [innerHTML]="options?.title"></label>
+<ace-editor
+    [(text)]="controlValue"
+    [formControl]="formControl"
+    [id]="id"
+    [mode]="'json'"
+    [theme]="'eclipse'"
+    [options]="options"
+    [readOnly]="false"
+    [autoUpdateContent]="false"
+    [durationBeforeCallback]="500"
+    (textChanged)="onChange($event)"
+    style="min-height: 300px; width:100%; overflow: auto;">
+</ace-editor>

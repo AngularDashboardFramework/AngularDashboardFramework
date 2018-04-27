@@ -1,0 +1,15 @@
+<!--<adf-widget *ngFor="let widget of widgets"
+    [widget]="widget"
+    [attr.adf-id]="widget.id"
+    (removeEvent)="remove($event)"
+    class="card m-2"
+    [ngClass]="widget.containerClass">
+</adf-widget>-->
+
+<adf-grid *ngFor="let row of rows"
+    [layout]="layout"
+    [model]="model"
+    [data]="row"
+    [dndEnabled]="dndEnabled"
+    (click)="onClick(row)">
+</adf-grid>

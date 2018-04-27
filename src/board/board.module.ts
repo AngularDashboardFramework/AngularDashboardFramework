@@ -6,7 +6,7 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 
 import { GridModule } from '../grid/grid.module';
 
-import { WidgetModule } from '../widgets/widget.module';
+import { WidgetsModule } from '../widgets/widgets.module';
 
 import { AddWidgetModule } from '../add-widget/add-widget.module';
 import { AddWidgetService } from '../add-widget/service';
@@ -53,7 +53,7 @@ import { ServiceListWidgetComponent } from '../widgets/service-list/service-list
         HttpClientModule,
         MatButtonModule,
         MatIconModule,
-        WidgetModule,
+        WidgetsModule,
         NotificationModule,
         AddWidgetModule,
         LayoutModule,

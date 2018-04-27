@@ -3,7 +3,7 @@
     "componentType": "BarVerticalChartWidgetComponent",
     "name": "CPUM Chart",
     "description": "Monitors CPU utilization.",
-    "icon": "assets/images/cpu.png",
+    "icon": "assets/images/widgets/charts/bar-horizontal.png",
     "instanceId": -1,
     "tags": [
       {
@@ -134,7 +134,7 @@
     "componentType": "AreaChartWidgetComponent",
     "name": "Area Chart",
     "description": "General trends.",
-    "icon": "assets/images/trend.png",
+    "icon": "assets/images/widgets/charts/area-chart.png",
     "instanceId": -1,
     "tags": [
       {
@@ -201,7 +201,7 @@
     "componentType": "LineChartWidgetComponent",
     "name": "Realtime Performance",
     "description": "Monitors IOPs and network bandwidth.",
-    "icon": "assets/images/trend-line.png",
+    "icon": "assets/images/widgets/charts/line-chart.png",
     "instanceId": -1,
     "tags": [
       {
@@ -268,7 +268,7 @@
     "componentType": "BarHorizontalChartWidgetComponent",
     "name": "CPU Chart",
     "description": "Monitors CPU utilization.",
-    "icon": "assets/images/cpu.png",
+    "icon": "assets/images/widgets/charts/bar-horizontal.png",
     "instanceId": -1,
     "tags": [
       {
@@ -335,7 +335,7 @@
     "componentType": "LinearGaugeChartWidgetComponent",
     "name": "Memory Chart",
     "description": "Monitors memory utilization",
-    "icon": "assets/images/memory.png",
+    "icon": "assets/images/widgets/charts/linear-gauge.png",
     "instanceId": -1,
     "tags": [
       {
@@ -521,7 +521,7 @@
     "componentType": "PieChartWidgetComponent",
     "name": "Disk Utilization",
     "description": "Disk consumption information.",
-    "icon": "assets/images/donut.png",
+    "icon": "assets/images/widgets/charts/pie.png",
     "instanceId": -1,
     "tags": [
       {

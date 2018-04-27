@@ -1,0 +1,28 @@
+<ng-container *ngIf="isSchemaForm; then schemaContent else modelContent"></ng-container>
+
+<ng-template #modelContent>
+    <json-schema-form
+        framework="bootstrap-4"
+        loadExternalAssets="true"
+        [(ngModel)]="model"
+        (onChanges)="onChanges($event)"
+        (onSubmit)="onSubmit($event)"
+        (isValid)="isValid($event)"
+        (validationErrors)="validationErrors($event)"
+    >
+    </json-schema-form>
+</ng-template>
+<ng-template #schemaContent>
+    <json-schema-form
+        framework="bootstrap-4"
+        loadExternalAssets="true"
+        [schema]="schema"
+        [layout]="layout"
+        [(data)]="model"
+        (onChanges)="onChanges($event)"
+        (onSubmit)="onSubmit($event)"
+        (isValid)="isValid($event)"
+        (validationErrors)="validationErrors($event)"
+    >
+    </json-schema-form>
+</ng-template>

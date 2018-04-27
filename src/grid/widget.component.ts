@@ -1,7 +1,7 @@
 import { Component, Input, ViewContainerRef, OnInit, ComponentFactoryResolver, ComponentRef, Type } from '@angular/core';
 
 import { WidgetInstanceService } from './grid.service';
-import { WidgetFactory } from '../add-widget/widget-factory';
+import { WidgetFactory } from '../services/widget-factory';
 // import { IWidget } from '../widgets/_common/iwidget';
 import { WidgetBase } from '../widgets/_common/widget-base';
 

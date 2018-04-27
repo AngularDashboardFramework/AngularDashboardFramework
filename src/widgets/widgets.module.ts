@@ -78,6 +78,5 @@ import { ServiceListWidgetComponent } from './service-list/service-list-widget.c
         EdgeService
     ]
 })
-export class WidgetModule {
-}
+export class WidgetsModule {}
 

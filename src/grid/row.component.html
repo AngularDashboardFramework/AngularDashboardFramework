@@ -1,0 +1,7 @@
+<adf-column *ngFor="let col of row.columns; let c = index"
+    class="{{col.class}} column"
+    [col]="col"
+    dnd-droppable
+    [dropZones]="['c' + c]"
+    (onDropSuccess)="updateWidgetPositionInBoard($event, c, rowIndex, 'column')">
+</adf-column>
