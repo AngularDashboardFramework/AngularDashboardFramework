@@ -5,7 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 // import { RoutingModule } from './routing.module';
 
-import { AdfModule, BoardModule } from 'ng-adf';
+import { AdfModule } from 'ng-adf';
+import { BoardModule } from './board';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,7 @@ import { AdfModule, BoardModule } from 'ng-adf';
         BrowserAnimationsModule,
         // RoutingModule,
         AdfModule,
-        // BoardModule
+        BoardModule
     ],
     providers: [],
     bootstrap: [

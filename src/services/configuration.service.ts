@@ -7,8 +7,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/empty';
 
-import { defaultBoard } from '../board/models/board-default';
-import { sampleBoardCollection } from '../board/models/board-collection-sample';
+import { defaultBoard } from './models/board-default';
+import { sampleBoardCollection } from './models/board-collection-sample';
 import { WidgetService } from './widget.service';
 
 @Injectable()

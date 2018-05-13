@@ -3,8 +3,7 @@
 //     Tab[];
 // }
 
-export interface Tab
-{
+export interface Tab {
     groupId: string;
     displayName: string;
 }

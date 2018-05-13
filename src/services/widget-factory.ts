@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { WidgetDescriptor } from '../board/widget.descriptor';
+import { WidgetDescriptor } from '../widgets/_common/widget.descriptor';
 
 import { AreaChartWidgetComponent } from '../widgets/charts/area/area-chart-widget.component';
 

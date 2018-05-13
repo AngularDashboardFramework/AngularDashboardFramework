@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-//import { Layout } from './layout';
+// import { Layout } from './layout';
 
 @Injectable()
 export class WidgetEventService {

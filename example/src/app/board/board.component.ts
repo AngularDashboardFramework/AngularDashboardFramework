@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Layout } from '../layout/layout';
+import { Layout } from 'ng-adf/layout/layout';
 
-import { ConfigurationService } from '../services/configuration.service';
+import { ConfigurationService } from 'ng-adf/services/configuration.service';
 
 /**
  * Board component
