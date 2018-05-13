@@ -12,7 +12,7 @@ export const sampleBoardCollection = {
                             {
                                 'componentType': 'NewsWidgetComponent',
                                 'name': 'News',
-                                'description': "What's new",
+                                'description': 'What\'s new',
                                 'icon': 'images/news.png',
                                 'instanceId': 1500253814523,
                                 'tags': [
@@ -924,7 +924,7 @@ export const sampleBoardCollection = {
                                     'componentType': 'AreaChartWidgetComponent',
                                     'name': 'Trend',
                                     'description': 'General trends.',
-                                    'icon': "/assets/images/widgets/charts/area-chart.png",
+                                    'icon': '/assets/images/widgets/charts/area-chart.png',
                                     'instanceId': 1500252536414,
                                     'tags': [
                                         {

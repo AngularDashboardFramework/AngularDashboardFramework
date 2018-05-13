@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Widget } from '../widgets/_common/widget';
+import { Widget } from './widget';
 import { WidgetConfigChanged, EditModeCancelled } from './widget.events';
 
 import { Observable } from 'rxjs/Observable';
@@ -28,7 +28,7 @@ export class WidgetContext {
     }
 
     getConfig(): any {
-        let config = this.widget.config || {};
+        const config = this.widget.config || {};
         return Object.assign({}, config);
     }
 

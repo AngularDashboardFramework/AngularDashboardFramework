@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
-import { WidgetContext } from '../../board/widget.context';
-import { WidgetFunction, WidgetFunctionProvider, WidgetFunctions } from '../../board/widget.functions';
+import { WidgetContext } from '../_common/widget.context';
+import { WidgetFunction, WidgetFunctionProvider, WidgetFunctions } from '../_common/widget.functions';
 import { Widget } from '../_common/widget';
 import { WidgetEventService } from '../_common/widgetevent.service';
 

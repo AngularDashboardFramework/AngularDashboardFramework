@@ -9,8 +9,8 @@ import { Observable } from 'rxjs/Observable';
 
 // import { NgaModule } from '../../../theme/nga.module';
 
-import { WidgetContext } from '../../board/widget.context';
-import { WidgetFunction, WidgetFunctionProvider, WidgetFunctions } from '../../board/widget.functions';
+import { WidgetContext } from '../_common/widget.context';
+import { WidgetFunction, WidgetFunctionProvider, WidgetFunctions } from '../_common/widget.functions';
 import { WidgetEventService } from '../_common/widgetevent.service';
 
 import { DataBrokerService, Template } from '@angulardynamic/databroker';

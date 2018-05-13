@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { WidgetContext } from '../../board/widget.context';
+import { WidgetContext } from '../_common/widget.context';
 import { FormWidgetConfiguration } from './form.configuration';
 
 @Component({
